@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"long-ying.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="获取表单1documen.forms.my;  &#x2F;&#x2F;my是form的name属性值  获取表单里的元素form.element.one;  &#x2F;&#x2F;one为表单元素中的name属性值 也可以直接通过form.name直接获取 通过元素反向引用表单1name.form  &#x2F;&#x2F; name为元素的name属性值  表单控件input 和textarea 我们可以通过 input.value（字符串）或 in">
+  <meta name="description" content="apply、call和bind的区别1、相同点：这三个的作用就是改变他们前面的函数执行时的上下文，即改变函数运行时的this指向，第一个参数都表示是this的指向，在this为null或者为undefined的时候，this默认指向window。 2、不同点：apply的第二个参数是函数执行时传入的参数，apply时以数组的方式传入，一次传多个参数，只传一次，且函数是立即执行。 call 的第二个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="表单和控件">
-<meta property="og:url" content="http://long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/index.html">
+<meta property="og:title" content="用原生JS实现apply&#x2F;call&#x2F;bind">
+<meta property="og:url" content="http://long-ying.github.io/2021/08/08/%E7%94%A8%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0apply-call-bind/index.html">
 <meta property="og:site_name" content="愿卿一路好风景">
-<meta property="og:description" content="获取表单1documen.forms.my;  &#x2F;&#x2F;my是form的name属性值  获取表单里的元素form.element.one;  &#x2F;&#x2F;one为表单元素中的name属性值 也可以直接通过form.name直接获取 通过元素反向引用表单1name.form  &#x2F;&#x2F; name为元素的name属性值  表单控件input 和textarea 我们可以通过 input.value（字符串）或 in">
+<meta property="og:description" content="apply、call和bind的区别1、相同点：这三个的作用就是改变他们前面的函数执行时的上下文，即改变函数运行时的this指向，第一个参数都表示是this的指向，在this为null或者为undefined的时候，this默认指向window。 2、不同点：apply的第二个参数是函数执行时传入的参数，apply时以数组的方式传入，一次传多个参数，只传一次，且函数是立即执行。 call 的第二个">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-04T02:27:02.000Z">
-<meta property="article:modified_time" content="2021-08-04T04:48:51.736Z">
+<meta property="article:published_time" content="2021-08-08T06:34:19.000Z">
+<meta property="article:modified_time" content="2021-08-08T08:14:05.089Z">
 <meta property="article:author" content="之随">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/">
+<link rel="canonical" href="http://long-ying.github.io/2021/08/08/%E7%94%A8%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0apply-call-bind/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>表单和控件 | 愿卿一路好风景</title>
+  <title>用原生JS实现apply/call/bind | 愿卿一路好风景</title>
   
 
 
@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/08/08/%E7%94%A8%E5%8E%9F%E7%94%9FJS%E5%AE%9E%E7%8E%B0apply-call-bind/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
@@ -195,7 +195,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          表单和控件
+          用原生JS实现apply/call/bind
         </h1>
 
         <div class="post-meta">
@@ -206,7 +206,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-08-04 10:27:02 / 修改时间：12:48:51" itemprop="dateCreated datePublished" datetime="2021-08-04T10:27:02+08:00">2021-08-04</time>
+              <time title="创建时间：2021-08-08 14:34:19 / 修改时间：16:14:05" itemprop="dateCreated datePublished" datetime="2021-08-08T14:34:19+08:00">2021-08-08</time>
             </span>
 
           
@@ -220,24 +220,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="获取表单"><a href="#获取表单" class="headerlink" title="获取表单"></a>获取表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">documen.forms.my;  //my是form的name属性值</span><br></pre></td></tr></table></figure>
+        <h3 id="apply、call和bind的区别"><a href="#apply、call和bind的区别" class="headerlink" title="apply、call和bind的区别"></a>apply、call和bind的区别</h3><h4 id="1、相同点："><a href="#1、相同点：" class="headerlink" title="1、相同点："></a>1、相同点：</h4><p>这三个的作用就是改变他们前面的函数执行时的上下文，即改变函数运行时的this指向，第一个参数都表示是this的指向，在this为null或者为undefined的时候，this默认指向window。</p>
+<h4 id="2、不同点："><a href="#2、不同点：" class="headerlink" title="2、不同点："></a>2、不同点：</h4><p>apply的第二个参数是函数执行时传入的参数，apply时以数组的方式传入，一次传多个参数，只传一次，且函数是立即执行。</p>
+<p>call 的第二个参数在函数执行的时候以参数列表的形式传入，一次传多个参数，只传一次，函数时立即执行的。</p>
+<p>bind的第二个参数是动态传递参数，可以分多次传，但不会立即执行, 且会返回一个函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fn.bind(obj,1,2);</span><br><span class="line">或者</span><br><span class="line">fn.bind(obj,1)(2)</span><br></pre></td></tr></table></figure>
 
-<h3 id="获取表单里的元素"><a href="#获取表单里的元素" class="headerlink" title="获取表单里的元素"></a>获取表单里的元素</h3><p>form.element.one;  //one为表单元素中的name属性值</p>
-<p>也可以直接通过form.name直接获取</p>
-<h3 id="通过元素反向引用表单"><a href="#通过元素反向引用表单" class="headerlink" title="通过元素反向引用表单"></a>通过元素反向引用表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name.form  // name为元素的name属性值</span><br></pre></td></tr></table></figure>
+<h3 id="实现apply、call和bind"><a href="#实现apply、call和bind" class="headerlink" title="实现apply、call和bind"></a>实现apply、call和bind</h3><p>简单说一下他们的实现原理，fn.call(o) 它的实现原理就是o上定义一个新的属性m,m的值为要执行的这个函数fn, </p>
+<p>即 ：o.m=fn; 执行这个函数 fn(); 最后删除m这个属性。</p>
+<p>那么这个函数是怎么获取呢，可以通过this来获取，this指向这个调用的函数fn</p>
+<h4 id="Function-prototype-apply"><a href="#Function-prototype-apply" class="headerlink" title="Function.prototype.apply()"></a>Function.prototype.apply()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Function.protoptype.apply=function(context=window, args)&#123;</span><br><span class="line">if(typeof this!=&#x27;function&#x27;)&#123;</span><br><span class="line">throw new TypeError(&#x27;type errror&#x27;); //因为this要指向apply前面要调用的函数，所以必须是一个函数</span><br><span class="line">&#125;</span><br><span class="line">const fn = Symbol(&#x27;fn&#x27;);//保证fn作为属性时的唯一性</span><br><span class="line">context[fn] =this;//this获取调用apply的函数（this会指向调用它的对象，所以会获取到到调用函数），fn是执行上下文的一个属性，这样能够保证fn的作用域是在context中的,从而实现传入context的绑定。</span><br><span class="line">let result = contetx[fn](..args);//将参数传进去然后执行</span><br><span class="line">delete contet[fn]; //删除新建的属性；</span><br><span class="line">return result;//将调用的结果返回回去</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a>表单控件</h3><h4 id="input-和textarea"><a href="#input-和textarea" class="headerlink" title="input 和textarea"></a>input 和textarea</h4><p> 我们可以通过 <code>input.value</code>（字符串）或 <code>input.checked</code>（布尔值）来访问复选框（checkbox）中的它们的 <code>value</code>。 </p>
-<h4 id="select和option"><a href="#select和option" class="headerlink" title="select和option"></a>select和option</h4><p>select 有三个重要的属性：options、value、selectedIndex</p>
-<ol>
-<li><code>select.options</code> —— <option> 的子元素的集合，</option></li>
-<li><code>select.value</code> —— 当前所选择的 <option>的 <code>value</code>，</option></li>
-<li><code>select.selectedIndex</code> —— 当前所选择的 <option>的编号。</option></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;select&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // 所有这三行做的是同一件事=&gt;将Banan设置为预选中状态</span><br><span class="line">  select.options[2].selected = true;</span><br><span class="line">  select.selectedIndex = 2;</span><br><span class="line">  select.value = &#x27;banana&#x27;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Function-prototype-call"><a href="#Function-prototype-call" class="headerlink" title="Function.prototype.call()"></a>Function.prototype.call()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//传入的参数是参数离列表</span><br><span class="line">Function.prototype.call = function(context,=window, ...args)&#123;</span><br><span class="line">if(typeof this !=&quot;function&quot;)&#123;</span><br><span class="line">throw TypeError(&#x27;type error!&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const fn = Symbolp(&#x27;fn&#x27;);//此属性不可更改</span><br><span class="line">context[fn]= this;</span><br><span class="line">let result = context[fn](..args);</span><br><span class="line">delete context[fn];</span><br><span class="line">return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="表单的focus和blur事件"><a href="#表单的focus和blur事件" class="headerlink" title="表单的focus和blur事件"></a>表单的focus和blur事件</h3><p>focus事件可用于再input中输入内容时使用，blur事件用于鼠标离开input,并点击了页面的其他地方。</p>
-<h3 id="tabindex属性"><a href="#tabindex属性" class="headerlink" title="tabindex属性"></a>tabindex属性</h3><p>tabindex属性可以将不支持聚焦得元素变成可聚焦的元素，它的值为可以为-1 0 ，1，2，3。。。</p>
-<p>且在按tab键去遍历的时候，tabindex的优先级会大于可聚焦元素（input a button）,tabindex为0和聚焦元素同级。</p>
+<h4 id="Function-prototype-bind"><a href="#Function-prototype-bind" class="headerlink" title="Function.prototype.bind()"></a>Function.prototype.bind()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -247,7 +244,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CSS/" rel="tag"># CSS</a>
+              <a href="/tags/JS/" rel="tag"># JS</a>
           </div>
 
         
@@ -256,12 +253,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/07/26/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0/" rel="prev" title="前端知识点笔记">
-      <i class="fa fa-chevron-left"></i> 前端知识点笔记
+    <a href="/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/" rel="prev" title="对象是怎么new出来的">
+      <i class="fa fa-chevron-left"></i> 对象是怎么new出来的
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/" rel="next" title="对象是怎么new出来的">
-      对象是怎么new出来的 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/09/%E5%87%BD%E6%95%B0%E9%9B%86%E9%94%A6/" rel="next" title="函数集锦">
+      函数集锦 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -321,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">获取表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E9%87%8C%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">获取表单里的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%85%83%E7%B4%A0%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8%E8%A1%A8%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">通过元素反向引用表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95%E6%8E%A7%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">表单控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#input-%E5%92%8Ctextarea"><span class="nav-number">4.1.</span> <span class="nav-text">input 和textarea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select%E5%92%8Coption"><span class="nav-number">4.2.</span> <span class="nav-text">select和option</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95%E7%9A%84focus%E5%92%8Cblur%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">表单的focus和blur事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tabindex%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">tabindex属性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#apply%E3%80%81call%E5%92%8Cbind%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">apply、call和bind的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E7%9B%B8%E5%90%8C%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1、相同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E4%B8%8D%E5%90%8C%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">2、不同点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0apply%E3%80%81call%E5%92%8Cbind"><span class="nav-number">2.</span> <span class="nav-text">实现apply、call和bind</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Function-prototype-apply"><span class="nav-number">2.1.</span> <span class="nav-text">Function.prototype.apply()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Function-prototype-call"><span class="nav-number">2.2.</span> <span class="nav-text">Function.prototype.call()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Function-prototype-bind"><span class="nav-number">2.3.</span> <span class="nav-text">Function.prototype.bind()</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
