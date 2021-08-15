@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"long-ying.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、两栏布局，右侧自适应方法一：使用flex布局将box父盒子的display属性设置为flex,左栏的宽度按需设计，右栏添加flex:1属性    See the Pen    使用flex实现两栏布局，右栏自适应 by loyal (@long-ying)   on CodePen.    关于flex:1的解释 flex :1 是flex-grow:1 flex-shrink: 1 flex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS常见布局">
+<meta property="og:url" content="http://long-ying.github.io/2021/08/14/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="愿卿一路好风景">
+<meta property="og:description" content="一、两栏布局，右侧自适应方法一：使用flex布局将box父盒子的display属性设置为flex,左栏的宽度按需设计，右栏添加flex:1属性    See the Pen    使用flex实现两栏布局，右栏自适应 by loyal (@long-ying)   on CodePen.    关于flex:1的解释 flex :1 是flex-grow:1 flex-shrink: 1 flex">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://camo.githubusercontent.com/f09eac6e73acf8ecfcc329b1bff19c778912219e/687474703a2f2f7365676d656e746661756c742e636f6d2f696d672f62566d327159">
+<meta property="article:published_time" content="2021-08-13T16:17:10.000Z">
+<meta property="article:modified_time" content="2021-08-14T05:17:55.435Z">
+<meta property="article:author" content="之随">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/f09eac6e73acf8ecfcc329b1bff19c778912219e/687474703a2f2f7365676d656e746661756c742e636f6d2f696d672f62566d327159">
+
+<link rel="canonical" href="http://long-ying.github.io/2021/08/14/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS常见布局 | 愿卿一路好风景</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">愿卿一路好风景</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">此心安处是吾乡</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/08/14/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS常见布局
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-14 00:17:10 / 修改时间：13:17:55" itemprop="dateCreated datePublished" datetime="2021-08-14T00:17:10+08:00">2021-08-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、两栏布局，右侧自适应"><a href="#一、两栏布局，右侧自适应" class="headerlink" title="一、两栏布局，右侧自适应"></a>一、两栏布局，右侧自适应</h3><h4 id="方法一：使用flex布局"><a href="#方法一：使用flex布局" class="headerlink" title="方法一：使用flex布局"></a>方法一：使用flex布局</h4><p>将box父盒子的display属性设置为flex,左栏的宽度按需设计，右栏添加flex:1属性</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title="使用flex实现两栏布局，右栏自适应" src="https://codepen.io/long-ying/embed/mdmoNXo?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/mdmoNXo">
+  使用flex实现两栏布局，右栏自适应</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+<p>关于flex:1的解释</p>
+<p>flex :1 是flex-grow:1 flex-shrink: 1 flex-basis:0的缩写。</p>
+<p>flex-grow:1 将自身的宽度扩大2倍，如果其余的同级盒子没有设置该属性，最后一个盒子如果设置该属性后则会自动填满父盒子。</p>
+<p>flex-shrink:1 将自身的宽度缩小为原来的二分之一，如果第一个子盒子的宽度特别大，超出的父盒子的宽度，剩余盒子设置flex-shrink:1 属性之后，会自动缩小自身的宽度来适应前面的盒子宽度。</p>
+<p>flex-basis:0(这个属性不是很明白能干嘛)</p>
+<h4 id="方法二：使用float布局"><a href="#方法二：使用float布局" class="headerlink" title="方法二：使用float布局"></a>方法二：使用float布局</h4><p>1、使用flaot左浮左边栏</p>
+<p>2、右边栏用margin-left隔开</p>
+<p>3、为父元素田间BFC，防止下方的元素飞到上方内容</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/GRmeVyL?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/GRmeVyL">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="关于BFC的解释"><a href="#关于BFC的解释" class="headerlink" title="关于BFC的解释"></a>关于BFC的解释</h4><p>BFC是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素</p>
+<p> 一个HTML元素要创建BFC，则满足下列的任意一个或多个条件即可： </p>
+<p> 1、float的值不是none。<br>2、position的值不是static或者relative。<br>3、display的值是inline-block、table-cell、flex、table-caption或者inline-flex<br>4、overflow的值不是visible </p>
+<p>创建一个BFC的通常使用 overflow：hidden来创建</p>
+<p><strong>应用场景</strong></p>
+<p>１、属于同一BFC的连个相邻块元素的margin会发生重叠，要避免这种情况，可以新创建一个BFC，让这两个相邻块元素处于不同的BFC；</p>
+<p>２、当父盒子的宽度没有设置的时候，设置父盒子的背景颜色是无法显示的，即使父盒子里面有子盒子占据空间，这时候给父盒子设置一个BFC，父盒子就可以显示了。</p>
+<p>３、对于浮动元素，可能会造成文字环绕的情况(Figure1)，但这并不是我们想要的布局(Figure2才是想要的)。要解决这个问题，我们可以用外边距，但也可以用BFC。 </p>
+<p><img src="https://camo.githubusercontent.com/f09eac6e73acf8ecfcc329b1bff19c778912219e/687474703a2f2f7365676d656e746661756c742e636f6d2f696d672f62566d327159"></p>
+<p>４、在多列布局中使用BFC</p>
+<p> 如果我们创建一个占满整个容器宽度的多列布局，在某些浏览器中最后一列有时候会掉到下一行。这可能是因为浏览器四舍五入了列宽从而所有列的总宽度会超出容器。但如果我们在多列布局中的最后一列里创建一个新的BFC，它将总是占据其他列先占位完毕后剩下的空间。 </p>
+<iframe height="300" style="width: 100%;" scrolling="no" title="Tic Tac Toe" src="https://codepen.io/long-ying/embed/LYyaMQB?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/LYyaMQB">
+  Tic Tac Toe</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p>如果没有在最后一个设置BFC，则最后一个会掉下来落在第一个盒子的下面。</p>
+<h3 id="二、三栏布局中间自适应"><a href="#二、三栏布局中间自适应" class="headerlink" title="二、三栏布局中间自适应"></a>二、三栏布局中间自适应</h3><h4 id="方法一：使用flex布局-1"><a href="#方法一：使用flex布局-1" class="headerlink" title="方法一：使用flex布局"></a>方法一：使用flex布局</h4><p>为父盒子添加display:flex，设置左右两边盒子的宽度，中间盒子设置flex:1或者width：100%即可架构剩下的空间填满。</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/ExmMqRo?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/ExmMqRo">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="方法二：-两边使用float-中间使用margin"><a href="#方法二：-两边使用float-中间使用margin" class="headerlink" title="方法二： 两边使用float,中间使用margin"></a>方法二： 两边使用float,中间使用margin</h4><iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/qBmvegM?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/qBmvegM">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p><strong>注意：中间的盒子要放在最后面，否则右边的盒子会掉下来</strong></p>
+<p>缺陷：右边在主题内容之前，如果是响应式布局，则不能实现简单的换行展示。</p>
+<h4 id="方法三：两边使用绝对定位，中间使用margin"><a href="#方法三：两边使用绝对定位，中间使用margin" class="headerlink" title="方法三：两边使用绝对定位，中间使用margin"></a>方法三：两边使用绝对定位，中间使用margin</h4><p>和flaot布局相似</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/mdmgbXP?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/mdmgbXP">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="方法四：-使用grid布局"><a href="#方法四：-使用grid布局" class="headerlink" title="方法四： 使用grid布局"></a>方法四： 使用grid布局</h4><iframe height="300" style="width: 100%;" scrolling="no" title="使用grid布局实现三栏布局，中间自适应" src="https://codepen.io/long-ying/embed/jOmRNvZ?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/jOmRNvZ">
+  使用grid布局实现三栏布局，中间自适应</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/12/ES6%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%89%A9%E5%B1%95%E4%B8%80%EF%BC%88%E6%95%B0%E7%BB%84%E7%AF%87%EF%BC%89/" rel="prev" title="ES6中新增扩展一（数组篇）">
+      <i class="fa fa-chevron-left"></i> ES6中新增扩展一（数组篇）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">1.</span> <span class="nav-text">一、两栏布局，右侧自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8flex%E5%B8%83%E5%B1%80"><span class="nav-number">1.1.</span> <span class="nav-text">方法一：使用flex布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8float%E5%B8%83%E5%B1%80"><span class="nav-number">1.2.</span> <span class="nav-text">方法二：使用float布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EBFC%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text">关于BFC的解释</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94"><span class="nav-number">2.</span> <span class="nav-text">二、三栏布局中间自适应</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8flex%E5%B8%83%E5%B1%80-1"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：使用flex布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A-%E4%B8%A4%E8%BE%B9%E4%BD%BF%E7%94%A8float-%E4%B8%AD%E9%97%B4%E4%BD%BF%E7%94%A8margin"><span class="nav-number">2.2.</span> <span class="nav-text">方法二： 两边使用float,中间使用margin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A%E4%B8%A4%E8%BE%B9%E4%BD%BF%E7%94%A8%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%8C%E4%B8%AD%E9%97%B4%E4%BD%BF%E7%94%A8margin"><span class="nav-number">2.3.</span> <span class="nav-text">方法三：两边使用绝对定位，中间使用margin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%9B%EF%BC%9A-%E4%BD%BF%E7%94%A8grid%E5%B8%83%E5%B1%80"><span class="nav-number">2.4.</span> <span class="nav-text">方法四： 使用grid布局</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之随"
+      src="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">之随</p>
+  <div class="site-description" itemprop="description">好好学习，天天向上</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/long-ying" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;long-ying" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">之随</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
