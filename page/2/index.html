@@ -179,6 +179,166 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/" class="post-title-link" itemprop="url">对象是怎么new出来的</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-06 23:49:06" itemprop="dateCreated datePublished" datetime="2021-08-06T23:49:06+08:00">2021-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-07 13:13:06" itemprop="dateModified" datetime="2021-08-07T13:13:06+08:00">2021-08-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以前对通过new一个构造函数生成实例对象不是很理解，今天终于弄明白了，嘿嘿。</p>
+<p>首先要明白实例对象生成的过程中它经过了哪些步骤。</p>
+<p>1、它既然是一个对象，所以要先创建一个空对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.实例对象可以使用构造函数原型上的属性和方法，所以要将实例对象的__proto__指向构造函数的原型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.__proto__ =Func.prototype;</span><br></pre></td></tr></table></figure>
+
+<p>3、实例对象可以访问到构造函数的属性，所以要将构造函数的this绑定到实例对象上，让this.name 变成obj.name(举个栗子)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let result = Func.apply(obj, args) //args为构造函数的参数</span><br></pre></td></tr></table></figure>
+
+<p>现在这个空对象就可以访问到构造函数的构造函数原型上的所有属性和方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">result=&#123;</span><br><span class="line">__proto__ = Person.prototype,</span><br><span class="line">name=&#x27;Tom&#x27;,</span><br><span class="line">age =30</span><br><span class="line">&#125; //感觉这地方表述有点问题？？？</span><br></pre></td></tr></table></figure>
+
+<p>4、构造函数没有return语句，则需要把新创建的对象给返回回去（这里补充一个知识点，构造函数的返回值如果是原始类型的值，则直接被忽略，如果返回的是对象，则创建的实例对象具有的属性是返回对象的属性，并不具有构造函数没有返回的属性），所以我们要把所有的属性给返回回去；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return result instaneOf Object ? result: obj;</span><br></pre></td></tr></table></figure>
+
+<p>最后，附上完整new 函数代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function myNew(Func, ...args)&#123;</span><br><span class="line">const obj=&#123;&#125;;</span><br><span class="line">//为什么这一句要在绑点this的前面呢，因为构造函数原型上的方法可能会用到this，这样可以把this都找出来，后面统一绑定</span><br><span class="line">obj.__proto__ = Func.prototype; </span><br><span class="line">let result = Func.apply(obj,args)</span><br><span class="line">return result instanceof Object ? result: obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/" class="post-title-link" itemprop="url">表单和控件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-04 10:27:02 / 修改时间：12:48:51" itemprop="dateCreated datePublished" datetime="2021-08-04T10:27:02+08:00">2021-08-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="获取表单"><a href="#获取表单" class="headerlink" title="获取表单"></a>获取表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">documen.forms.my;  //my是form的name属性值</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取表单里的元素"><a href="#获取表单里的元素" class="headerlink" title="获取表单里的元素"></a>获取表单里的元素</h3><p>form.element.one;  //one为表单元素中的name属性值</p>
+<p>也可以直接通过form.name直接获取</p>
+<h3 id="通过元素反向引用表单"><a href="#通过元素反向引用表单" class="headerlink" title="通过元素反向引用表单"></a>通过元素反向引用表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name.form  // name为元素的name属性值</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a>表单控件</h3><h4 id="input-和textarea"><a href="#input-和textarea" class="headerlink" title="input 和textarea"></a>input 和textarea</h4><p> 我们可以通过 <code>input.value</code>（字符串）或 <code>input.checked</code>（布尔值）来访问复选框（checkbox）中的它们的 <code>value</code>。 </p>
+<h4 id="select和option"><a href="#select和option" class="headerlink" title="select和option"></a>select和option</h4><p>select 有三个重要的属性：options、value、selectedIndex</p>
+<ol>
+<li><code>select.options</code> —— <option> 的子元素的集合，</option></li>
+<li><code>select.value</code> —— 当前所选择的 <option>的 <code>value</code>，</option></li>
+<li><code>select.selectedIndex</code> —— 当前所选择的 <option>的编号。</option></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;select&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // 所有这三行做的是同一件事=&gt;将Banan设置为预选中状态</span><br><span class="line">  select.options[2].selected = true;</span><br><span class="line">  select.selectedIndex = 2;</span><br><span class="line">  select.value = &#x27;banana&#x27;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单的focus和blur事件"><a href="#表单的focus和blur事件" class="headerlink" title="表单的focus和blur事件"></a>表单的focus和blur事件</h3><p>focus事件可用于再input中输入内容时使用，blur事件用于鼠标离开input,并点击了页面的其他地方。</p>
+<h3 id="tabindex属性"><a href="#tabindex属性" class="headerlink" title="tabindex属性"></a>tabindex属性</h3><p>tabindex属性可以将不支持聚焦得元素变成可聚焦的元素，它的值为可以为-1 0 ，1，2，3。。。</p>
+<p>且在按tab键去遍历的时候，tabindex的优先级会大于可聚焦元素（input a button）,tabindex为0和聚焦元素同级。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/07/26/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2207,133 +2367,10 @@ upLS();
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">小案例集合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-07-03 13:59:32 / 修改时间：14:07:10" itemprop="dateCreated datePublished" datetime="2021-07-03T13:59:32+08:00">2021-07-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="用js创建表格并在特定位置添加背景颜色"><a href="#用js创建表格并在特定位置添加背景颜色" class="headerlink" title="用js创建表格并在特定位置添加背景颜色"></a>用js创建表格并在特定位置添加背景颜色</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">HTML代码</span><br><span class="line">&lt;table width=&quot;200px&quot; height=&quot;200px&quot; border=&quot; 1px&quot; cellspacing=&#x27;0&#x27;&gt;&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">JS代码</span><br><span class="line">let table = document.querySelector(&quot;table&quot;);</span><br><span class="line">      for (let i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">        let tr = table.appendChild(document.createElement(&quot;tr&quot;));</span><br><span class="line">        for (let j= 1; j &lt;= 5; j++) &#123;</span><br><span class="line">        添加背景颜色的第一种写法</span><br><span class="line">        </span><br><span class="line">          // i===j? tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td style=&quot;background-color: red&quot;&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)    : tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)</span><br><span class="line">          </span><br><span class="line">          添加背景颜色的第二种写法</span><br><span class="line">          tr.insertAdjacentHTML(&#x27;beforeend&#x27;, `&lt;td  style=$&#123;i===j ? &#x27;background-color:red&#x27; : &#x27;&#x27;&#125;&gt;&lt;/td&gt;`)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       添加背景颜色的第三种写法</span><br><span class="line">        // for (let i = 0; i&lt;table.rows.length; i++)&#123;</span><br><span class="line">        //   table.rows[i].cells[i].style.backgroundColor=&quot;red&quot;;</span><br><span class="line">        // &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>运行结果</p>
-<p><img src="/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users\之水\AppData\Roaming\Typora\typora-user-images\1625292413967.png" alt="1625292413967"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://long-ying.github.io/2021/06/30/%E7%AE%97%E6%B3%95%E5%B0%8F%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/30/%E7%AE%97%E6%B3%95%E5%B0%8F%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">算法小集合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-06-30 16:37:33 / 修改时间：16:41:16" itemprop="dateCreated datePublished" datetime="2021-06-30T16:37:33+08:00">2021-06-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>输入斐波那契数列的个数，返回数列成员</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function fib(max)&#123;</span><br><span class="line">  let a=0,b=1;</span><br><span class="line">  let arr=[a,b];</span><br><span class="line">while(arr.length&lt;max)&#123;</span><br><span class="line">  [a,b]=[b,a+b];</span><br><span class="line">  arr.push(b)</span><br><span class="line">&#125;</span><br><span class="line">return arr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(fib(5));</span><br><span class="line"></span><br><span class="line">// 测试:</span><br><span class="line">fib(5); // [0, 1, 1, 2, 3]</span><br><span class="line">fib(10); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2401,7 +2438,7 @@ upLS();
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
