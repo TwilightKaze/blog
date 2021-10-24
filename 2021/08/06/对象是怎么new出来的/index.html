@@ -28,7 +28,7 @@
 <meta property="og:description" content="以前对通过new一个构造函数生成实例对象不是很理解，今天终于弄明白了，嘿嘿。 首先要明白实例对象生成的过程中它经过了哪些步骤。 1、它既然是一个对象，所以要先创建一个空对象。 1const obj&#x3D;&amp;#123;&amp;#125;  2.实例对象可以使用构造函数原型上的属性和方法，所以要将实例对象的__proto__指向构造函数的原型 1obj.__proto__ &#x3D;Func.prototype;  3、">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-06T15:49:06.000Z">
-<meta property="article:modified_time" content="2021-08-07T05:13:06.807Z">
+<meta property="article:modified_time" content="2021-10-13T09:29:20.961Z">
 <meta property="article:author" content="之随">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -212,7 +212,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-07 13:13:06" itemprop="dateModified" datetime="2021-08-07T13:13:06+08:00">2021-08-07</time>
+                <time title="修改时间：2021-10-13 17:29:20" itemprop="dateModified" datetime="2021-10-13T17:29:20+08:00">2021-10-13</time>
               </span>
 
           
@@ -244,7 +244,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return result instaneOf Object ? result: obj;</span><br></pre></td></tr></table></figure>
 
 <p>最后，附上完整new 函数代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function myNew(Func, ...args)&#123;</span><br><span class="line">const obj=&#123;&#125;;</span><br><span class="line">//为什么这一句要在绑点this的前面呢，因为构造函数原型上的方法可能会用到this，这样可以把this都找出来，后面统一绑定</span><br><span class="line">obj.__proto__ = Func.prototype; </span><br><span class="line">let result = Func.apply(obj,args)</span><br><span class="line">return result instanceof Object ? result: obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function myNew(Func, ...args)&#123;</span><br><span class="line">const obj=&#123;&#125;;</span><br><span class="line">//为什么这一句要在绑定this的前面呢，因为构造函数原型上的方法可能会用到this，这样可以把this都找出来，后面统一绑定</span><br><span class="line">obj.__proto__ = Func.prototype; </span><br><span class="line">let result = Func.apply(obj,args)</span><br><span class="line">return result instanceof Object ? result: obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -344,14 +344,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
