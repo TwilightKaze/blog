@@ -179,6 +179,158 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/06/17/CSS%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/06/17/CSS%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CSS笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-17 16:35:40" itemprop="dateCreated datePublished" datetime="2021-06-17T16:35:40+08:00">2021-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-11 16:26:48" itemprop="dateModified" datetime="2021-10-11T16:26:48+08:00">2021-10-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>display:none</strong>  在不删除元素的情况下隐藏元素，不会占据原有空间</p>
+<p><strong>visibility:hidden</strong> 会占据原有的空间</p>
+<p>使用<strong>max-width</strong> 替代width能够解决当窗口宽度小于元素的宽度时不会出现进度条的移动</p>
+<p>box-sizing属性，无需考虑内外边距对盒子大小的影响,以下代码可以兼容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-webkit-box-sizing: border-box; //chrome safari</span><br><span class="line">    -moz-box-sizing: border-box; //火狐</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="position属性"><a href="#position属性" class="headerlink" title="position属性"></a><strong>position属性</strong></h3><p><strong>static:</strong> 不会被特殊定位</p>
+<p><strong>relative</strong>:在没有添加top/left/right/left属性的时候表现没有任何影响，添加了之后会在<strong>相对其正常位置上</strong>偏离。</p>
+<p><strong>fixed:<strong>固定定位，固定在窗口上，页面滚动的时候不会移动，top/left/right/left属性是相对于</strong>浏览器窗口而言</strong>的。</p>
+<p> absolute ：top/left/right/left属性是相对于父元素的位置的，如果父元素的position属性为satic,则直接参考body的位置定位。</p>
+<p>**float:**可用于定位图片位置。父元素设置浮动以后，子元素的内容会围绕着这个父元素，要解除这种围绕，可以在子元素上添加CSS属性clear:left/right/top/bottomn</p>
+<h3 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h3><p>使用inline-block布局时，需注意：</p>
+<p>要设置每一列的宽度；</p>
+<p>vertical-align属性会影响到inline-block元素，需将值设置为top;</p>
+<p>如果HTML源代码中元素有空格，那么列与列之间会产生空隙；</p>
+<h3 id="column-count-属性"><a href="#column-count-属性" class="headerlink" title="column-count 属性"></a>column-count 属性</h3><p>将div元素中的文本划分成三列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">column-count:3;</span><br><span class="line">-moz-column-count:3; /* Firefox */</span><br><span class="line">-webkit-column-count:3; /* Safari and Chrome */ </span><br></pre></td></tr></table></figure>
+
+<h3 id="column-gap属性"><a href="#column-gap属性" class="headerlink" title="column-gap属性"></a>column-gap属性</h3><p>规定列间的间隔为40像素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div</span><br><span class="line">&#123;</span><br><span class="line">-moz-column-gap:40px; /* Firefox */</span><br><span class="line">-webkit-column-gap:40px; /* Safari 和 Chrome */</span><br><span class="line">column-gap:40px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-box布局"><a href="#flex-box布局" class="headerlink" title="flex-box布局"></a>flex-box布局</h3><p> 设置div的flex:1 会得到剩余的宽度 </p>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+<p>设置在容器上的6个属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">flex-direction （竖排还是横排）  row|row-reverse|column|column-reverse</span><br><span class="line">flex-wrap (是否换行)  nowrap| wrap|wrap-reverse</span><br><span class="line">flex-flow   flex-direction和flex-wrap的结合 row nowrap</span><br><span class="line">justify-content (容器中的子元素在横轴上的对齐方式)  flex-start|flex-end|center|sapce-   between|space-around</span><br><span class="line">align-items (容器的子元素在竖轴的对齐方式) felx-start|flex-end|center|stretch|baseline</span><br><span class="line">align-content (多条轴线的对齐方式)  flex-start|flex-end|center|space-between|space-around</span><br></pre></td></tr></table></figure>
+
+<p>设置在容器子元素里的6个属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">order 定义子元素的排列顺序，数值越小，排列越靠前，默认为O</span><br><span class="line">flex-grow 定义项目的放大比例，默认为0 </span><br><span class="line">flex-shrink 定义项目的缩小比例</span><br><span class="line">flex-basis 定义在分配多余空间之前，项目占据的主轴空间</span><br><span class="line">flex属性  flex-grow flex-shrink flex-basis的缩写 </span><br><span class="line">align-self 属性允许单个项目与其他项目有不一样的对齐方式，可覆盖align-items属性</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="font-16px-1-2-monospace-字体大小-行高-字体"><a href="#font-16px-1-2-monospace-字体大小-行高-字体" class="headerlink" title="font:16px/1.2 monospace;    /* 字体大小/行高 字体 */"></a><strong>font:16px/1.2 monospace;</strong>    /* 字体大小/行高 字体 */</h4><h4 id="cursor-not-allowed"><a href="#cursor-not-allowed" class="headerlink" title="cursor: not-allowed;"></a>cursor: not-allowed;</h4><p>当鼠标放在元素上方时显示红色警告符号，可表示禁用状态。</p>
+<h4 id="input的placeholder属性"><a href="#input的placeholder属性" class="headerlink" title="input的placeholder属性"></a>input的placeholder属性</h4><p> 该提示会在输入字段为空时显示，并会在字段获得焦点时消失。例： placeholder=”Search ……” </p>
+<h3 id="Font-Awesome图标"><a href="#Font-Awesome图标" class="headerlink" title="Font Awesome图标"></a>Font Awesome图标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css&quot;&gt; //引入</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"> </span><br><span class="line">&lt;i class=&quot;fa fa-car&quot;&gt;&lt;/i&gt; //一般和伪类一起使用</span><br><span class="line">&lt;i class=&quot;fa fa-car&quot; style=&quot;font-size:48px;&quot;&gt;&lt;/i&gt;</span><br><span class="line">&lt;i class=&quot;fa fa-car&quot; style=&quot;font-size:60px;color:red;&quot;&gt;&lt;/i&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="去掉搜索框和按钮的默认边框outline-none"><a href="#去掉搜索框和按钮的默认边框outline-none" class="headerlink" title="去掉搜索框和按钮的默认边框outline: none;"></a>去掉搜索框和按钮的默认边框outline: none;</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.btn:focus,</span><br><span class="line">  .input:focus&#123;</span><br><span class="line">    outline: none;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="input-focus"><a href="#input-focus" class="headerlink" title="input.focus()"></a>input.focus()</h4><p>使得鼠标自动聚焦在搜索框内</p>
+<h2 id="calc-函数"><a href="#calc-函数" class="headerlink" title="calc()函数"></a>calc()函数</h2><p>用在CSS中，可以直接计算属性值大小，例： width: calc(100% - 50px);　　background: hsl(100, calc(3 * 20%), 40%);</p>
+<h3 id="多类选择器"><a href="#多类选择器" class="headerlink" title="多类选择器"></a>多类选择器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.user.login /* 匹配同时包含user和login的元素 */</span><br><span class="line">.user .login&#123; /* 匹配含user下的含login的元素 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="background-size-cover"><a href="#background-size-cover" class="headerlink" title="background-size:cover;"></a>background-size:cover;</h3><p>把背景图片放大到适合元素容器的尺寸,图片比例不变,但是要注意,超出容器的部分可能会裁掉 </p>
+<h3 id="input的required属性"><a href="#input的required属性" class="headerlink" title="input的required属性"></a>input的required属性</h3><p> required 属性规定必需在提交表单之前填写输入字段。 </p>
+<h3 id="innerHTML和innerText的区别"><a href="#innerHTML和innerText的区别" class="headerlink" title="innerHTML和innerText的区别"></a>innerHTML和innerText的区别</h3><p>innerHTML 显示的内容不包括标签，而innerText的内容包含标签。</p>
+<h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><p>x是往右延申，-x是往左延申，y是往下延申，-y是往上延申</p>
+<p>transform: translateX(10px/-10px);</p>
+<p>transform: translateY(10px/-10px);</p>
+<h3 id="background-image-linear-gradient"><a href="#background-image-linear-gradient" class="headerlink" title="background-image: linear-gradient()"></a>background-image: linear-gradient()</h3><p>  如果使用 background: -webkit-linear-gradient(to right,#FFB95E 15%,#FCA661 5%,#FCA362 5%,#FA8F66 25%,#F5736B 20%,#F35C70 30%); 效果如下</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWcyMDE4LmNuYmxvZ3MuY29tL2Jsb2cvOTg5ODA5LzIwMTkwNS85ODk4MDktMjAxOTA1MTAxNDE1MjYwNTYtMTcyODg3OTExMS5wbmc?x-oss-process=image/format,png"></p>
+<h3 id="draggable属性"><a href="#draggable属性" class="headerlink" title="draggable属性"></a>draggable属性</h3><p> draggable 属性规定元素是否可拖动。 </p>
+<h3 id="input-里的type属性：color"><a href="#input-里的type属性：color" class="headerlink" title="input 里的type属性：color"></a>input 里的type属性：color</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;color&quot; id=&quot;color&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>显示如下：</p>
+<img src="/long-ying.github.io/long-ying.github.io/2021/06/17/CSS%E7%AC%94%E8%AE%B0/Users\之水\AppData\Roaming\Typora\typora-user-images\1627139676834.png" alt="1627139676834" style="zoom:50%;">
+
+<h3 id="margin-left：auto；"><a href="#margin-left：auto；" class="headerlink" title="margin-left：auto；"></a>margin-left：auto；</h3><p>margin-left: auto ；可以使元素靠右</p>
+<h3 id="object-fit属性"><a href="#object-fit属性" class="headerlink" title="object-fit属性"></a>object-fit属性</h3><p>指定元素的内容应该如何去适应指定容器宽度和高度</p>
+<h3 id="progress-animation-go-left-right-3s-infinite-alternate"><a href="#progress-animation-go-left-right-3s-infinite-alternate" class="headerlink" title=".progress {    *animation: go-left-right 3s infinite alternate;  }"></a>.progress {    *animation: go-left-right 3s infinite alternate;  }</h3><p>把动画 “go-left-right” 应用到元素上       </p>
+<p>持续 3 秒       </p>
+<p>持续次数：infinite  (无限)     </p>
+<p>每次都改变方向    </p>
+<h3 id="表单中checked伪类"><a href="#表单中checked伪类" class="headerlink" title="表单中checked伪类"></a>表单中checked伪类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.toggle:checked + .label &#123;</span><br><span class="line">  background-color: #8e44ad;</span><br><span class="line">&#125;</span><br><span class="line">//toggle为input的类名，利用label的for属性将label和input绑定，当input（type为checkbox）被选中时,设置label里面的元素的背景颜色。</span><br><span class="line">可以将input隐藏起来，当点击label区域时，input会被自动选中，就会出现点击lable区域时背景颜色发生变化的效果，再次点击，input取消选择，背景颜色恢复原样。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="内容超出容器后自动换行"><a href="#内容超出容器后自动换行" class="headerlink" title="内容超出容器后自动换行"></a>内容超出容器后自动换行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">white-space: pre; /* CSS2 */ 试过如果是英文不会自动换行</span><br><span class="line">white-space: -moz-pre-wrap; /* Mozilla */</span><br><span class="line">white-space: -hp-pre-wrap; /* HP printers */</span><br><span class="line">white-space: -o-pre-wrap; /* Opera 7 */</span><br><span class="line">white-space: -pre-wrap; /* Opera 4-6 */</span><br><span class="line">white-space: pre-wrap; /* CSS 2.1 */</span><br><span class="line">white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */</span><br><span class="line">word-wrap: break-word; /* IE */ 建议使用这个</span><br></pre></td></tr></table></figure>
+
+<h3 id="skewX-skewY-属性"><a href="#skewX-skewY-属性" class="headerlink" title="skewX() skewY()属性"></a>skewX() skewY()属性</h3><p>skewX(45deg)沿着X轴倾斜</p>
+<h3 id="input标签type为number时怎么去掉加减按钮"><a href="#input标签type为number时怎么去掉加减按钮" class="headerlink" title="input标签type为number时怎么去掉加减按钮"></a>input标签type为number时怎么去掉加减按钮</h3><p><img src="https://img-blog.csdn.net/20170923164516053?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM4NTE2OTg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;number&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/* 谷歌 */</span><br><span class="line">input::-webkit-outer-spin-button,</span><br><span class="line">input::-webkit-inner-spin-button &#123;</span><br><span class="line">    -webkit-appearance: none;</span><br><span class="line">    appearance: none; </span><br><span class="line">    margin: 0; </span><br><span class="line">&#125;</span><br><span class="line">/* 火狐 */</span><br><span class="line">input&#123;</span><br><span class="line">    -moz-appearance:textfield;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="input的valid伪类"><a href="#input的valid伪类" class="headerlink" title="input的valid伪类"></a>input的valid伪类</h3><p>设置在输入框在正确的条件下的样式</p>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">input:valid &#123;</span><br><span class="line">  border-color: #3498db;</span><br><span class="line">  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS中bottom和margin-bottom的区别"><a href="#CSS中bottom和margin-bottom的区别" class="headerlink" title="CSS中bottom和margin-bottom的区别"></a>CSS中bottom和margin-bottom的区别</h3><p> 1.bottom是指元素与定位元素的距离，而margin-bottom是指同级元素之间的距离。<br>2.增加margin-bottom的长度，元素整体的高度也会相应增加，在border-box模式中会减少。 </p>
+<h3 id="input中type属性range"><a href="#input中type属性range" class="headerlink" title="input中type属性range"></a>input中type属性range</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;range&quot; id=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/long-ying.github.io/long-ying.github.io/2021/06/17/CSS%E7%AC%94%E8%AE%B0/Users\之水\AppData\Roaming\Typora\typora-user-images\1628088129883.png" alt="1628088129883"></p>
+<h3 id="webkit-slider-thumb"><a href="#webkit-slider-thumb" class="headerlink" title="::-webkit-slider-thumb"></a><strong><code>::-webkit-slider-thumb</code></strong></h3><p>这是type为range的input标签内的一种伪类样式,用于设置range的滑块的具体样式,该伪类只在内核为webkit/blink的浏览器中有效</p>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::-webkit-slider-thumb#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F">使用方式</a></h2><p>该伪类需要配和**::-webkit-slider-runnable-track**使用,否则会没有效果…….</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">input[type=range]::-webkit-slider-thumb&#123;</span><br><span class="line">   -webkit-appearance: none;/*清除默认样式*/</span><br><span class="line">   height:7vw;/*设置滑块高度*/</span><br><span class="line">   width:5vw;/*设置滑块宽度*/</span><br><span class="line">   background:#000;/*设置背景色*/</span><br><span class="line">   border-radius:10vw 10vw;/*加个圆角边*/</span><br><span class="line">   margin-top:-1vw;/*使用position的话会导致滑块不滑动,但是绑定的value是改变的,所以这里使用margin-top去做定位*/</span><br><span class="line">&#125;</span><br><span class="line">input[type=range]::-webkit-slider-runnable-track&#123;</span><br><span class="line">   border-radius: 30px; </span><br><span class="line">   background:#128;</span><br><span class="line">   height:15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现单行-多行文本溢出"><a href="#实现单行-多行文本溢出" class="headerlink" title="实现单行/多行文本溢出"></a>实现单行/多行文本溢出</h3><h4 id="单行文本溢出"><a href="#单行文本溢出" class="headerlink" title="单行文本溢出"></a>单行文本溢出</h4><p>可使用text-overflow实现，但是该属性有效的前提是设置了overflow: hidden和white-space:nowrap才能生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">text-overflow: ellipsis;</span><br><span class="line"> white-space:nowrap;</span><br><span class="line"> overflow:hidden;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="多行文本溢出省略"><a href="#多行文本溢出省略" class="headerlink" title="多行文本溢出省略"></a>多行文本溢出省略</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">display: -webkit-box;//将对象作为弹性伸缩盒子模型显示</span><br><span class="line">-webkit-line-clamp: 2; //是用来限制在一个块元素显示的文本的行数</span><br><span class="line">-webkit-box-orient: vertical;//设置或检索伸缩盒对象的子元素的排列方式；</span><br></pre></td></tr></table></figure>
+
+<h3 id="单词拆分"><a href="#单词拆分" class="headerlink" title="单词拆分"></a>单词拆分</h3><p>word-break: keep-all //当单词数量超过行宽时，会按照整个单词自动换行</p>
+<p>而word-break: break-all //不按单词换行，而是按照字母拆分</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/06/16/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -878,14 +1030,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
