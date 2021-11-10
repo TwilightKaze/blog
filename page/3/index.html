@@ -179,6 +179,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/08/04/%E8%A1%A8%E5%8D%95%E5%92%8C%E6%8E%A7%E4%BB%B6/" class="post-title-link" itemprop="url">表单和控件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-04 10:27:02 / 修改时间：12:48:51" itemprop="dateCreated datePublished" datetime="2021-08-04T10:27:02+08:00">2021-08-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="获取表单"><a href="#获取表单" class="headerlink" title="获取表单"></a>获取表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">documen.forms.my;  //my是form的name属性值</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取表单里的元素"><a href="#获取表单里的元素" class="headerlink" title="获取表单里的元素"></a>获取表单里的元素</h3><p>form.element.one;  //one为表单元素中的name属性值</p>
+<p>也可以直接通过form.name直接获取</p>
+<h3 id="通过元素反向引用表单"><a href="#通过元素反向引用表单" class="headerlink" title="通过元素反向引用表单"></a>通过元素反向引用表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name.form  // name为元素的name属性值</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a>表单控件</h3><h4 id="input-和textarea"><a href="#input-和textarea" class="headerlink" title="input 和textarea"></a>input 和textarea</h4><p> 我们可以通过 <code>input.value</code>（字符串）或 <code>input.checked</code>（布尔值）来访问复选框（checkbox）中的它们的 <code>value</code>。 </p>
+<h4 id="select和option"><a href="#select和option" class="headerlink" title="select和option"></a>select和option</h4><p>select 有三个重要的属性：options、value、selectedIndex</p>
+<ol>
+<li><code>select.options</code> —— <option> 的子元素的集合，</option></li>
+<li><code>select.value</code> —— 当前所选择的 <option>的 <code>value</code>，</option></li>
+<li><code>select.selectedIndex</code> —— 当前所选择的 <option>的编号。</option></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;select&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;</span><br><span class="line">  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // 所有这三行做的是同一件事=&gt;将Banan设置为预选中状态</span><br><span class="line">  select.options[2].selected = true;</span><br><span class="line">  select.selectedIndex = 2;</span><br><span class="line">  select.value = &#x27;banana&#x27;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单的focus和blur事件"><a href="#表单的focus和blur事件" class="headerlink" title="表单的focus和blur事件"></a>表单的focus和blur事件</h3><p>focus事件可用于再input中输入内容时使用，blur事件用于鼠标离开input,并点击了页面的其他地方。</p>
+<h3 id="tabindex属性"><a href="#tabindex属性" class="headerlink" title="tabindex属性"></a>tabindex属性</h3><p>tabindex属性可以将不支持聚焦得元素变成可聚焦的元素，它的值为可以为-1 0 ，1，2，3。。。</p>
+<p>且在按tab键去遍历的时候，tabindex的优先级会大于可聚焦元素（input a button）,tabindex为0和聚焦元素同级。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/07/26/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2269,76 +2345,6 @@ upLS();
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/06/30/%E7%AE%97%E6%B3%95%E5%B0%8F%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/06/30/%E7%AE%97%E6%B3%95%E5%B0%8F%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">算法小集合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-30 16:37:33" itemprop="dateCreated datePublished" datetime="2021-06-30T16:37:33+08:00">2021-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-14 13:15:34" itemprop="dateModified" datetime="2021-09-14T13:15:34+08:00">2021-09-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、输入斐波那契数列的个数，返回数列成员</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function fib(max)&#123;</span><br><span class="line">  let a=0,b=1;</span><br><span class="line">  let arr=[a,b];</span><br><span class="line">while(arr.length&lt;max)&#123;</span><br><span class="line">  [a,b]=[b,a+b];</span><br><span class="line">  arr.push(b)</span><br><span class="line">&#125;</span><br><span class="line">return arr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(fib(5));</span><br><span class="line"></span><br><span class="line">// 测试:</span><br><span class="line">fib(5); // [0, 1, 1, 2, 3]</span><br><span class="line">fib(10); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]</span><br></pre></td></tr></table></figure>
-
-<p> 2、给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line">function twoSum(arr, value) &#123;</span><br><span class="line">for (let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">  for (let j = i + 1; j &lt; arr.length-1; j++) &#123;</span><br><span class="line">    if (arr[i] + arr[j] === value) &#123;</span><br><span class="line">      return [i, j]</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return (&quot;没有找到&quot;)</span><br><span class="line">&#125;</span><br><span class="line">let arr = [1,2,5,2,1, 6]</span><br><span class="line">console.log(twoSum(arr, 7));</span><br><span class="line"></span><br><span class="line">方法二</span><br><span class="line"></span><br><span class="line">function twoSum (arr, value) &#123;</span><br><span class="line">  const mapArr = new Map();</span><br><span class="line">  for ( let i = 0 ; i &lt; arr.length; i++) &#123;</span><br><span class="line">    let n1 = arr[i]</span><br><span class="line">    let n2 = value - arr[i]</span><br><span class="line">    if (mapArr.has(n2)) &#123;</span><br><span class="line">      return [mapArr.get(n2), i]</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      mapArr.set(n1,i) //将索引作为值，方便通过get取到</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2410,14 +2416,14 @@ upLS();
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
