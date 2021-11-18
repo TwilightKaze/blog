@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/long-ying.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/long-ying.github.io/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/long-ying.github.io/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/long-ying.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/long-ying.github.io/css/main.css">
+
+
+<link rel="stylesheet" href="/long-ying.github.io/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zhisui.github.io","root":"/long-ying.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="今天学习一下如何创建自己的WebPack配置以使用WebPack和Babel捆绑小型JavaScript实用程序库。  初始化在一个文件夹下执行以下命令 1$ npm init -y  改命令会创建一个package.json文件夹， -y表示按照默认配置生成模板 12demo  |-- package.json    12345$ mkdir src &#x2F;&#x2F;创建src文件夹$ cd src $ t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack简单配置">
+<meta property="og:url" content="https://zhisui.github.io/long-ying.github.io/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="愿卿一路好风景">
+<meta property="og:description" content="今天学习一下如何创建自己的WebPack配置以使用WebPack和Babel捆绑小型JavaScript实用程序库。  初始化在一个文件夹下执行以下命令 1$ npm init -y  改命令会创建一个package.json文件夹， -y表示按照默认配置生成模板 12demo  |-- package.json    12345$ mkdir src &#x2F;&#x2F;创建src文件夹$ cd src $ t">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-18T08:14:27.000Z">
+<meta property="article:modified_time" content="2021-11-18T08:49:35.772Z">
+<meta property="article:author" content="之随">
+<meta property="article:tag" content="前端工程化">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zhisui.github.io/long-ying.github.io/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>webpack简单配置 | 愿卿一路好风景</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/long-ying.github.io/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">愿卿一路好风景</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">此心安处是吾乡</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/long-ying.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/long-ying.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/long-ying.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/long-ying.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/long-ying.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/long-ying.github.io/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/long-ying.github.io/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/long-ying.github.io/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          webpack简单配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-18 16:14:27 / 修改时间：16:49:35" itemprop="dateCreated datePublished" datetime="2021-11-18T16:14:27+08:00">2021-11-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>今天学习一下如何创建自己的WebPack配置以使用WebPack和Babel捆绑小型JavaScript实用程序库。 </p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>在一个文件夹下执行以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init -y</span><br></pre></td></tr></table></figure>
+
+<p>改命令会创建一个package.json文件夹， -y表示按照默认配置生成模板</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">  |-- package.json</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir src //创建src文件夹</span><br><span class="line">$ cd src </span><br><span class="line">$ touch addDOMContent.js</span><br><span class="line">$ touch capital.js</span><br><span class="line">$ touch index.js //主文件夹</span><br></pre></td></tr></table></figure>
+
+<p>文件目录如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">  |-- package.json</span><br><span class="line">  |-- src</span><br><span class="line">     |--index.js</span><br><span class="line">     |--capital.js</span><br><span class="line">     |--addDOMContent.js</span><br></pre></td></tr></table></figure>
+
+<h4 id="向src中的文件中添加内容"><a href="#向src中的文件中添加内容" class="headerlink" title="向src中的文件中添加内容"></a>向src中的文件中添加内容</h4><p>capital.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function capital(string) &#123;</span><br><span class="line">  const capitalizedString =</span><br><span class="line">    string.substring(0, 1).toUpperCase() + string.substring(1)</span><br><span class="line">  return capitalizedString</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default capital</span><br></pre></td></tr></table></figure>
+
+<p> addDOMContent.js </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function addDOMContent(content) &#123;</span><br><span class="line">  const node = document.createElement(&quot;h1&quot;)</span><br><span class="line">  node.innerText = content</span><br><span class="line">  document.body.appendChild(node)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default addDOMContent</span><br></pre></td></tr></table></figure>
+
+<p> index.js </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import capital from &quot;./capital&quot;</span><br><span class="line">import addDOMContent from &quot;./addDOMContent&quot;</span><br><span class="line"></span><br><span class="line">export &#123; capital, addDOMContent &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装-babel语法转换器"><a href="#安装-babel语法转换器" class="headerlink" title="安装 babel语法转换器"></a>安装 babel语法转换器</h4><p>此时如果直接执行任意一个js文件，会发现程序报错，原因是导出的时候使用的是es6的语法，所以需要安装将es6语法装换成es5语法的相关依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i --save-dev webpack webpack-cli @babel/core @babel/preset-env babel-loader</span><br></pre></td></tr></table></figure>
+
+<p>此时，package.json文件会多出以下配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;devDependencies&quot;: &#123;</span><br><span class="line">   &quot;@babel/core&quot;: &quot;^7.16.0&quot;,</span><br><span class="line">   &quot;@babel/preset-env&quot;: &quot;^7.16.4&quot;,</span><br><span class="line">   &quot;babel-loader&quot;: &quot;^8.2.3&quot;,</span><br><span class="line">   &quot;webpack&quot;: &quot;^5.64.1&quot;,</span><br><span class="line">   &quot;webpack-cli&quot;: &quot;^4.9.1&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建-webpack-config-js-文件"><a href="#创建-webpack-config-js-文件" class="headerlink" title="创建 webpack.config.js 文件"></a>创建 webpack.config.js 文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&quot;path&quot;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: path.resolve(__dirname, &quot;src/index.js&quot;), //打包入口文件</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &quot;dist&quot;),//打包后的文件夹</span><br><span class="line">    filename: &quot;index_bundle.js&quot;, //打包后的文件名称</span><br><span class="line">    library: &quot;$&quot;, // 库名称</span><br><span class="line">    libraryTarget: &quot;umd&quot;, // 通用模块定义</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.(js)$/,</span><br><span class="line">        exclude: /node_modules/, //不解析node_modules文件夹中的文件</span><br><span class="line">        use: &quot;babel-loader&quot;, // 用babel-loader解析所有的以.js为后缀的所有文件</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  mode: &quot;development&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更多配置内容看这里：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/">https://webpack.docschina.org/configuration/</a></p>
+<h4 id="创建一个-babelrc-文件"><a href="#创建一个-babelrc-文件" class="headerlink" title="创建一个 .babelrc 文件"></a>创建一个 .babelrc 文件</h4><p>添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  presets: [&quot;@babel/preset-env&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在package.json中添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;demo&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">+  &quot;main&quot;: &quot;dist/index_bundle.js&quot;,</span><br><span class="line">+  &quot;scripts&quot;: &#123;</span><br><span class="line">+    &quot;build&quot;: &quot;webpack&quot;</span><br><span class="line">+  &#125;,//+表示添加的内容</span><br><span class="line">  &quot;keywords&quot;: [],</span><br><span class="line">  &quot;author&quot;: &quot;Hridayesh Sharma&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;&#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;@babel/core&quot;: &quot;^7.10.4&quot;,</span><br><span class="line">    &quot;@babel/preset-env&quot;: &quot;^7.11.0&quot;,</span><br><span class="line">    &quot;babel-loader&quot;: &quot;^8.1.0&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;^4.44.1&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.12&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打包编译"><a href="#打包编译" class="headerlink" title="打包编译"></a>打包编译</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build </span><br></pre></td></tr></table></figure>
+
+<p>此时会生成打包后的文件</p>
+<h4 id="创建index-html文件"><a href="#创建index-html文件" class="headerlink" title="创建index.html文件"></a>创建index.html文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;</span><br><span class="line">    &lt;title&gt;Demo&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src=&quot;dist/index_bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      console.log($)</span><br><span class="line">      alert($.capital(&quot;hridayesh&quot;))</span><br><span class="line">      $.addDOMContent(&quot;Well It Works Fine!!!&quot;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最后在浏览器中打开该静态index.html文件，完成！！！！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/long-ying.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" rel="tag"># 前端工程化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/long-ying.github.io/2021/11/09/ES6%E8%A3%85%E9%A5%B0%E5%99%A8%E7%AF%87%EF%BC%88decorator%EF%BC%89/" rel="prev" title="ES6装饰器篇（decorator）">
+      <i class="fa fa-chevron-left"></i> ES6装饰器篇（decorator）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91src%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">向src中的文件中添加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-babel%E8%AF%AD%E6%B3%95%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">安装 babel语法转换器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-webpack-config-js-%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">创建 webpack.config.js 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-babelrc-%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">创建一个 .babelrc 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E7%BC%96%E8%AF%91"><span class="nav-number">6.</span> <span class="nav-text">打包编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAindex-html%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">创建index.html文件</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="之随"
+      src="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">之随</p>
+  <div class="site-description" itemprop="description">好好学习，天天向上</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/long-ying.github.io/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/long-ying.github.io/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/long-ying" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;long-ying" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">之随</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/long-ying.github.io/lib/anime.min.js"></script>
+  <script src="/long-ying.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/long-ying.github.io/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/long-ying.github.io/js/utils.js"></script>
+
+<script src="/long-ying.github.io/js/motion.js"></script>
+
+
+<script src="/long-ying.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/long-ying.github.io/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/long-ying.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/long-ying.github.io/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

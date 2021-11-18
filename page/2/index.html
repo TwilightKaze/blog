@@ -179,6 +179,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/19/%E4%B8%87%E8%83%BD%E7%9A%84reduce%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/08/19/%E4%B8%87%E8%83%BD%E7%9A%84reduce%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">万能的reduce高阶函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-19 14:26:21 / 修改时间：17:01:16" itemprop="dateCreated datePublished" datetime="2021-08-19T14:26:21+08:00">2021-08-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近学习react 高阶组件整得我有点难受，一度怀疑自己的智商，虽然知道高阶组件和高阶函数其实是一类东西，但是就是带入不了，所以还是静下心来，好好撸一下高阶函数，凡事还是不能操之过急，太着急的结果往往不如人意。</p>
+<p>开始reduce之前，附上今天看到的一段代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1,2,3];</span><br><span class="line">arr.reduce((pre,cur)=&gt;&#123;</span><br><span class="line">  pre.then(()=&gt;&#123;</span><br><span class="line">    return new Promise(resolve=&gt;&#123;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        resolve(console.log(cur))</span><br><span class="line">      &#125;, 1000);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  return pre;</span><br><span class="line">&#125;,Promise.resolve())</span><br></pre></td></tr></table></figure>
+
+<p>猜猜这段代码实现了啥，刚看到的时候给我给整蒙了，不好意思，奈何道行太浅，我看不懂~~~~</p>
+<p>所以决定突破高阶组件就从这个reduce函数开始吧，以前真不怎么去用reduce，一直理解成累加器，今天才知道大错特错，准确点来说，应该是一个累计器，自我感觉这词也不是很准确。</p>
+<h3 id="reduce介绍"><a href="#reduce介绍" class="headerlink" title="reduce介绍"></a>reduce介绍</h3><p>首先reduce是一个高阶函数，它的参数可以是两个参数，第一个参数是函数，第二个参数是初始值，这个初始值很重要，待会再说。先说下第一个参数函数，这个参数函数呢它自己也带有四个参数（pre,value,index, arr），reduce会对arr中的每一个值调用这个参数函数。现在说下reduce的第二个参数,它是函数参数pre的初始值，如果参数函数有返回值，就可以利用reduce的第二个参数去处理这个返回值，具体怎么处理后面细细道来。</p>
+<p>现在先来看一段代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1,2,3];</span><br><span class="line">arr.reduce((pre,current)=&gt;&#123;</span><br><span class="line">  console.log(cur);</span><br><span class="line">&#125;,9)</span><br><span class="line">//输出：1，2，3</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这段代码reduce的参数函数里面并没有返回值，所以不管reduce的第二个参数是什么,它只是对cur值每个current值进行了console.log处理。</p>
+<p>这个效果是不是和forEach的功能一摸一样，我们现在用它来实现forEach功能</p>
+<h3 id="实现forEach"><a href="#实现forEach" class="headerlink" title="实现forEach"></a>实现forEach</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line"> function forEach(arr,callback)&#123;</span><br><span class="line">  arr.reduce((pre, current, index,array)=&gt;&#123;</span><br><span class="line">    //直接执行callback,这个回调函数在forEach执行的时候直接作为参数写进去</span><br><span class="line">    //这也能解释为什么forEach没有返回值</span><br><span class="line">    callback(current, index,array)</span><br><span class="line">  &#125;,0)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">forEach(arr, (value, index, array)=&gt;&#123;</span><br><span class="line">  console.log(value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现map"><a href="#实现map" class="headerlink" title="实现map"></a>实现map</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line"></span><br><span class="line"> function map(arr,callback)&#123;</span><br><span class="line"> return  arr.reduce((pre, current, index,array)=&gt;&#123;</span><br><span class="line">    let result= callback(current, index,array)</span><br><span class="line">      pre.push(result)</span><br><span class="line">    return pre;</span><br><span class="line">  &#125;,[])</span><br><span class="line">&#125;</span><br><span class="line">let newArr =map(arr, (value, index, array)=&gt;&#123;</span><br><span class="line">  return value*10;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(newArr);//[10,20,30]</span><br></pre></td></tr></table></figure>
+
+<p>这里可以看出map和forEach的区别，map具有返回值，而foreEach没有返回值，所以forEach更适合对数据的一次性处理，而map则适合于需要对返回值做二次处理的场景。（其实我觉得如果抛开返回值只是对数组数据处理一下，这两个没啥区别，直接用，纠结个啥）</p>
+<h3 id="实现filter"><a href="#实现filter" class="headerlink" title="实现filter"></a>实现filter</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line"></span><br><span class="line"> function filter(arr,callback)&#123;</span><br><span class="line">//这里不要忘记下面要将整个结果返回回去，因为filter是一个函数，要有返回值，</span><br><span class="line">//下面返回的pre是reduce函数处理的结果</span><br><span class="line"> return  arr.reduce((pre, current, index,array)=&gt;&#123;</span><br><span class="line">  //这里result就是每次callback执行后的返回值，为true或false</span><br><span class="line">    let result= callback(current, index,array)</span><br><span class="line">    if(result)&#123;</span><br><span class="line">      pre.push(current)</span><br><span class="line">    &#125;</span><br><span class="line">    return pre;</span><br><span class="line">  &#125;,[])</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">let newArr =filter(arr, (value, index, array)=&gt;&#123;</span><br><span class="line">  return value&gt;1;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(newArr);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中我们给pre的初始值是一个空数组，经过判断回调函数的返回值，将arr中大于1的值放到pre中。</p>
+<h3 id="实现some"><a href="#实现some" class="headerlink" title="实现some"></a>实现some</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line"> function some(arr,callback)&#123;</span><br><span class="line"> return  arr.reduce((pre, current, index,array)=&gt;&#123;</span><br><span class="line">    let result= callback(current, index,array)</span><br><span class="line">     if(result)&#123;</span><br><span class="line">       pre=result;</span><br><span class="line">     &#125;</span><br><span class="line">    return pre;</span><br><span class="line">  &#125;,false)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">let newArr =some(arr, (value, index, array)=&gt;&#123;</span><br><span class="line">  return value&gt;2;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(newArr);</span><br></pre></td></tr></table></figure>
+
+<p>some函数是数组里面有一个值符合回调函数的条件就返回true,将pre的初始值设置为false可以保证当数组里面所有的值都不符合条件的时候返回false.</p>
+<h3 id="实现every"><a href="#实现every" class="headerlink" title="实现every"></a>实现every</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line"> function every(arr,callback)&#123;</span><br><span class="line">   let flag=true;</span><br><span class="line"> return  arr.reduce((pre, current, index,array)=&gt;&#123;</span><br><span class="line">    let result= callback(current, index,array)</span><br><span class="line">     if(!result)&#123;</span><br><span class="line">      flag=false;</span><br><span class="line">     &#125;</span><br><span class="line">    return flag;</span><br><span class="line">  &#125;,)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">let newArr =every(arr, (value, index, array)=&gt;&#123;</span><br><span class="line">  return value&gt;0;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(newArr);</span><br></pre></td></tr></table></figure>
+
+<p>every的实现其实不用pre的值，但需要一个flag来标记。遍历数组里面的值，如果有一个不符合直接返回false。</p>
+<h3 id="reduce常见的应用场景"><a href="#reduce常见的应用场景" class="headerlink" title="reduce常见的应用场景"></a>reduce常见的应用场景</h3><h4 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const subjectSummary = [</span><br><span class="line">    &#123;id: 1, subject: &#x27;语文&#x27;, score: 86&#125;,</span><br><span class="line">    &#123;id: 2, subject: &#x27;数学&#x27;, score: 93&#125;,</span><br><span class="line">    &#123;id: 2, subject: &#x27;英语&#x27;, score: 95&#125;,</span><br><span class="line">];</span><br><span class="line">const scoreSum = subjectSummary.reduce((pre, current) =&gt; &#123;</span><br><span class="line">    return pre + current.score;</span><br><span class="line">&#125;, 0);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3, 2, 3, 1, 8, 5];</span><br><span class="line"> const newArr = arr.reduce((pre, current) =&gt; &#123;</span><br><span class="line">   if (!pre.includes(current)) &#123;</span><br><span class="line">     pre.push(current);</span><br><span class="line">   &#125;</span><br><span class="line">   return pre;</span><br><span class="line"> &#125;, []);</span><br></pre></td></tr></table></figure>
+
+<h4 id="统计字符串出现次数"><a href="#统计字符串出现次数" class="headerlink" title="统计字符串出现次数"></a>统计字符串出现次数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const str = &#x27;aabdddeffghhhhyyy&#x27;;</span><br><span class="line">const countMapper = str1.split(&#x27;&#x27;).reduce((pre, current) =&gt; &#123;</span><br><span class="line">  if (pre.hasOwnProperty(current)) &#123;</span><br><span class="line">    pre[current] += 1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    pre[current] = 1;</span><br><span class="line">  &#125;</span><br><span class="line">  return pre;</span><br><span class="line">&#125;, &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const menuGroup = [</span><br><span class="line">    &#123;id: 1, name: &#x27;用户中心&#x27;,type: 1&#125;,</span><br><span class="line">    &#123;id: 2, name: &#x27;设置&#x27;, type: 2&#125;,</span><br><span class="line">    &#123;id: 3, name: &#x27;消息中心&#x27;, type: 2&#125;,</span><br><span class="line">    &#123;id: 4, name: &#x27;我的&#x27;, type: 1&#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">const menuMap = menuGroup.reduce((pre, current) =&gt; &#123;</span><br><span class="line">  if (current.type === 1) &#123;</span><br><span class="line">    pre.menuList.push(current);</span><br><span class="line">  &#125;</span><br><span class="line">  if (current.type === 2) &#123;</span><br><span class="line">    pre.subMenuList.push(current);</span><br><span class="line">  &#125;</span><br><span class="line">  return pre;</span><br><span class="line">&#125;, &#123;menuList: [], subMenuList: []&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>综合这几个例子看下来，我感觉pre更像是一个处理器容器。pre的初始值和pre调用的函数决定了pre将如何处理参数函数中的值。</p>
+<p>最后，我们来分析一下刚开始那段让人头疼代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1,2,3];</span><br><span class="line">arr.reduce((pre,cur)=&gt;&#123;</span><br><span class="line">  pre.then(()=&gt;&#123;</span><br><span class="line">    return new Promise(resolve=&gt;&#123;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        resolve(console.log(cur))</span><br><span class="line">      &#125;, 1000);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  return pre;</span><br><span class="line">&#125;,Promise.resolve())</span><br></pre></td></tr></table></figure>
+
+<p>这段代码实现的是将1、2、3每隔一秒输出。</p>
+<p>pre的初始值是一个Promise.resolve(),同过调用then来处理pre的resolve状态，而这个then（参数也是一个函数）它将cur的值打印出来并且返回一个promise,且状态为resolve(),那么在下一次执行参数函数的时候，这个新返回的promise又会再一次调用then………. ,有点一直调用then的意味，then就是对返回的新Promise做处理。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/17/%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E5%92%8C%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84refs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -945,94 +1045,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/08/06/%E5%AF%B9%E8%B1%A1%E6%98%AF%E6%80%8E%E4%B9%88new%E5%87%BA%E6%9D%A5%E7%9A%84/" class="post-title-link" itemprop="url">对象是怎么new出来的</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-06 23:49:06" itemprop="dateCreated datePublished" datetime="2021-08-06T23:49:06+08:00">2021-08-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-13 17:29:20" itemprop="dateModified" datetime="2021-10-13T17:29:20+08:00">2021-10-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>以前对通过new一个构造函数生成实例对象不是很理解，今天终于弄明白了，嘿嘿。</p>
-<p>首先要明白实例对象生成的过程中它经过了哪些步骤。</p>
-<p>1、它既然是一个对象，所以要先创建一个空对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const obj=&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.实例对象可以使用构造函数原型上的属性和方法，所以要将实例对象的__proto__指向构造函数的原型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.__proto__ =Func.prototype;</span><br></pre></td></tr></table></figure>
-
-<p>3、实例对象可以访问到构造函数的属性，所以要将构造函数的this绑定到实例对象上，让this.name 变成obj.name(举个栗子)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let result = Func.apply(obj, args) //args为构造函数的参数</span><br></pre></td></tr></table></figure>
-
-<p>现在这个空对象就可以访问到构造函数的构造函数原型上的所有属性和方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">result=&#123;</span><br><span class="line">__proto__ = Person.prototype,</span><br><span class="line">name=&#x27;Tom&#x27;,</span><br><span class="line">age =30</span><br><span class="line">&#125; //感觉这地方表述有点问题？？？</span><br></pre></td></tr></table></figure>
-
-<p>4、构造函数没有return语句，则需要把新创建的对象给返回回去（这里补充一个知识点，构造函数的返回值如果是原始类型的值，则直接被忽略，如果返回的是对象，则创建的实例对象具有的属性是返回对象的属性，并不具有构造函数没有返回的属性），所以我们要把所有的属性给返回回去；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return result instaneOf Object ? result: obj;</span><br></pre></td></tr></table></figure>
-
-<p>最后，附上完整new 函数代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function myNew(Func, ...args)&#123;</span><br><span class="line">const obj=&#123;&#125;;</span><br><span class="line">//为什么这一句要在绑定this的前面呢，因为构造函数原型上的方法可能会用到this，这样可以把this都找出来，后面统一绑定</span><br><span class="line">obj.__proto__ = Func.prototype; </span><br><span class="line">let result = Func.apply(obj,args)</span><br><span class="line">return result instanceof Object ? result: obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/long-ying.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/long-ying.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/long-ying.github.io/page/3/">3</a><a class="page-number" href="/long-ying.github.io/page/4/">4</a><a class="extend next" rel="next" href="/long-ying.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/long-ying.github.io/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/long-ying.github.io/">1</a><span class="page-number current">2</span><a class="page-number" href="/long-ying.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/long-ying.github.io/page/5/">5</a><a class="extend next" rel="next" href="/long-ying.github.io/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1100,14 +1116,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

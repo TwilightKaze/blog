@@ -179,6 +179,68 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">小案例集合</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-03 13:59:32 / 修改时间：14:07:10" itemprop="dateCreated datePublished" datetime="2021-07-03T13:59:32+08:00">2021-07-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="用js创建表格并在特定位置添加背景颜色"><a href="#用js创建表格并在特定位置添加背景颜色" class="headerlink" title="用js创建表格并在特定位置添加背景颜色"></a>用js创建表格并在特定位置添加背景颜色</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">HTML代码</span><br><span class="line">&lt;table width=&quot;200px&quot; height=&quot;200px&quot; border=&quot; 1px&quot; cellspacing=&#x27;0&#x27;&gt;&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">JS代码</span><br><span class="line">let table = document.querySelector(&quot;table&quot;);</span><br><span class="line">      for (let i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">        let tr = table.appendChild(document.createElement(&quot;tr&quot;));</span><br><span class="line">        for (let j= 1; j &lt;= 5; j++) &#123;</span><br><span class="line">        添加背景颜色的第一种写法</span><br><span class="line">        </span><br><span class="line">          // i===j? tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td style=&quot;background-color: red&quot;&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)    : tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)</span><br><span class="line">          </span><br><span class="line">          添加背景颜色的第二种写法</span><br><span class="line">          tr.insertAdjacentHTML(&#x27;beforeend&#x27;, `&lt;td  style=$&#123;i===j ? &#x27;background-color:red&#x27; : &#x27;&#x27;&#125;&gt;&lt;/td&gt;`)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       添加背景颜色的第三种写法</span><br><span class="line">        // for (let i = 0; i&lt;table.rows.length; i++)&#123;</span><br><span class="line">        //   table.rows[i].cells[i].style.backgroundColor=&quot;red&quot;;</span><br><span class="line">        // &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<p><img src="/long-ying.github.io/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users\之水\AppData\Roaming\Typora\typora-user-images\1625292413967.png" alt="1625292413967"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/06/30/%E7%AE%97%E6%B3%95%E5%B0%8F%E9%9B%86%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,154 +1034,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/06/08/%E8%87%AA%E5%B7%B1%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%B0%8F%E7%BB%8F%E9%AA%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/06/08/%E8%87%AA%E5%B7%B1%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%B0%8F%E7%BB%8F%E9%AA%8C/" class="post-title-link" itemprop="url">自己使用Hexo搭建博客的小经验</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-08 21:35:31" itemprop="dateCreated datePublished" datetime="2021-06-08T21:35:31+08:00">2021-06-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-07 13:37:36" itemprop="dateModified" datetime="2021-08-07T13:37:36+08:00">2021-08-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 在搭建Hexo的过程中，我自己也遇到很多坑，看着别人写的文章做下来，其实也是会发现很多问题的。作为一名菜鸟，我花两个晚上才把它给搭，当然就是你现在看到的页面，虽然看起来有点low，但是这个过程我觉得很享受。以下内容只是我自己搭建时的过程，可能在你自己搭的时候情况会不太一样，所以此文只供参考，要相信你自己在遇到问题的时候也会完美解决的！！！</p>
-<h2 id="一、安装Git和Node-js"><a href="#一、安装Git和Node-js" class="headerlink" title="一、安装Git和Node.js"></a>一、安装Git和Node.js</h2><p>Git和Node.js的安装网上有很多教程，按照教程安装就可以了，但是在安装Node.js的时候需要配置环境，如果不配置好,后面的操作就无法成功，以下是配置环境的参考链接，按照这个配就OK了</p>
-<p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.htm]">https://www.cnblogs.com/liuqiyun/p/8133904.htm]</a>: </p>
-<h2 id="二、开始安装Hexo"><a href="#二、开始安装Hexo" class="headerlink" title="二、开始安装Hexo"></a>二、开始安装Hexo</h2><p>在任意一个磁盘下面新建一个Hexo文件夹</p>
-<img src="http://r.photo.store.qq.com/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcVtyRvfk*uMfwYmJDLn3VgHPStFpCmvIFa1e2V.5v9cOhoYn0MdelFMdVe*F8ZsVLD0ZQ*bpF1ZbcoVuYgh8CFA!/r" style="zoom:50%;">
-
-<p>鼠标放在文件夹上方右键使用Get Bash Here方式打开，输入命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后可以用hexo -v 查看下版本，接着初始化hexo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog #myblog可以随便你取，这个命令相当于新建了一个文件夹，这就是你的博客站点文件夹。</span><br></pre></td></tr></table></figure>
-
-<p>进入myblog文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd myblog #进入文件夹</span><br><span class="line">npm install </span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，会有这些文件夹，当然可能你的会和我的不太一样，我的已经被修改过了。</p>
-<img src="http://r.photo.store.qq.com/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcVtyRvfk*uMfwYmJDLn3VgEPc*IdNf31SKuTO9pyN0v8YgErONG8Xv*uOHrOsuyb11yNwfQiGPy6R16xPS7aMGQ!/r" style="zoom:50%;">
-
-<p>用以下命令启用服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>注意上面的步骤要确保 npm install 这里是要保证成功执行的，不然后面会有问题，如果不成功，可能是你的环境配置有问题需要把bin文件的路径D:\Hexo\blog\node_modules.bin添加到电脑的系统环境变量中。</p>
-<img src="http://r.photo.store.qq.com/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcVtyRvfk*uMfwYmJDLn3VgEd6u14kHqE4KwDKtmCv6r5YwS9loxZKQ4keuiP*KykePAbguIUHh5Lf6PZDbfRjH8!/r" style="zoom:50%;">
-
-<p>如果还是不成功，建议使用以下指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npx hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">npx hexo server</span><br></pre></td></tr></table></figure>
-
-<p> hexo server运行完之后，会提示你可以使用localhoat:4000访问到你的博客页面，4000是默认的访问端口，如果出现你的4000端口无法访问，可以在myblog站点文件的<code>_config.yml</code>（这个文件需要用编辑器打开，我用的VSCode）内加上如下代码更改端口号 </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 5000 #端口号可以随你改</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
-
-<p>再启动一遍服务器，用提示的链接打开，本地页面就搭建好了。</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcVtyRvfk*uMfwYmJDLn3VgFoq0ukroCzW9QEqFN3piT.F7QUj5dfgwBWkWBsrmJJneZbSfABew8I5JGVtTzbYV8!/b&amp;bo=cwPfAXMD3wEDGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<p>页面长这个样子的</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcU5Rmo25hda*80PvAtZ60VxE268ERhSz*yvhs.PHIWSEHBZk6WH2E0vvMYQMT8JxG1t*vWQlKR6EmyD4H0**3mA!/b&amp;bo=dgSFAXYEhQEDKQw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<h2 id="三、将本地页面同步到gitHub上"><a href="#三、将本地页面同步到gitHub上" class="headerlink" title="三、将本地页面同步到gitHub上"></a>三、将本地页面同步到gitHub上</h2><p>刚才再本地布好的页面只能再本地看到，你在GIt Bash上按Ctr C 停止你的页面就访问不到了，所以将博客同步到gitHub上很方便访问。</p>
-<p>首先，你得注册一个gitHub账号，登录后新建一个 repository</p>
-<img src="http://r.photo.store.qq.com/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcV7HQY0CtThe.ggzq8uB*4UAim0B93D**gnYhPcIQY5DYyXSzlt7D7vtE7zRPc4gaejvoZPE*kGqgTrJp9UkB6E!/r" style="zoom:50%;">
-
-<img src="http://r.photo.store.qq.com/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcU5Rmo25hda*80PvAtZ60VxfbIP1KGMQACdTyIzfT0tm4itP0vs*gGUQmTzdm1M.VHl6g3daxfOTqdXe7ryCFKQ!/r" style="zoom:50%;">
-
-<p>新建以后这个地址链接就是你博客的访问链接了。</p>
-<p>接下来，我们需要新建SSH密钥将本地服务器和GitHub连接起来。</p>
-<p>在git bash中，输入以下指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;  </span><br><span class="line">#yourname要是你要对应上gitHUb的用户名</span><br><span class="line"></span><br><span class="line">git config --global user.email &quot;youremail&quot;   </span><br><span class="line">#同样email也要和和你gitHub上的邮箱相同</span><br></pre></td></tr></table></figure>
-
-<p>然后回车，输入指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br></pre></td></tr></table></figure>
-
-<p> 这个时候它会告诉你已经生成了.ssh的文件夹。并告诉你在你的电脑中路径，找到这个文件夹打开</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcU5Rmo25hda*80PvAtZ60VymbjYMY2to3o0Jc19cpL4ov5i*F4Vpa3.SXOJPlVX3Zr8.gaeLUpWcYEhpxUhwxww!/b&amp;bo=TwTbAU8E2wEDGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<p>将里面的内容复制粘贴到key中，title随便取都行的。</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcU5Rmo25hda*80PvAtZ60VwS2QoAIIPuZOLf7J5jyrJaaJYQQJjU264Kr7UzasdBbJ85KXYJCg96nirGo76Zt7w!/b&amp;bo=OwYiAzsGIgMDGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<p>添加之后，回到git bash 使用以下命令验证是否添加密钥成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcdL6WFXhKAmqTR9DoDJjFzyJyBOmwvevm9u38yU45kzMLAkreCLQ3z*f5r5*Myy9fywC*OfHAwfhatzhIseNJwg!/b&amp;bo=gwMJAoMDCQIDGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<p>这里还有有个步骤需要做，差点忘了，要在你的站点文件夹deploy位置修改下代码</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcdL6WFXhKAmqTR9DoDJjFzwJcYt6WnzgeNLHvW3W8pcNCjzyp8DdfkxqKJ3tPbl8pQmHJmAeN9qxctWrDOXW1tI!/b&amp;bo=XAR*AlwEfwIDGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcdL6WFXhKAmqTR9DoDJjFzxTT7IhnzVnVZvM66*i7WEsujvQa7XoSopUgybcZ4mQonBzup.781Y7d*mxSVU7AEc!/b&amp;bo=uAPRALgD0QADGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-
-
-<p>repo的值在这里。。。。。。github上不去截不了图，难受，查看其他教程吧，不好意思我累了。。。</p>
-<p>密钥建立成功之后，使用下面的指令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcdL6WFXhKAmqTR9DoDJjFzyzgDjY*PrqL.XhMd*m*IaqbVhLQRXAReFdZHrBL*yVh4u1YwD0oJMZrJZjTYoea2s!/b&amp;bo=agOBAGoDgQADGTw!&amp;rf=viewer_4" style="zoom:50%;">
-
-<p>用你对应的地址就可以访问到了，比如我的就是</p>
-<p>[<a target="_blank" rel="noopener" href="https://long-ying.github.io/]">https://long-ying.github.io/]</a>: </p>
-<p>要保持你本地和gitHub上的内容跟新同步，还需要设置一个地方，同样也是在站点文件夹的_config.yml里面修改一下配置</p>
-<img src="http://m.qpic.cn/psc?/V53KhA6R2FzgrY1xRpni21345P1P1GzZ/45NBuzDIW489QBoVep5mcV7HQY0CtThe.ggzq8uB*4WD795TtIgrku9Q6NGESFiHvu*r3YRlsgP.Z49wtDvjwcxcDLSnC4lBw7Fzsxx*exs!/b&amp;bo=*gSBAv4EgQIDGTw!&amp;rf=viewer_4" style="zoom: 50%;">
-
-<p>好了，完结撒花，到这个站点就布好了，页面肯定是有点丑的，后续还有一些主题修改，文章发布什么的，你把这个站点布好去看那些就不怕了，重要的是这个过程，作为一只菜鸟我也在修饰我的博客嘿嘿，慢慢研究吧。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/long-ying.github.io/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/long-ying.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/long-ying.github.io/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/long-ying.github.io/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/long-ying.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/long-ying.github.io/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/long-ying.github.io/page/5/">5</a><a class="extend next" rel="next" href="/long-ying.github.io/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1187,14 +1105,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
