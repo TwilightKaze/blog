@@ -179,6 +179,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">无坑版linux安装及使用教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-22 14:11:01" itemprop="dateCreated datePublished" datetime="2021-11-22T14:11:01+08:00">2021-11-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-23 10:50:30" itemprop="dateModified" datetime="2021-11-23T10:50:30+08:00">2021-11-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近心情不太好，糟糕事情比较多，心态有点崩，来写我的博客舒缓下心情，又是努力生活的一天呀🤗🤗</p>
+<h3 id="安装介绍"><a href="#安装介绍" class="headerlink" title="安装介绍"></a>安装介绍</h3><p>如果你是想探索linux系统的小白，ArchLinux可以说是一个不错的选择后，听说它有点难装，但我自己装下来感觉还行，这个过程其实挺需要耐心的，特别是你对操作的结果会存在一丝忧虑，比如我就很害怕把我自己的电脑搞崩了，到时候可真是崩溃，但这个探索的过程总的来说还是很享受的。</p>
+<p>废话不多说，直接上链接： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138951848">https://zhuanlan.zhihu.com/p/138951848</a></p>
+<p>这位知乎up主写得十分详细，直接按照他的步骤做就好了，有一部需要注意的是，在联无线网的时候需要确定下你家的wifi名称是不是中文，如果是中文的话你在搜索的时候是显示不出来的，当然网也就连不了，除了修改你家wifi名称，就是连你自己的热点了，不过可能网会很慢，所以尽量按照up主说的那样安装镜像。</p>
+<p>在使用nano编辑器的时候用Ctr +X+Y保存退出。</p>
+<p>在安装Display Manager和桌面环境的时候建议安装KDE，这个和windows系统的比较相似，容易适应，后续坑也比较少。</p>
+<p>安装双核系统会出现电脑时间不一致的情况，windows系统显示的事件会比正常时间少8小时，具体介绍及解决方案看这里：<a target="_blank" rel="noopener" href="https://sspai.com/post/55983#!%EF%BC%8C%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8windows%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%A1%88">https://sspai.com/post/55983#!，建议使用windows第一种方案</a></p>
+<p>安装好之后呢，安装下paru（ArchLinux的包管理助手）<a target="_blank" rel="noopener" href="https://linux.cn/article-13122-1.html">https://linux.cn/article-13122-1.html</a></p>
+<h3 id="常用的pacman命令"><a href="#常用的pacman命令" class="headerlink" title="常用的pacman命令"></a>常用的pacman命令</h3><p>pacman是ArchLinux的包管理工具</p>
+<p>安装或者升级单个软件包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S 包名称</span><br></pre></td></tr></table></figure>
+
+<p>删除包及相应的配置文件及依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Rsn 包名称</span><br></pre></td></tr></table></figure>
+
+<p>升级系统并同步仓库数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu 包名称</span><br></pre></td></tr></table></figure>
+
+<p>查询包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Ss 包名称</span><br></pre></td></tr></table></figure>
+
+<p>查询已经安装的包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qs 包名称</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -925,66 +1013,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/19/hook%E7%BB%84%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/08/19/hook%E7%BB%84%E4%BB%B6/" class="post-title-link" itemprop="url">hook组件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-08-19 22:07:21 / 修改时间：22:08:27" itemprop="dateCreated datePublished" datetime="2021-08-19T22:07:21+08:00">2021-08-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">import &#123; render &#125; from &#x27;@testing-library/react&#x27;;</span><br><span class="line">import React ,&#123;useEffect, useState&#125; from &#x27;react&#x27;;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import img from &#x27;./logo512.png&#x27;</span><br><span class="line">// import MyErrorBoundery from &#x27;./MyErrorBoundery&#x27;;</span><br><span class="line">// import&#123;ThemeContext, themes&#125; from &#x27;./theme-context&#x27;;</span><br><span class="line">// import  ThemedButton from&#x27;./themed-button&#x27;;</span><br><span class="line">// import PropoTypes from &quot;prop-types&quot;</span><br><span class="line"></span><br><span class="line">const useForm = (init)=&gt;&#123;</span><br><span class="line">  const [form, setForm] = useState(init)</span><br><span class="line">  const handleChange = (e)=&gt;&#123;</span><br><span class="line">    setForm(&#123;...form, [e.target.name]: e.target.value&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  return [form, handleChange]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Tool()&#123;</span><br><span class="line">  useEffect(()=&gt;&#123;</span><br><span class="line"></span><br><span class="line">    const  focusUseName=(e)=&gt;&#123;</span><br><span class="line"></span><br><span class="line">      if(e.keyCode===9)&#123;</span><br><span class="line">        document.querySelector(&#x27;input[name=&quot;usename&quot;]&#x27;).style.borderColor=&quot;red&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  window.addEventListener(&#x27;keydown&#x27; ,focusUseName);</span><br><span class="line"></span><br><span class="line">    return ()=&gt;&#123;</span><br><span class="line">      window.removeEventListener(&#x27;keydown&#x27; ,focusUseName)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  return(</span><br><span class="line">    &lt;h1&gt;工具人&lt;/h1&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function App()&#123;</span><br><span class="line">  const [showTool, setShowTool] = useState(false)</span><br><span class="line">  const [form, setForm] =useState(&#123;usename:&quot;&quot;, password :&quot;&quot;&#125;);</span><br><span class="line">  const [pokemon,setPokemon] =useState(&#123;&#125;)</span><br><span class="line">  const [isLoading, setIsLoading]=useState(&#123;&#125;) //解决图片显示不出来的问题</span><br><span class="line">  const [number, setNumber]=useState(1)</span><br><span class="line"></span><br><span class="line">useEffect( ()=&gt;&#123;</span><br><span class="line">const  fn = async ()=&gt;&#123;</span><br><span class="line">  setIsLoading(true); //在开始时设置为true</span><br><span class="line">   const apiData = await fetch(`https://pokeapi.co/api/v2/pokemon/$&#123;number&#125;/`)</span><br><span class="line">   const data =await apiData.json()</span><br><span class="line">    setPokemon(data)</span><br><span class="line">    setIsLoading(false); //在结束时设置为false</span><br><span class="line">    console.log(data);</span><br><span class="line">  &#125;</span><br><span class="line">fn();</span><br><span class="line">&#125;,[number])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  // useEffect(()=&gt;&#123;</span><br><span class="line">  //   console.log(&#x27;show&#x27;);</span><br><span class="line">  //   return ()=&gt;&#123;</span><br><span class="line">  //     console.log(&#x27;display&#x27;);</span><br><span class="line">  //   &#125;</span><br><span class="line">  // &#125;,[form.usename])</span><br><span class="line"></span><br><span class="line">  return(</span><br><span class="line">    &lt;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; value=&#123;form.usename&#125; name=&quot;usename&quot;</span><br><span class="line">    onChange=&#123;(e=&gt;setForm(&#123;...form, usename: e.target.value,&#125;))&#125;</span><br><span class="line">    /&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;text&quot; value=&#123;form.password&#125; name=&quot;password&quot;</span><br><span class="line">    onChange=&#123;(e=&gt;setForm(&#123; ...form, password: e.target.value&#125;))&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    &lt;button onClick=&#123;()=&gt;setShowTool(!showTool)&#125;&gt;召唤工具人&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">   &#123; showTool &amp;&amp; &lt; Tool /&gt;&#125;</span><br><span class="line">   &lt;h1&gt;&#123;pokemon.name&#125;&lt;/h1&gt;</span><br><span class="line">   &lt;button onClick=&#123;()=&gt;setNumber(number+1)&#125;&gt;点我召唤神兽&lt;/button&gt;</span><br><span class="line">   &lt;img alt=&quot;&quot; src=&#123;pokemon.sprites?.front_default&#125;</span><br><span class="line">   width=&quot;100px&quot;  height=&quot;100px&quot; transform=&quot;scale(1)&quot;/&gt;</span><br><span class="line">   &#123;/* ?是为了解决图片资源访问不到 */&#125;</span><br><span class="line">   &lt;/&gt;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1056,14 +1084,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
