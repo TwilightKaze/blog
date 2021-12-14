@@ -179,6 +179,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/12/14/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/12/14/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">常见的网络请求方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-14 09:25:13 / 修改时间：11:35:05" itemprop="dateCreated datePublished" datetime="2021-12-14T09:25:13+08:00">2021-12-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="安装json-server"><a href="#安装json-server" class="headerlink" title="安装json-server"></a>安装json-server</h3><p>用npm安装json-server可以创建一个简单的调用后端数据调用接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install json-server -g</span><br></pre></td></tr></table></figure>
+
+<p>建立一个json文件，如react-db.json （<strong>注意：json文件里面不要写注释，注意格式，不要写多余的逗号，否则运行的时候会报错</strong>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;products&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 1,</span><br><span class="line">      &quot;productName&quot;: &quot;iPhone&quot;,</span><br><span class="line">      &quot;price&quot;: 8900,</span><br><span class="line">      &quot;quantity&quot;: 1</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 2,</span><br><span class="line">      &quot;productName&quot;: &quot;iPad Pro&quot;,</span><br><span class="line">      &quot;price&quot;: 124000,</span><br><span class="line">      &quot;quantity&quot;: 3</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 3,</span><br><span class="line">      &quot;productName&quot;: &quot;荣耀p30&quot;,</span><br><span class="line">      &quot;price&quot;: 4000,</span><br><span class="line">      &quot;quantity&quot;: 3</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 4,</span><br><span class="line">      &quot;productName&quot;: &quot;小米&quot;,</span><br><span class="line">      &quot;price&quot;: 3000,</span><br><span class="line">      &quot;quantity&quot;: 8</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 5,</span><br><span class="line">      &quot;productName&quot;: &quot;iPad 11&quot;,</span><br><span class="line">      &quot;price&quot;: 3000,</span><br><span class="line">      &quot;quantity&quot;: 34</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行以下指令，将react-db.json的数据上传到json-server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server react-db.json --watch --port=5000</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以生成对应的API了</p>
+<h3 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h3><p>向服务器获取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount = async () =&gt; &#123;</span><br><span class="line">    const response = await fetch(&#x27;http://localhost:5000/customers&#x27;, &#123;</span><br><span class="line">      method: &#x27;GET&#x27;,</span><br><span class="line">    &#125;)</span><br><span class="line">    if (response.ok) &#123;</span><br><span class="line">      const body = await response.json()</span><br><span class="line">      if (body) &#123;</span><br><span class="line">        this.setState(&#123; customers: body, customersCount: body.length&#125;)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return &#x27;Error:&#x27; + response.status</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>向服务器发送数据，比如说注册用户信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  //以下可实现点击提交按钮注册新用户并将页面跳转到顾客列表页面</span><br><span class="line">  onSaveClick = async (event) =&gt; &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    //获取用户填写的信息</span><br><span class="line">    var newcustomer = &#123;</span><br><span class="line">      name: this.state.name,</span><br><span class="line">      address: &#123; city: this.state.city &#125;,</span><br><span class="line">      phone: this.state.phone,</span><br><span class="line">      photo: this.state.photo,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var response = await fetch(&#x27;http://localhost:5000/customers &#x27;,</span><br><span class="line">    &#123;method:&quot;POST&quot;,</span><br><span class="line">    body: JSON.stringify(newcustomer),</span><br><span class="line">    headers: &#123;&quot;Content-type&quot;: &quot;application/json&quot;&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  var body =await response.json()//请求发送成功后跳转页面</span><br><span class="line">  if (body)&#123;</span><br><span class="line">    history.replace(&#x27;/customers&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PUT请求"><a href="#PUT请求" class="headerlink" title="PUT请求"></a>PUT请求</h3><p>向服务器发送更改后的信息，比如修改用户信息，链接要带上具体的id,表明更新的是哪一条用户数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">onSaveClick = async (event) =&gt; &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    var newcustomer = &#123;</span><br><span class="line">      name: this.state.name,</span><br><span class="line">      address: &#123; city: this.state.city &#125;,</span><br><span class="line">      phone: this.state.phone,</span><br><span class="line">      photo: this.state.photo,</span><br><span class="line">    &#125;</span><br><span class="line">    var id = this.props.match.params.id</span><br><span class="line">    var response = await fetch(`http://localhost:5000/customers/$&#123;id&#125; `, &#123;</span><br><span class="line">      method: &#x27;PUT&#x27;,</span><br><span class="line">      body: JSON.stringify(newcustomer),</span><br><span class="line">      headers: &#123; &#x27;Content-type&#x27;: &#x27;application/json&#x27; &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    var body = await response.json()</span><br><span class="line">    if (body) &#123;</span><br><span class="line">      history.replace(&#x27;/customers&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DELETE请求"><a href="#DELETE请求" class="headerlink" title="DELETE请求"></a>DELETE请求</h3><p>删除服务器数据。和PUT一样，也要带上具体的id,表明删除的是哪一条数据，注意数据删除是删除数据库中的数据，本地数据还是没有更新的，此时要用setState更新下状态，更新后的状态filter出不包含已删除的数据（用id做判断））</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">onClickDelete =async (id) =&gt;&#123;</span><br><span class="line">   if (window.confirm(&quot;确定要删除吗？&quot;)) &#123;</span><br><span class="line">     var response = await fetch(`http://localhost:5000/customers/$&#123;id&#125;`, &#123;method: &quot;DELETE&quot;&#125;)</span><br><span class="line">     if (response.ok)&#123;</span><br><span class="line">       let  allcustomers = [...this.state.customers];</span><br><span class="line">       console.log(allcustomers);</span><br><span class="line">       allcustomers = allcustomers.filter(cust =&gt; &#123;return cust.id !== id&#125;)</span><br><span class="line">       this.setState(&#123;customers: allcustomers&#125;)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/12/06/%E8%87%AA%E6%9E%84react%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -905,72 +985,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="post-title-link" itemprop="url">函数柯里化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-01 09:25:53 / 修改时间：12:58:45" itemprop="dateCreated datePublished" datetime="2021-11-01T09:25:53+08:00">2021-11-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"><a href="#函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数" class="headerlink" title="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"></a>函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function add(x, y) &#123;</span><br><span class="line">  return x+y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function curryingAdd(x) &#123;</span><br><span class="line">  return function (y) &#123;</span><br><span class="line">    return x + y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1, 2)) //3</span><br><span class="line">console.log(curryingAdd(1)(2)) //3</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数柯里化的好处"><a href="#函数柯里化的好处" class="headerlink" title="函数柯里化的好处"></a>函数柯里化的好处</h3><h4 id="1、参数复用"><a href="#1、参数复用" class="headerlink" title="1、参数复用"></a>1、参数复用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function check(reg, txt) &#123;</span><br><span class="line">  return reg.test(txt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(check(/\d+/g, &#x27;test&#x27;))</span><br><span class="line">console.log(check(/[a-z]+/g, &#x27;test&#x27;))</span><br><span class="line"></span><br><span class="line">//使用柯里化之后</span><br><span class="line">function curryingCheck(reg) &#123;</span><br><span class="line">    return function (text) &#123;</span><br><span class="line">      return reg.test(text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let hasNumber = curryingCheck(/\d+/g)</span><br><span class="line">let hasString = curryingCheck(/[a-z]+/g)</span><br><span class="line"></span><br><span class="line">console.log(hasNumber(&#x27;783927382&#x27;))</span><br><span class="line">console.log(hasString(&#x27;test1&#x27;))</span><br></pre></td></tr></table></figure>
-
-<p>如上面的例子，使用柯里化函数之后，先将正则表达式作为第一个参数传进去作为模板，后面可以利用这个模板传入要检测的字符，从而实现多次调用。</p>
-<h4 id="2、延迟运行"><a href="#2、延迟运行" class="headerlink" title="2、延迟运行"></a>2、延迟运行</h4><p>bind函数的实现，bind绑定this的时候是不会自动执行的，需要手动执行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind = function (context) &#123;</span><br><span class="line">  var _this = this</span><br><span class="line">  var args = Array.prototype.slice.call(arguments, 1) //将类数组变成数组，并返回arguments中除了第一个参数的剩余参数，因为第一个参数是绑定的上下文</span><br><span class="line">  return function() &#123;</span><br><span class="line">    return _ this.apply(context, args)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1042,14 +1056,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

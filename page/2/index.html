@@ -179,6 +179,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="post-title-link" itemprop="url">函数柯里化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-01 09:25:53 / 修改时间：12:58:45" itemprop="dateCreated datePublished" datetime="2021-11-01T09:25:53+08:00">2021-11-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"><a href="#函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数" class="headerlink" title="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"></a>函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function add(x, y) &#123;</span><br><span class="line">  return x+y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function curryingAdd(x) &#123;</span><br><span class="line">  return function (y) &#123;</span><br><span class="line">    return x + y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1, 2)) //3</span><br><span class="line">console.log(curryingAdd(1)(2)) //3</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数柯里化的好处"><a href="#函数柯里化的好处" class="headerlink" title="函数柯里化的好处"></a>函数柯里化的好处</h3><h4 id="1、参数复用"><a href="#1、参数复用" class="headerlink" title="1、参数复用"></a>1、参数复用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function check(reg, txt) &#123;</span><br><span class="line">  return reg.test(txt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(check(/\d+/g, &#x27;test&#x27;))</span><br><span class="line">console.log(check(/[a-z]+/g, &#x27;test&#x27;))</span><br><span class="line"></span><br><span class="line">//使用柯里化之后</span><br><span class="line">function curryingCheck(reg) &#123;</span><br><span class="line">    return function (text) &#123;</span><br><span class="line">      return reg.test(text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let hasNumber = curryingCheck(/\d+/g)</span><br><span class="line">let hasString = curryingCheck(/[a-z]+/g)</span><br><span class="line"></span><br><span class="line">console.log(hasNumber(&#x27;783927382&#x27;))</span><br><span class="line">console.log(hasString(&#x27;test1&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>如上面的例子，使用柯里化函数之后，先将正则表达式作为第一个参数传进去作为模板，后面可以利用这个模板传入要检测的字符，从而实现多次调用。</p>
+<h4 id="2、延迟运行"><a href="#2、延迟运行" class="headerlink" title="2、延迟运行"></a>2、延迟运行</h4><p>bind函数的实现，bind绑定this的时候是不会自动执行的，需要手动执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind = function (context) &#123;</span><br><span class="line">  var _this = this</span><br><span class="line">  var args = Array.prototype.slice.call(arguments, 1) //将类数组变成数组，并返回arguments中除了第一个参数的剩余参数，因为第一个参数是绑定的上下文</span><br><span class="line">  return function() &#123;</span><br><span class="line">    return _ this.apply(context, args)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/10/25/js%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -869,82 +935,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/08/14/%E4%BD%BF%E7%94%A8render-props%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%A4%8D%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/08/14/%E4%BD%BF%E7%94%A8render-props%E6%A8%A1%E5%BC%8F%E5%92%8C%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E5%A4%8D%E7%94%A8/" class="post-title-link" itemprop="url">使用render-props模式和高阶组件实现组件复用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-14 16:16:37" itemprop="dateCreated datePublished" datetime="2021-08-14T16:16:37+08:00">2021-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-17 17:35:28" itemprop="dateModified" datetime="2021-08-17T17:35:28+08:00">2021-08-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="props-render模式"><a href="#props-render模式" class="headerlink" title="props-render模式"></a>props-render模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import img from &#x27;./logo512.png&#x27; //图片是不能从public文件夹里面导入的，只能从src里面导入</span><br><span class="line">import PropoTypes from &quot;prop-types&quot;</span><br><span class="line">//使用render-props和高阶组件实现组件的复用</span><br><span class="line">//复用组件首先要获取组件的状态和操作组件的方法</span><br><span class="line">//问题1:如何拿到该组件复用的state</span><br><span class="line">//可以通过添加一个值为函数的props,通过函数参数来获取（需要组件内部实现）</span><br><span class="line">//问题2：如何渲染任意的UI===》使用该函数的返回值作为要渲染的内容</span><br><span class="line"></span><br><span class="line">class Mouse extends React.Component&#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">      x: 0,</span><br><span class="line">      y: 0,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">handleMouseMove=(e)=&gt;&#123;</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    x: e.clientX,</span><br><span class="line">    y: e.clientY</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">  window.addEventListener(&#x27;mousemove&#x27;,this.handleMouseMove)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentWillUnmount()&#123;</span><br><span class="line">  window.removeEventListener(&#x27;mousemove&#x27;,this.handleMouseMove)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">return this.props.render(this.state)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Mouse.PropoTypes=&#123;</span><br><span class="line">  render: PropoTypes.func.isRequired</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class App extends React.Component &#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;props模式&lt;/p&gt;</span><br><span class="line">        &#123;/* &lt;Mouse/&gt; */&#125;</span><br><span class="line">      &lt;Mouse  render=&#123;(mouse)=&gt;&#123; return(</span><br><span class="line"></span><br><span class="line">          &lt;p&gt;当前坐标为&#123;mouse.x&#125;:&#123;mouse.y&#125;&lt;/p&gt;</span><br><span class="line">      )&#125;</span><br><span class="line"></span><br><span class="line">    &#125;/&gt;</span><br><span class="line">     &lt;Mouse render=&#123;(mouse)=&gt;&#123;</span><br><span class="line">       return  &lt;img src=&#123;img&#125; alt=&quot;猫&quot;</span><br><span class="line">       style=&#123;&#123;position: &quot;absolute&quot;,</span><br><span class="line">       top: mouse.y, left: mouse.x,</span><br><span class="line">       transform: &#x27;translate(-50% ,-50%)&#x27;,</span><br><span class="line">       width:&quot;200px&quot;,</span><br><span class="line">       height:&quot;200px&quot;</span><br><span class="line">      &#125;&#125;/&gt;</span><br><span class="line">      &#125;&#125; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>Mouse组件的render属性必须是一个函数，且可以用childre属性来代替，这样的话可以将函数直接作为Mouse组件的一个文本节点（文本节点拥有props.children,而不用作为Mouse的属性。</p>
-<h3 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h3><p>使用步骤：</p>
-<p>1、创建一个函数，名称约定以with开头；</p>
-<p>2、指定函数参数，参数应该以大写字母开头（作为要渲染的组件）</p>
-<p>3、在函数内部创建一个类组件，提供复用的状态逻辑代码，并返回</p>
-<p>4、在该组件中，渲染参数组件，同时将状态通过props传递给参数组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import img from &#x27;./logo512.png&#x27;</span><br><span class="line"></span><br><span class="line">function withMouse(WrappedComponent)&#123;</span><br><span class="line">  class Mouse extends React.Component&#123;</span><br><span class="line">    state=&#123;</span><br><span class="line">      x: 0,</span><br><span class="line">      y: 0,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleMouseMove=(e)=&gt;&#123;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        x : e.clientX,</span><br><span class="line">        y : e.clientY</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">  window.addEventListener(&#x27;mousemove&#x27;, this.handleMouseMove)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentWillMount()&#123;</span><br><span class="line">  window.removeEventListener(&#x27;mousemove&#x27;, this.handleMouseMove)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;WrappedComponent &#123;...this.state&#125; &#123;...this.props&#125;&gt;&lt;/WrappedComponent&gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">return Mouse;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const Position = props=&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    鼠标当前的位置：x:&#123;props.x&#125; ,y:&#123;props.y&#125;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line"></span><br><span class="line">const catPosition = props=&gt;(</span><br><span class="line">  &lt;img  src = &#123;img&#125;  alt=&quot;猫&quot; style=&#123;&#123;</span><br><span class="line">    position: &quot;absolute&quot;,</span><br><span class="line">    top: props.y,</span><br><span class="line">    left: props.x,</span><br><span class="line">    width: &quot;100px&quot;,</span><br><span class="line">    height: &quot;100px&quot;,</span><br><span class="line">    transform: &#x27;translate(-50% ,-50%)&#x27;,</span><br><span class="line"></span><br><span class="line">  &#125;&#125; /&gt;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let Mouseposition = withMouse(Position);</span><br><span class="line">let CatPosition = withMouse(catPosition)</span><br><span class="line"></span><br><span class="line">class App extends React.Component &#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;高阶组件&lt;/p&gt;</span><br><span class="line">        &lt;Mouseposition /&gt;</span><br><span class="line">        &lt;CatPosition&gt;&lt;/CatPosition&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1016,14 +1006,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/long-ying.github.io/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
