@@ -179,6 +179,70 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/12/24/react%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/long-ying.github.io/2021/12/24/react%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">react状态管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-24 17:03:19 / 修改时间：17:26:07" itemprop="dateCreated datePublished" datetime="2021-12-24T17:03:19+08:00">2021-12-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="使用createContext创建全局状态"><a href="#使用createContext创建全局状态" class="headerlink" title="使用createContext创建全局状态"></a>使用createContext创建全局状态</h3><h4 id="1、创建"><a href="#1、创建" class="headerlink" title="1、创建"></a>1、创建</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UserContext.js文件</span><br><span class="line"></span><br><span class="line">import &#123;createContext&#125; from &quot;react&quot;</span><br><span class="line">const  UserContext = createContext(null)</span><br><span class="line">export default UserContext</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用UseContex-Prviderc在父组件中传入到子组件"><a href="#2-使用UseContex-Prviderc在父组件中传入到子组件" class="headerlink" title="2  使用UseContex.Prviderc在父组件中传入到子组件"></a>2  使用UseContex.Prviderc在父组件中传入到子组件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">APP.jsx文件</span><br><span class="line"></span><br><span class="line">import UserContext from &#x27;./UserContext&#x27;</span><br><span class="line">function App() &#123;</span><br><span class="line">  let [user, setUser] = useState(&#123;</span><br><span class="line">    isLoggin: false,</span><br><span class="line">    currentUserId: null,</span><br><span class="line">    CurrentUserName: null,</span><br><span class="line">    CurrentUserRole: null</span><br><span class="line">  &#125;)</span><br><span class="line">  return (</span><br><span class="line">    &lt;UserContext.Provider value=&#123;&#123;user, setUser&#125;&#125;&gt;</span><br><span class="line">    &lt;HashRouter&gt;</span><br><span class="line">      &lt;NavBar/&gt;</span><br><span class="line">      &lt;div className=&quot;container-fluid&quot;&gt;</span><br><span class="line">        &lt;Switch&gt;</span><br><span class="line">          &lt;Route path=&quot;/&quot; exact=&#123;true&#125; component=&#123;Login&#125;/&gt;</span><br><span class="line">          &lt;Route path=&quot;/*&quot; exact=&#123;true&#125; component=&#123;NoMatchPage&#125;/&gt;</span><br><span class="line">        &lt;/Switch&gt;</span><br><span class="line"></span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/HashRouter&gt;</span><br><span class="line">    &lt;/UserContext.Provider&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、在子组件中用useContext接收"><a href="#3、在子组件中用useContext接收" class="headerlink" title="3、在子组件中用useContext接收"></a>3、在子组件中用useContext接收</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState, useEffect, useContext &#125; from &#x27;react&#x27;</span><br><span class="line">import UserContext from &#x27;./UserContext&#x27;</span><br><span class="line"></span><br><span class="line">const Login = (props) =&gt; &#123;</span><br><span class="line">  const [email, setEmail] = useState(&#x27;123@qq.com&#x27;)</span><br><span class="line">  const [password, setPassword] = useState(&#x27;123a3442&#x27;)</span><br><span class="line">  let userContext = useContext(UserContext) ///////在这里传入</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    document.title = &#x27;登录&#x27;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  let [dirty, setDirty] = useState(&#123;</span><br><span class="line">    email: false,</span><br><span class="line">    password: false,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  const [errors, setErrors] = useState(&#123;</span><br><span class="line">    email: [],</span><br><span class="line">    password: [],</span><br><span class="line">  &#125;)</span><br><span class="line">  const [message, setMessage] = useState(&#x27;&#x27;)</span><br><span class="line"></span><br><span class="line">  const validate = () =&gt; &#123;</span><br><span class="line">    const errorsData = &#123;&#125;</span><br><span class="line">    errorsData.email = []</span><br><span class="line">    if (!email) &#123;</span><br><span class="line">      errorsData.email.push(&#x27;邮箱不能为空&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">    let emailReg = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/</span><br><span class="line">    if (email) &#123;</span><br><span class="line">      if (!emailReg.test(email)) &#123;</span><br><span class="line">        errorsData.email.push(&#x27;邮箱输入格式有误&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    errorsData.password = []</span><br><span class="line">    if (!password) &#123;</span><br><span class="line">      errorsData.password.push(&#x27;密码不能为空&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">    let passwordReg = /^(?=.*?[a-z])(?=.*?[0-9]).&#123;8,16&#125;$/</span><br><span class="line">    if (password) &#123;</span><br><span class="line">      if (!passwordReg.test(password)) &#123;</span><br><span class="line">        errorsData.password.push(&#x27;密码输入格式有误&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    setErrors(errorsData)</span><br><span class="line">  &#125;</span><br><span class="line">  useEffect(validate, [password, email, setErrors])</span><br><span class="line"></span><br><span class="line">  let onClickLogin = async () =&gt; &#123;</span><br><span class="line">    let dirtyData = dirty</span><br><span class="line">    Object.keys(dirtyData).forEach((control) =&gt; &#123;</span><br><span class="line">      dirtyData[control] = true</span><br><span class="line">    &#125;)</span><br><span class="line">    setDirty(dirtyData)</span><br><span class="line">    validate()</span><br><span class="line">    if (isValid()) &#123;</span><br><span class="line">      let response = await fetch(</span><br><span class="line">        `http://localhost:5000/users?email=$&#123;email&#125;&amp;password=$&#123;password&#125;`,</span><br><span class="line">        &#123; method: &#x27;GET&#x27; &#125;</span><br><span class="line">      )</span><br><span class="line">      if (response.ok) &#123;</span><br><span class="line">        let body = await response.json()</span><br><span class="line">        if (body.length &gt; 0) &#123;</span><br><span class="line">          setMessage(&lt;span className=&quot;text-success&quot;&gt;登录成功&lt;/span&gt;)</span><br><span class="line">          userContext.setUser(&#123;</span><br><span class="line">            ...userContext.user,</span><br><span class="line">            isLoggin: true,</span><br><span class="line">            currentUserName: body[0].fullName,</span><br><span class="line">            currentUserId: body[0].id,</span><br><span class="line">            currentUserRole: body[0].role,</span><br><span class="line">          &#125;)</span><br><span class="line">          if (body[0].role === &#x27;user&#x27;) &#123;</span><br><span class="line">            props.history.replace(&#x27;/dashboard&#x27;)</span><br><span class="line">          &#125; else if(body[0].role===&quot;admin&quot;) &#123;</span><br><span class="line">            props.history.replace(&#x27;./products&#x27;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          setMessage(&lt;span className=&quot;text-danger&quot;&gt;无效登录，请重新尝试&lt;/span&gt;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let isValid = () =&gt; &#123;</span><br><span class="line">    let valid = true</span><br><span class="line">    for (let control in errors) &#123;</span><br><span class="line">      if (errors[control].length &gt; 0) &#123;</span><br><span class="line">        valid = false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return valid</span><br><span class="line">  &#125;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div className=&quot;row&quot;&gt;</span><br><span class="line">      &lt;div className=&quot;col-lg-5 col-md-7 mx-auto&quot;&gt;</span><br><span class="line">        &lt;div className=&quot;card boder-success shadow-lg my-2&quot;&gt;</span><br><span class="line">          &lt;div className=&quot;card-header border-bottom border-success&quot;&gt;</span><br><span class="line">            &lt;h4 style=&#123;&#123; fontSize: &#x27;40px&#x27; &#125;&#125; className=&quot;text-success&quot;&gt;</span><br><span class="line">              Login</span><br><span class="line">            &lt;/h4&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">          &lt;div className=&quot;card-body boder-bottom boder-success&quot;&gt;</span><br><span class="line">            &lt;div className=&quot;form-group&quot;&gt;</span><br><span class="line">              &lt;label htmlFor=&quot;email&quot;&gt;Email&lt;/label&gt;</span><br><span class="line">              &lt;input</span><br><span class="line">                value=&#123;email&#125;</span><br><span class="line">                type=&quot;text&quot;</span><br><span class="line">                className=&quot;form-control&quot;</span><br><span class="line">                id=&quot;email&quot;</span><br><span class="line">                placeholder=&quot;Email&quot;</span><br><span class="line">                onChange=&#123;(e) =&gt; &#123;</span><br><span class="line">                  setEmail(e.target.value)</span><br><span class="line">                &#125;&#125;</span><br><span class="line">                onBlur=&#123;() =&gt; &#123;</span><br><span class="line">                  setDirty(&#123; ...dirty, email: true &#125;)</span><br><span class="line">                  validate()</span><br><span class="line">                &#125;&#125;</span><br><span class="line">              /&gt;</span><br><span class="line">              &lt;div className=&quot;text-danger&quot;&gt;</span><br><span class="line">                &#123;dirty.email &amp;&amp; errors.email.length &gt; 0 ? errors.email : &#x27;&#x27;&#125;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div className=&quot;form-group&quot;&gt;</span><br><span class="line">              &lt;label htmlFor=&quot;password&quot;&gt;Password&lt;/label&gt;</span><br><span class="line">              &lt;input</span><br><span class="line">                type=&quot;password&quot;</span><br><span class="line">                className=&quot;form-control&quot;</span><br><span class="line">                id=&quot;password&quot;</span><br><span class="line">                placeholder=&quot;Password&quot;</span><br><span class="line">                value=&#123;password&#125;</span><br><span class="line">                onChange=&#123;(e) =&gt; &#123;</span><br><span class="line">                  setPassword(e.target.value)</span><br><span class="line">                &#125;&#125;</span><br><span class="line">                onBlur=&#123;() =&gt; &#123;</span><br><span class="line">                  setDirty(&#123; ...dirty, password: true &#125;)</span><br><span class="line">                  validate()</span><br><span class="line">                &#125;&#125;</span><br><span class="line">              /&gt;</span><br><span class="line">              &lt;div className=&quot;text-danger&quot;&gt;</span><br><span class="line">                &#123;dirty.password &amp;&amp; errors.password.length &gt; 0</span><br><span class="line">                  ? errors.password</span><br><span class="line">                  : &#x27;&#x27;&#125;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div className=&quot;card-footer text-right&quot;&gt;</span><br><span class="line">              &lt;div className=&quot;&quot;&gt;&#123;message&#125;&lt;/div&gt;</span><br><span class="line">              &lt;div&gt;</span><br><span class="line">                &lt;button</span><br><span class="line">                  className=&quot;btn btn-primary mycolor&quot;</span><br><span class="line">                  onClick=&#123;onClickLogin&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                  登录</span><br><span class="line">                &lt;/button&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">          &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Login</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用useReducer"><a href="#使用useReducer" class="headerlink" title="使用useReducer"></a>使用useReducer</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/12/24/useMemo%E5%92%8CuseCallback%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -564,10 +628,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-26 10:59:36 / 修改时间：11:11:19" itemprop="dateCreated datePublished" datetime="2021-11-26T10:59:36+08:00">2021-11-26</time>
+              <time title="创建时间：2021-11-26 10:59:36" itemprop="dateCreated datePublished" datetime="2021-11-26T10:59:36+08:00">2021-11-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-26 23:12:09" itemprop="dateModified" datetime="2021-12-26T23:12:09+08:00">2021-12-26</time>
+              </span>
 
           
 
@@ -580,12 +650,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://github.com/zalmoxisus/redux-devtools-extension">https://github.com/zalmoxisus/redux-devtools-extension</a></p>
+          <h3 id="一、先安装扩展"><a href="#一、先安装扩展" class="headerlink" title="一、先安装扩展"></a>一、先安装扩展</h3><p><a target="_blank" rel="noopener" href="https://github.com/zalmoxisus/redux-devtools-extension">https://github.com/zalmoxisus/redux-devtools-extension</a></p>
 <p>在谷歌中安装此扩展，</p>
-<p>在代码中加如一下代码，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> const store = createStore(</span><br><span class="line">   reducer, /* preloadedState, */</span><br><span class="line">+  window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__() //+后面的内容</span><br><span class="line"> );</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>二、再createStore()中添加第二个参数</p>
+<h4 id="方法一：直接添加以下代码"><a href="#方法一：直接添加以下代码" class="headerlink" title="方法一：直接添加以下代码"></a>方法一：直接添加以下代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> const store = createStore(</span><br><span class="line">   reducer, /* preloadedState, */</span><br><span class="line">+  window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__() //+后面的内容</span><br><span class="line"> );</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>在开发者工具中就可以看到了redux了。</p>
+<h4 id="方法二：通过安装依赖包"><a href="#方法二：通过安装依赖包" class="headerlink" title="方法二：通过安装依赖包"></a>方法二：通过安装依赖包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redux-devtools-extension --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>在入口文件index中引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; composeWithDevTools &#125; from &#x27;redux-devtools-extension&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在createStore()中添加,注意传进去的是一个函数的指向结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const store = createStore(balanceReducer, composeWithDevTools())</span><br></pre></td></tr></table></figure>
+
+<p>最后，在开发者工具中就可以看到了redux了。</p>
 
       
     </div>
@@ -890,86 +968,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/04/%E5%B0%BE%E9%80%92%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/long-ying.github.io/2021/11/04/%E5%B0%BE%E9%80%92%E5%BD%92/" class="post-title-link" itemprop="url">尾递归</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-04 08:45:33 / 修改时间：13:14:58" itemprop="dateCreated datePublished" datetime="2021-11-04T08:45:33+08:00">2021-11-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、递归"><a href="#一、递归" class="headerlink" title="一、递归"></a>一、递归</h3><p>在函数的内部，可以调用其它的函数，如果一个函数在内部调用自身，这个函数就是递归函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function pow(x, n) &#123;</span><br><span class="line">  if (n == 1) &#123;</span><br><span class="line">    return x;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return x * pow(x, n - 1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、尾递归"><a href="#二、尾递归" class="headerlink" title="二、尾递归"></a>二、尾递归</h3><p>在函数的尾部直接调用自身。在递归调用的过程中系统为每一层的返回点、局部变量等开辟了栈来存储，递归次数过多容易造成栈溢出。而采用尾递归时，函数所有的递归调用都出现在函数的末尾，只存在一个调用记录，所以永远不会发生栈溢出错误。</p>
-<h4 id="通常的递归"><a href="#通常的递归" class="headerlink" title="通常的递归"></a>通常的递归</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function factorial(n) &#123;</span><br><span class="line">  if (n === 1) &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return n * factorial(n - 1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(factorial(3)); //6</span><br></pre></td></tr></table></figure>
-
-<h4 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h4><p>尾递归一般需要初始化一个参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function factorial(n, init = 1) &#123;</span><br><span class="line">  if (n === 1) &#123;</span><br><span class="line">    return init; //返回的条件变了</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return factorial(n - 1, init * n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(factorial(3)); //6</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、应用场景"><a href="#三、应用场景" class="headerlink" title="三、应用场景"></a>三、应用场景</h3><h4 id="数组求和"><a href="#数组求和" class="headerlink" title="数组求和"></a>数组求和</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function sumArray(arr, total = 0) &#123;</span><br><span class="line"> if (arr.length === 0) &#123;</span><br><span class="line">  return total;</span><br><span class="line"> &#125;</span><br><span class="line"> return sumArray(arr, total + arr.pop());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let arr = [1, 3, 4, 5];</span><br><span class="line">console.log(sumArray(arr));</span><br></pre></td></tr></table></figure>
-
-<h3 id="求斐波那契数列"><a href="#求斐波那契数列" class="headerlink" title="求斐波那契数列"></a>求斐波那契数列</h3><p> 1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://baike.baidu.com/item/%E9%80%92%E6%8E%A8/1740695">递推</a>的方法定义：F(1)=1，F(2)=1, F(n)=F(n-1)+F(n-2)（n&gt;=3，n∈N* ）</p>
-<p>正常递归</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let a = 1; //相当与第n-2的值</span><br><span class="line">let b = 1; //相当与第n-1的值</span><br><span class="line">let sum = 1; //相当与前两项的和,也是n的值</span><br><span class="line">function fn(n) &#123;</span><br><span class="line">  if (n &lt; 3) &#123;</span><br><span class="line">    sum = 1;</span><br><span class="line">  &#125;</span><br><span class="line">  for (i = 3; i &lt;= n; i++) &#123;</span><br><span class="line">    return fn(n - 2) + fn(n - 1);</span><br><span class="line">  &#125;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br><span class="line">console.log(fn(8)); //21</span><br></pre></td></tr></table></figure>
-
-<p>尾递归</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function factorial2(n, start = 1, total = 1) &#123;</span><br><span class="line">  if (n &lt;= 2) &#123;</span><br><span class="line">    return total;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return factorial2(n - 1, total, start + total);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(factorial2(4)); //3</span><br></pre></td></tr></table></figure>
-
-<h4 id="数组扁平化"><a href="#数组扁平化" class="headerlink" title="数组扁平化"></a>数组扁平化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, [4, 5, 6, [7, 8, 9]]];</span><br><span class="line">function flat(arr, result = []) &#123;</span><br><span class="line">  arr.forEach((value) =&gt; &#123;</span><br><span class="line">    if (Array.isArray(value)) &#123;</span><br><span class="line">      result = result.concat(flat(value, []));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      result.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">console.log(flat(arr)); //[1, 2, 3, 4, 5,6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
-
-<h4 id="数组对象格式化"><a href="#数组对象格式化" class="headerlink" title="数组对象格式化"></a>数组对象格式化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//数组对象格式化</span><br><span class="line">let obj = &#123;</span><br><span class="line">  a: &#x27;1&#x27;,</span><br><span class="line">  b: &#123;</span><br><span class="line">    c: &#x27;2&#x27;,</span><br><span class="line">    D: &#123;</span><br><span class="line">      E: &#x27;3&#x27;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function nameTo_(object) &#123;</span><br><span class="line">  let regObj = new RegExp(&#x27;([A-Z]+)&#x27;, &#x27;g&#x27;);</span><br><span class="line">  for (let i in object) &#123;</span><br><span class="line">    if (object.hasOwnProperty(i)) &#123;</span><br><span class="line">      let temp = object[i];</span><br><span class="line">      if (regObj.test(i.toString())) &#123;</span><br><span class="line">        temp = object[</span><br><span class="line">          i.replace(regObj, function (result) &#123;</span><br><span class="line">            return &#x27;_&#x27; + result.toLowerCase();</span><br><span class="line">          &#125;)</span><br><span class="line">        ] = object[i];</span><br><span class="line">        delete object[i];</span><br><span class="line">      &#125;</span><br><span class="line">      if (</span><br><span class="line">        typeof temp === &#x27;object&#x27; ||</span><br><span class="line">        Object.prototype.toString.call(temp) === &#x27;[object Array]&#x27;</span><br><span class="line">      ) &#123;</span><br><span class="line">        nameTo_(temp);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(nameTo_(obj));</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1041,7 +1039,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/long-ying.github.io/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
