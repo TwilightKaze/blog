@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/long-ying.github.io/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/long-ying.github.io/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/long-ying.github.io/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/long-ying.github.io/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/long-ying.github.io/css/main.css">
+<link rel="stylesheet" href="/blog/css/main.css">
 
 
-<link rel="stylesheet" href="/long-ying.github.io/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"zhisui.github.io","root":"/long-ying.github.io/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"zhisui.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="最近心情不太好，糟糕事情比较多，心态有点崩，来写我的博客舒缓下心情，又是努力生活的一天呀🤗🤗 安装介绍如果你是想探索linux系统的小白，ArchLinux可以说是一个不错的选择后，听说它有点难装，但我自己装下来感觉还行，这个过程其实挺需要耐心的，特别是你对操作的结果会存在一丝忧虑，比如我就很害怕把我自己的电脑搞崩了，到时候可真是崩溃，但这个探索的过程总的来说还是很享受的。 废话不多说，直接上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无坑版linux安装及使用教程">
-<meta property="og:url" content="https://zhisui.github.io/long-ying.github.io/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:url" content="https://zhisui.github.io/blog/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="愿卿一路好风景">
 <meta property="og:description" content="最近心情不太好，糟糕事情比较多，心态有点崩，来写我的博客舒缓下心情，又是努力生活的一天呀🤗🤗 安装介绍如果你是想探索linux系统的小白，ArchLinux可以说是一个不错的选择后，听说它有点难装，但我自己装下来感觉还行，这个过程其实挺需要耐心的，特别是你对操作的结果会存在一丝忧虑，比如我就很害怕把我自己的电脑搞崩了，到时候可真是崩溃，但这个探索的过程总的来说还是很享受的。 废话不多说，直接上">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zhisui.github.io/long-ying.github.io/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+<link rel="canonical" href="https://zhisui.github.io/blog/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -95,7 +95,7 @@
 
   <div class="site-meta">
 
-    <a href="/long-ying.github.io/" class="brand" rel="start">
+    <a href="/blog/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">愿卿一路好风景</h1>
       <span class="logo-line-after"><i></i></span>
@@ -116,42 +116,42 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/long-ying.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/long-ying.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/long-ying.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/long-ying.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/long-ying.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-schedule">
 
-    <a href="/long-ying.github.io/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+    <a href="/blog/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
 
   </li>
         <li class="menu-item menu-item-sitemap">
 
-    <a href="/long-ying.github.io/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+    <a href="/blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
 
   </li>
         <li class="menu-item menu-item-commonweal">
 
-    <a href="/long-ying.github.io/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+    <a href="/blog/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
 
   </li>
   </ul>
@@ -182,10 +182,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/long-ying.github.io/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/11/22/%E6%97%A0%E5%9D%91%E7%89%88Archlinux%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
       <meta itemprop="name" content="之随">
       <meta itemprop="description" content="好好学习，天天向上">
     </span>
@@ -261,7 +261,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/long-ying.github.io/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/blog/tags/Linux/" rel="tag"># Linux</a>
           </div>
 
         
@@ -270,11 +270,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/long-ying.github.io/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" rel="prev" title="webpack简单配置">
+    <a href="/blog/2021/11/18/webpack%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" rel="prev" title="webpack简单配置">
       <i class="fa fa-chevron-left"></i> webpack简单配置
     </a></div>
       <div class="post-nav-item">
-    <a href="/long-ying.github.io/2021/11/26/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84redux%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E6%89%A9%E5%B1%95/" rel="next" title="推荐一个好用的redux状态显示扩展">
+    <a href="/blog/2021/11/26/%E6%8E%A8%E8%8D%90%E4%B8%80%E4%B8%AA%E5%A5%BD%E7%94%A8%E7%9A%84redux%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E6%89%A9%E5%B1%95/" rel="next" title="推荐一个好用的redux状态显示扩展">
       推荐一个好用的redux状态显示扩展 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -342,21 +342,21 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="之随"
-      src="/long-ying.github.io/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      src="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
   <p class="site-author-name" itemprop="name">之随</p>
   <div class="site-description" itemprop="description">好好学习，天天向上</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/long-ying.github.io/archives/">
+          <a href="/blog/archives/">
         
           <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/long-ying.github.io/tags/">
+            <a href="/blog/tags/">
           
         <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
@@ -413,42 +413,42 @@
   </div>
 
   
-  <script src="/long-ying.github.io/lib/anime.min.js"></script>
-  <script src="/long-ying.github.io/lib/velocity/velocity.min.js"></script>
-  <script src="/long-ying.github.io/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/long-ying.github.io/js/utils.js"></script>
+<script src="/blog/js/utils.js"></script>
 
-<script src="/long-ying.github.io/js/motion.js"></script>
-
-
-<script src="/long-ying.github.io/js/schemes/pisces.js"></script>
+<script src="/blog/js/motion.js"></script>
 
 
-<script src="/long-ying.github.io/js/next-boot.js"></script>
+<script src="/blog/js/schemes/pisces.js"></script>
 
 
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+<script src="/blog/js/next-boot.js"></script>
 
 
 
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
-<script src="/long-ying.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/long-ying.github.io/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
