@@ -179,6 +179,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/11/09/ES6%E8%A3%85%E9%A5%B0%E5%99%A8%E7%AF%87%EF%BC%88decorator%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/11/09/ES6%E8%A3%85%E9%A5%B0%E5%99%A8%E7%AF%87%EF%BC%88decorator%EF%BC%89/" class="post-title-link" itemprop="url">ES6装饰器篇（decorator）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-09 23:48:00" itemprop="dateCreated datePublished" datetime="2021-11-09T23:48:00+08:00">2021-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-10 09:23:38" itemprop="dateModified" datetime="2021-11-10T09:23:38+08:00">2021-11-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="什么是decorator"><a href="#什么是decorator" class="headerlink" title="什么是decorator"></a>什么是decorator</h3><p>decoratotor, 即装饰器，本质其实就是一个函数，用来拓展类属性和类方法</p>
+<p>　ES6 引入了这项功能，目前 Babel 转码器已经支持Decorator</p>
+<p>　　首先，安装<code>babel-core</code>和<code>babel-plugin-transform-decorators</code>。由于后者包括在<code>babel-preset-stage-0</code>之中，所以改为安装<code>babel-preset-stage-0</code>亦可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-core babel-plugin-transform-decorators</span><br></pre></td></tr></table></figure>
+
+<p>　　然后，设置配置文件<code>.babelrc</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;plugins&quot;: [&quot;transform-decorators&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　这时，Babel就可以对Decorator转码了</p>
+<p>　　脚本中打开的命令如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">babel.transform(&quot;code&quot;, &#123;plugins: [&quot;transform-decorators&quot;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>decorator修饰对象为下面两种：、</p>
+<p>1、类的修饰</p>
+<p>2、类属性的修饰</p>
+<h4 id="类的修饰"><a href="#类的修饰" class="headerlink" title="类的修饰"></a>类的修饰</h4><p>对类本身进行修饰的时候，装饰器接受一个参数，这个参数是要修饰的类本身</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@testable</span><br><span class="line">class MyTestableClass&#123;</span><br><span class="line">  //.....</span><br><span class="line">&#125;</span><br><span class="line">//target指代MyTestableClass，为MyTestableClass添加静态属性</span><br><span class="line">function testable(target) &#123;</span><br><span class="line">  target.isTestable = true</span><br><span class="line">&#125;</span><br><span class="line">console.log(MyTestableClass.isTestable); //true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果想要传递参数，可以在装饰器外面再封装一个函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@testable(true)</span><br><span class="line">class MyTestableClass&#123;</span><br><span class="line">  //.....</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function testable(isTestable) &#123;</span><br><span class="line"> return function (target) &#123;</span><br><span class="line">   target.isTestable = isTestable;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(MyTestableClass.isTestable); //true</span><br></pre></td></tr></table></figure>
+
+<h4 id="类属性的修饰"><a href="#类属性的修饰" class="headerlink" title="类属性的修饰"></a>类属性的修饰</h4><p>当对类属性进行修饰时，可接受三个参数</p>
+<p>1、类的原型对象</p>
+<p>2、需要封装的属性名</p>
+<p>3、装饰属性名的描述对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function readOnly(target, name, descriptor) &#123;</span><br><span class="line">  descriptor.writable = false;</span><br><span class="line">  return descriptor;</span><br><span class="line">&#125;</span><br><span class="line">//使用readOnly方法修饰类的name方法</span><br><span class="line">class Person&#123;</span><br><span class="line">  @readOnly</span><br><span class="line">  name()&#123;</span><br><span class="line">    return `$&#123;this.first&#125;$&#123;this.last&#125;`</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>1、使用react-redux的时候，如果写成下面这种形式，既不雅观也比较麻烦，可以写成装饰器的模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyReactComponent extends React.Comment &#123;&#125;</span><br><span class="line">export default connect(mapStateToProps, mapDispatchToProps)(MyReactComponent);</span><br><span class="line">//装饰器模式</span><br><span class="line">@connect(mapDispatchToProps, mapStateToProps)</span><br><span class="line">// eslint-disable-next-line prettier/prettier</span><br><span class="line">export default class MyReactComponent extends React.Component&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>mixins也可以写成装饰器的模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function mixins(...list) &#123;</span><br><span class="line">  return function (target) &#123;</span><br><span class="line">    Object.assign(target.proptype, ...list);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用</span><br><span class="line">const Foo = &#123;</span><br><span class="line">  foo() &#123;</span><br><span class="line">    console.log(&#x27;foo&#x27;);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@mixins(Foo)</span><br><span class="line">class MyClass &#123;&#125;</span><br><span class="line">let obj = new MyClass();</span><br><span class="line">obj.foo(); //foo</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/11/04/%E5%B0%BE%E9%80%92%E5%BD%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,77 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/08/17/%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E5%92%8C%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84refs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/08/17/%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E5%92%8C%E7%B1%BB%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84refs/" class="post-title-link" itemprop="url">函数组件和类组件中的refs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-08-17 09:53:54 / 修改时间：11:15:45" itemprop="dateCreated datePublished" datetime="2021-08-17T09:53:54+08:00">2021-08-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、ref引用在DOM元素上"><a href="#一、ref引用在DOM元素上" class="headerlink" title="一、ref引用在DOM元素上"></a>一、ref引用在DOM元素上</h3><h4 id="函数组件中的ref"><a href="#函数组件中的ref" class="headerlink" title="函数组件中的ref"></a>函数组件中的ref</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function  Child (props)&#123;</span><br><span class="line">  let  myRef =React.createRef();</span><br><span class="line"></span><br><span class="line">const handleFocus=()=&gt;&#123;</span><br><span class="line">   myRef.current.style.borderColor=&quot;red&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; ref=&#123;myRef&#125; &gt;&lt;/input&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot; value=&quot;点我输入边框变成红色&quot; onClick=&#123;handleFocus&#125;/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Child/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h4 id="类组件中的ref"><a href="#类组件中的ref" class="headerlink" title="类组件中的ref"></a>类组件中的ref</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Child  extends React.Component&#123;</span><br><span class="line">constructor(props)&#123;</span><br><span class="line">  super(props)</span><br><span class="line">  this.myRef =React.createRef();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> handleFocus=()=&gt;&#123;</span><br><span class="line">   this.myRef.current.style.borderColor=&quot;red&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; ref=&#123;this.myRef&#125; &gt;&lt;/input&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot; value=&quot;点我输入边框变成红色&quot; onClick=&#123;this.handleFocus&#125;/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Child/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>将ref放到函数组件和类组件的普通DOM元素上，则它们都可以获取到当前DOM元素的的原生DOM节点，就可以对这个节点进行一系列的操作。</p>
-<h3 id="二、ref引用在组件上"><a href="#二、ref引用在组件上" class="headerlink" title="二、ref引用在组件上"></a>二、ref引用在组件上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Child  extends React.Component&#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.myRef =React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> handleFocus=()=&gt;&#123;</span><br><span class="line">   this.myRef.current.style.borderColor=&quot;red&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; ref=&#123;this.myRef&#125; &gt;&lt;/input&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot; value=&quot;点我输入边框变成红色&quot; onClick=&#123;this.handleFocus&#125;/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class App extends React.Component&#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.myRef =React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">  this.myRef.current.handleFocus(); //当组件挂载时直接将输入框变成红色</span><br><span class="line">&#125;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;Child ref=&#123;this.myRef&#125;/&gt; //将ref引用在Child子组件上</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App/&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>​      上面的例子在componentDidMount()方法中直接调用子组件的handleFocus()，从而实现页面一开始显示的时候输入框边框显示红色，说明在组件中引用ref,则ref指向改组件的实例，可以调用实例的方法，因为函数组件没有实例，所以函数组件不能引用ref.</p>
-<p>另一种设置refs的方式是采用回调函数的方式， 回调函数的参数是React 组件实例或 HTML DOM 元素 ,ref指向哪一个DOM元素或者组件由这个回调函数决定。</p>
-<p><strong>！！！！！！！！！注意！！！！！！！</strong></p>
-<p><strong>使用回调函数的方式设置refs 时，在访问DOM节点的时候不需要用current属性</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Child  extends React.Component&#123;</span><br><span class="line">  constructor(props)&#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.myRef = null</span><br><span class="line"></span><br><span class="line">    this.setMyRef = (input)=&gt;&#123;</span><br><span class="line">     this.myRef = input;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   handleFocus=()=&gt;&#123;</span><br><span class="line">    console.log(this.myRef);</span><br><span class="line">    this.myRef.style.borderColor=&quot;red&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; ref=&#123;this.setMyRef&#125; &gt;&lt;/input&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot; value=&quot;点我输入边框变成红色&quot; onClick=&#123;this.handleFocus&#125;/&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1028,14 +1054,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
