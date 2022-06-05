@@ -179,6 +179,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/09/13/%E5%B0%86React%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0gitHUb%E4%B8%8A%E5%B9%B6%E7%94%9F%E6%88%90%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/09/13/%E5%B0%86React%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0gitHUb%E4%B8%8A%E5%B9%B6%E7%94%9F%E6%88%90%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5/" class="post-title-link" itemprop="url">将React项目部署到gitHUb上并生成网页链接</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-13 23:36:12" itemprop="dateCreated datePublished" datetime="2021-09-13T23:36:12+08:00">2021-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-14 00:15:32" itemprop="dateModified" datetime="2021-09-14T00:15:32+08:00">2021-09-14</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>发现自己很久都没有写总结了，罪过罪过。最近烦心事有点多，为了转移点注意力来更下我的小天地。</p>
+<p>这里我就不写gitHub账号注册的步骤了，默认你自己已经有一个帐号了。</p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>首先在你的gitHub新建一个仓库，仓库按照一般的仓库来起名就好，不用像hexo那样在后面加.io，并且把SSH （注意要选ssh,选https会出错）地址复制下来后面要用到</p>
+<h3 id="将本地代码上传到github上"><a href="#将本地代码上传到github上" class="headerlink" title="将本地代码上传到github上"></a>将本地代码上传到github上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在项目所在的文件夹执行以下步骤命令</span><br><span class="line">1、git init </span><br><span class="line">2、git add .</span><br><span class="line">3、git commit -m &quot;你要写的提交信息&quot;</span><br><span class="line">4、git remote add origin git@github.com:zhisui/qingtian.git </span><br><span class="line">5、git pull origin master</span><br><span class="line">6、git push -u origin master 执行这句可能会出错，git push -f origin master</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改本地React项目的package-json文件"><a href="#修改本地React项目的package-json文件" class="headerlink" title="修改本地React项目的package.json文件"></a>修改本地React项目的package.json文件</h3><p>配置homepage</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;my-qingtian&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;homepage&quot;: &quot;https://zhisui.github.io/qingtian&quot;,  //就是这个地方了，这个创库地址可以按照你自己的想法适当修改一下</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;@fontsource/roboto&quot;: &quot;^4.5.0&quot;,</span><br><span class="line">    &quot;@material-ui/core&quot;: &quot;^4.12.3&quot;,</span><br><span class="line">    &quot;@material-ui/icons&quot;: &quot;^4.11.2&quot;,</span><br><span class="line">    &quot;@testing-library/jest-dom&quot;: &quot;^5.11.4&quot;,</span><br><span class="line">    &quot;@testing-library/react&quot;: &quot;^11.1.0&quot;,</span><br><span class="line">    &quot;@testing-library/user-event&quot;: &quot;^12.1.10&quot;,</span><br><span class="line">    &quot;axios&quot;: &quot;^0.21.4&quot;,</span><br><span class="line">    &quot;bricks.js&quot;: &quot;^1.8.0&quot;,</span><br><span class="line">    &quot;react&quot;: &quot;^17.0.2&quot;,</span><br><span class="line">    &quot;react-dom&quot;: &quot;^17.0.2&quot;,</span><br><span class="line">    &quot;react-scripts&quot;: &quot;4.0.3&quot;,</span><br><span class="line">    &quot;web-vitals&quot;: &quot;^1.0.1&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>配置发布选项</p>
+<p>在scripts字段条件下面这两句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;react-scripts start&quot;,</span><br><span class="line">  &quot;build&quot;: &quot;react-scripts build&quot;,</span><br><span class="line">  &quot;test&quot;: &quot;react-scripts test&quot;,</span><br><span class="line">  &quot;eject&quot;: &quot;react-scripts eject&quot;,</span><br><span class="line">  &quot;predeploy&quot;: &quot;npm run build&quot;,   //加上它</span><br><span class="line">  &quot;deploy&quot;: &quot;gh-pages -d build&quot; //加上它</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装gh-pages"><a href="#安装gh-pages" class="headerlink" title="安装gh-pages"></a>安装gh-pages</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gh-pages --save-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="将项目代码编译之后部署到github上"><a href="#将项目代码编译之后部署到github上" class="headerlink" title="将项目代码编译之后部署到github上"></a>将项目代码编译之后部署到github上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run deploy</span><br></pre></td></tr></table></figure>
+
+<p>配置完之后，我们回到github上的仓库，会发现原先的项目多了一个gh-pages分支，里面存放的是我们打包编译完成之后的静态文件。</p>
+<p>切换到setting下，将Source里面的路径选为gh-pages ，对应会有一个链接，这个链接就是刚才在pakeage.json文件配置的那个，打开它就打开了新世界的大门。完结，撒花！！！！！！~~~~~~~~</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/08/20/%E4%BD%BF%E7%94%A8context%E5%AE%9E%E7%8E%B0%E4%B8%BB%E9%A2%98%E9%A2%9C%E8%89%B2%E6%9B%B4%E6%94%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -933,116 +1017,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/08/12/ES6%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%89%A9%E5%B1%95%E4%B8%80%EF%BC%88%E6%95%B0%E7%BB%84%E7%AF%87%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/08/12/ES6%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%89%A9%E5%B1%95%E4%B8%80%EF%BC%88%E6%95%B0%E7%BB%84%E7%AF%87%EF%BC%89/" class="post-title-link" itemprop="url">ES6中新增扩展一（数组篇）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-08-12 08:58:46 / 修改时间：11:05:58" itemprop="dateCreated datePublished" datetime="2021-08-12T08:58:46+08:00">2021-08-12</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、扩展运算符"><a href="#一、扩展运算符" class="headerlink" title="一、扩展运算符"></a>一、扩展运算符</h3><h4 id="核心概念：将数组变成参数序列"><a href="#核心概念：将数组变成参数序列" class="headerlink" title="核心概念：将数组变成参数序列"></a>核心概念：将数组变成参数序列</h4><p>1、可用于函数调用时将一个数组变成参数序列</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function push(array, ...item)&#123;</span><br><span class="line"> return array.push(...item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.将某些数据结构转化为数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...document.querySelectorAll(&#x27;div&#x27;)]</span><br></pre></td></tr></table></figure>
-
-<p>3、数组的合并</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr1=[2,3,4,5];</span><br><span class="line">let arr2 = [4,5,6,7];</span><br><span class="line">let arr=[...arr1, ...arr2];</span><br><span class="line">console.log(arr); //[2, 3, 4, 5,4, 5, 6, 7]</span><br></pre></td></tr></table></figure>
-
-<p>4、与解构赋值结合起来使用</p>
-<p>注意：扩展运算符自能放在参数的最后一个位置，否则会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const [first, ...rest] = [1,2,3,4,5,6];</span><br><span class="line">console.log(first); //1</span><br><span class="line">console.log(rest);//[ 2, 3, 4, 5, 6 ]</span><br><span class="line">console.log(...rest); // 2 3 4 5 6</span><br></pre></td></tr></table></figure>
-
-<p>5、将字符串转化为数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(...&#x27;javascript&#x27;); // j a v a s c r i p t</span><br><span class="line">console.log([...&#x27;javascript&#x27;]);//[ &#x27;j&#x27;, &#x27;a&#x27;, &#x27;v&#x27;, &#x27;a&#x27;, &#x27;s&#x27;, &#x27;c&#x27;, &#x27;r&#x27;, &#x27;i&#x27;,&#x27;p&#x27;, &#x27;t&#x27;]  </span><br><span class="line">相当于字符串的split函数（将字符串分割成字符串数组）</span><br></pre></td></tr></table></figure>
-
-<p>可见如果扩展运算符后面不是数组而是字符串的时候也可以正常扩展</p>
-<h3 id="二、数组的构造函数新增方法"><a href="#二、数组的构造函数新增方法" class="headerlink" title="二、数组的构造函数新增方法"></a>二、数组的构造函数新增方法</h3><h4 id="1、Array-from"><a href="#1、Array-from" class="headerlink" title="1、Array.from"></a>1、Array.from</h4><p>将类似数组的对象和可遍历的对象（iterable)包括Set和Map转化成数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arrayLike = &#123;</span><br><span class="line">  &#x27;0&#x27;: &#x27;first&#x27;,</span><br><span class="line">  &#x27;1&#x27;: &#x27;second&#x27;,</span><br><span class="line"> &#x27;2&#x27;:&#x27;third&#x27;,</span><br><span class="line">  length: 3</span><br><span class="line">&#125;</span><br><span class="line">console.log(Array.from(arrayLike)); //[ &#x27;first&#x27;, &#x27;second&#x27;, &#x27;third&#x27; ]</span><br></pre></td></tr></table></figure>
-
-<p>注意，如果key从0开始，如果key值得存在，则生成的数组对应的index处的值为undefined</p>
-<h4 id="2-Array-of"><a href="#2-Array-of" class="headerlink" title="2.Array.of()"></a>2.Array.of()</h4><p>将一组值转换为数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(Array(2,3,4)); //[ 2, 3, 4 ]</span><br><span class="line">console.log(Array.of(2,3,4,4)); //[ 2, 3, 4, 4 ]</span><br><span class="line">console.log(Array.of(3)); //[ 3 ]</span><br><span class="line">console.log(Array(3)); //[ &lt;3 empty items&gt; ] 包含3个空值的数组</span><br></pre></td></tr></table></figure>
-
-<h3 id="三、实例对象新增方法"><a href="#三、实例对象新增方法" class="headerlink" title="三、实例对象新增方法"></a>三、实例对象新增方法</h3><ul>
-<li><p>copyWith()</p>
-</li>
-<li><h5 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h5></li>
-<li><h5 id="findindex"><a href="#findindex" class="headerlink" title="findindex"></a>findindex</h5></li>
-<li><h5 id="fill"><a href="#fill" class="headerlink" title="fill()"></a>fill()</h5></li>
-<li><h5 id="enteries"><a href="#enteries" class="headerlink" title="enteries()"></a>enteries()</h5></li>
-<li><h5 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h5></li>
-<li><h5 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h5></li>
-<li><h5 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h5></li>
-<li><h5 id="flat"><a href="#flat" class="headerlink" title="flat()"></a>flat()</h5></li>
-<li><h5 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap()"></a>flatMap()</h5></li>
-</ul>
-<h4 id="1-copyWithin"><a href="#1-copyWithin" class="headerlink" title="1.copyWithin()"></a>1.copyWithin()</h4><p>将指定位置的数组元素复制到其他的位置，返回覆盖后的新数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr= [3,4,9,5,6,7];</span><br><span class="line">let result = arr.copyWithin(0, 2, 3);</span><br><span class="line">console.log(result); //[ 9, 4, 9, 5, 6, 7 ]</span><br></pre></td></tr></table></figure>
-
-<p>第一个参数表示要开始替换的数组索引号，第二个参数表示从那个位置开始复制数组，最后一个表示那个位置结束（但是不包括这个位置的值）</p>
-<h4 id="2-find（）"><a href="#2-find（）" class="headerlink" title="2.find（）"></a>2.find（）</h4><p>返回<strong>第一个</strong>符合条件的数组元素，find的参数是一个函数，函数参数可包含（value,index，array）</p>
-<h4 id="3-findIndex"><a href="#3-findIndex" class="headerlink" title="3.findIndex()"></a>3.findIndex()</h4><p>返回<strong>第一个</strong>符合条件的数组元素对应得索引号，如果所有的元素都不符合条件，则返回-1.</p>
-<h4 id="4-fill"><a href="#4-fill" class="headerlink" title="4.fill()"></a>4.fill()</h4><p>将给定值作为函数的参数，覆盖原有数组的值，可接受第二个和第三个参数，表示覆盖的初始位置和终始位置（不包含终始位置）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr=[1,2,3,4];</span><br><span class="line">arr.fill(2,0,2);</span><br><span class="line">console.log(arr); //[ 2, 2, 3, 4 ]</span><br><span class="line">arr.fill(3);</span><br><span class="line">console.log(arr); //[ 3, 3, 3, 3 ]</span><br></pre></td></tr></table></figure>
-
-<h4 id="5、flat"><a href="#5、flat" class="headerlink" title="5、flat()"></a>5、flat()</h4><p>将数组扁平化处理，返回一个新数组，对原数组没有影响</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let arr = [3,4,[4,5,[4,2,2]]];</span><br><span class="line"> //flat（）参数默认值为1，只处理一层</span><br><span class="line">console.log(arr); //[ 3, 4, [ 4, 5, [ 4, 2, 2 ] ] ] 不改变原数组</span><br><span class="line">console.log(arr.flat()); //[ 3, 4, 4, 5, [ 4, 2, 2 ] ]</span><br><span class="line"></span><br><span class="line">处理两层</span><br><span class="line">console.log(arr.flat(2)); //[3, 4, 4, 5,4, 2, 2]</span><br></pre></td></tr></table></figure>
-
-<h4 id="flatMap-1"><a href="#flatMap-1" class="headerlink" title="flatMap()"></a>flatMap()</h4><p>对每个数组成员执行map方法，然后再将返回的结果执行flat方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arrs = [3,3,4,6,7,8];</span><br><span class="line">let newarr  = arrs.flatMap(value=&gt;[value, value*3]);</span><br><span class="line">console.log(newarr); [3,  9,  3, 9,  4,12,  6, 18, 7, 21,8, 24]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1114,7 +1088,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
