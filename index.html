@@ -179,6 +179,83 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2022/07/15/taro%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2022/07/15/taro%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">taro笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-15 23:00:27" itemprop="dateCreated datePublished" datetime="2022-07-15T23:00:27+08:00">2022-07-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-16 00:00:46" itemprop="dateModified" datetime="2022-07-16T00:00:46+08:00">2022-07-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一天有一天的事情，想想自己也是很久没写博客了，越来越懒了，周五就很想躺着追剧，想想还是克制了，得把我这篇写写。</p>
+<p>最近这个taro整得我有点难过，已经各执一段时间的东西又被捡起来了，要搞啥适老化，调样式调得有点烦，昨天晚上用自己的电脑安装了下taro，想运行下项目，结果出现了一堆问题，果然人生就是不断地制造问题然后不断地解决问题的，解决了挺有成就感的，解决不了就摆烂，到了某个时间段答案总会浮出水面。</p>
+<h4 id="安装Taro"><a href="#安装Taro" class="headerlink" title="安装Taro"></a>安装Taro</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安装 CLI</span><br><span class="line">$ npm install -g @tarojs/cli</span><br><span class="line"></span><br><span class="line"># OR 使用 yarn 安装 CLI</span><br><span class="line">$ yarn global add @tarojs/cli</span><br><span class="line"></span><br><span class="line"># OR 安装了 cnpm，使用 cnpm 安装 CLI</span><br><span class="line">$ cnpm install -g @tarojs/cli</span><br></pre></td></tr></table></figure>
+
+<p>我在安装的时候提示已经安装成功了，但是用yarn dev:weapp编译运行的时候出现了错误，后来搜索了一些解决方案，反正就是不断地尝试，因为你并不知道答案对不对，有时候它没用，有时候它就莫名奇妙地对了，结果都是摸索出来的。 网上有人说<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=yarn&spm=1001.2101.3001.7020">yarn</a> 的 <strong>全局安装位置</strong> 和 <strong>全局bin位置</strong>不同导致错误，我查看了自己的yarn全局安装位置和全局bin位置，果然不同，具体看这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/zimeng303/article/details/109741322">npm/yarn修改全局安装路径和缓存路径</a></p>
+<p>修改之后将yarn全局bin路径添加到电脑的环境变量。</p>
+<p>在执行安装taro指令的时候尽量不要在项目目录里面执行,不然很容易全局安装不了，我也不知道是不是有这个原因，当时我是设置好环境变量，然后再C盘根路径下打开终端执行安装命令，它就安装成功了。</p>
+<p>好了，安装好Taro,编译项目，提示Taro已经运行起来了，版本号是。。。，记不清了，然后又开始报错，说找不到啥啥的，昨天晚上没截图，不好意思。。。倒腾了一会，最后想到了可能是taro版本的问题，因为观察到项目里用的taro版本和我安装的不一样，我安装的版本要高些，然后重新安装项目对应版本的，重新编译运行，项目跑起来啦！！</p>
+<p>打开微信开发者工具，哦豁，提示app.json文件找不到！！！，救命，为什么的在公司打开这个项目的时候没遇到这么多问题，此时已是晚上11点多，我在想我还有时间改点东西吗，我真的是会，好吧，开始解决。其实之前没接触过taro ,该咋样咋样把。最后的答案，在project.private.config.json里面加入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;miniprogramRppt&quot;:&quot;./路径&quot; 双引号的内容是你项目文件app.json所在的路径，路径里面不要加入app.json，指明到它的上一级路径即可</span><br></pre></td></tr></table></figure>
+
+<p>ok ,终于出来了，然后今天改完了样式，准备全局注入，结果无法像pc端那样全局加入类，我真的是。。。。郁闷了一个下午，网上的回答也是少得可怜，基本没啥答案，幸运的是今天h5正常在浏览器打开了，最重要得事情就是想想怎么像在浏览器那样获取DOM添加类名，这个周末注定是要和taro过了，我的css视频还没刷完呢。。。。不过研究下taro也不错，希望不会让人觉得太烦躁。</p>
+<p>最后，附上无意中听到的一首周杰伦的《手写的从前》里的一段rap歌词，真的爱了，希望能唤醒我已多年未陶冶的情操。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">微风需要竹林 溪流需要蜻蜓</span><br><span class="line">乡愁般的离开 需要片片浮萍</span><br><span class="line">记得那年的雨季 回忆里特安静</span><br><span class="line">哭过后的决定 是否还能进行</span><br><span class="line">我傻傻等待 傻傻等春暖花开</span><br><span class="line">等终等于等明等白 等爱情回来</span><br><span class="line">青春属于表白 阳光属于窗台</span><br><span class="line">而我想我属于一个拥有你的未来</span><br><span class="line">纸上的彩虹 用素描画的钟</span><br><span class="line">我还在修改 回忆之中你的笑容</span><br><span class="line">该怎么去形容 为思念酝酿的痛</span><br><span class="line">夜空霓虹 都是我不要的繁荣</span><br><span class="line">或许去趟沙滩 或许去看夕阳</span><br><span class="line">或许任何一个可以想心事的地方</span><br><span class="line">情绪在咖啡馆 被调成一篇文章</span><br><span class="line">彻底爱上你如诗一般透明的泪光</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2022/06/21/Reduce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -815,77 +892,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/12/03/Mobx%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/12/03/Mobx%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">Mobx源码解析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-12-03 09:09:26 / 修改时间：09:14:30" itemprop="dateCreated datePublished" datetime="2021-12-03T09:09:26+08:00">2021-12-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>特别推荐，作者讲得很好，生动形象！！</p>
-<ul>
-<li><p>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000013682735">【用故事解读 MobX源码（一）】 autorun</a>》</p>
-</li>
-<li><p>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014238836">【用故事解读 MobX源码（二）】 computed</a>》</p>
-</li>
-<li><p>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000014726483">【用故事解读 MobX源码（三）】 shouldCompute</a>》</p>
-</li>
-<li><p>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015481998">【用故事解读 MobX 源码（四）】装饰器 和 Enhancer</a>》</p>
-</li>
-<li><p>《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015875144">【用故事解读 MobX 源码（五）】 Observable</a>》</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -957,14 +963,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

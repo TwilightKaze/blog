@@ -179,6 +179,146 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/08/14/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/08/14/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">CSS常见布局</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-14 00:17:10" itemprop="dateCreated datePublished" datetime="2021-08-14T00:17:10+08:00">2021-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-25 16:21:28" itemprop="dateModified" datetime="2021-09-25T16:21:28+08:00">2021-09-25</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="一、两栏布局，右侧自适应"><a href="#一、两栏布局，右侧自适应" class="headerlink" title="一、两栏布局，右侧自适应"></a>一、两栏布局，右侧自适应</h3><h4 id="方法一：使用flex布局"><a href="#方法一：使用flex布局" class="headerlink" title="方法一：使用flex布局"></a>方法一：使用flex布局</h4><p>将box父盒子的display属性设置为flex,左栏的宽度按需设计，右栏添加flex:1属性</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title="使用flex实现两栏布局，右栏自适应" src="https://codepen.io/long-ying/embed/mdmoNXo?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/mdmoNXo">
+  使用flex实现两栏布局，右栏自适应</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+<p>关于flex:1的解释</p>
+<p>flex :1 是flex-grow:1 flex-shrink: 1 flex-basis:0的缩写。</p>
+<p>flex-grow:1 将自身的宽度扩大2倍，如果其余的同级盒子没有设置该属性，最后一个盒子如果设置该属性后则会自动填满父盒子。</p>
+<p>flex-shrink:1 将自身的宽度缩小为原来的二分之一，如果第一个子盒子的宽度特别大，超出的父盒子的宽度，剩余盒子设置flex-shrink:1 属性之后，会自动缩小自身的宽度来适应前面的盒子宽度。</p>
+<p>flex-basis:0(这个属性不是很明白能干嘛)</p>
+<h4 id="方法二：使用float布局"><a href="#方法二：使用float布局" class="headerlink" title="方法二：使用float布局"></a>方法二：使用float布局</h4><p>1、使用flaot左浮左边栏</p>
+<p>2、右边栏用margin-left隔开</p>
+<p>3、为父元素田间BFC，防止下方的元素飞到上方内容</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/GRmeVyL?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/GRmeVyL">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="关于BFC的解释"><a href="#关于BFC的解释" class="headerlink" title="关于BFC的解释"></a>关于BFC的解释</h4><p>BFC是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素</p>
+<p> 一个HTML元素要创建BFC，则满足下列的任意一个或多个条件即可： </p>
+<p> 1、float的值不是none。<br>2、position的值不是static或者relative。<br>3、display的值是inline-block、table-cell、flex、table-caption或者inline-flex<br>4、overflow的值不是visible </p>
+<p>创建一个BFC的通常使用 overflow：hidden来创建</p>
+<p><strong>应用场景</strong></p>
+<p>１、属于同一BFC的两个相邻块元素的margin会发生重叠，要避免这种情况，可以新创建一个BFC，让这两个相邻块元素处于不同的BFC；</p>
+<p>２、当父盒子的宽度没有设置的时候，设置父盒子的背景颜色是无法显示的，即使父盒子里面有子盒子占据空间，这时候给父盒子设置一个BFC，父盒子就可以显示了。</p>
+<p>３、对于浮动元素，可能会造成文字环绕的情况(Figure1)，但这并不是我们想要的布局(Figure2才是想要的)。要解决这个问题，我们可以用外边距，但也可以用BFC。 </p>
+<p><img src="https://camo.githubusercontent.com/f09eac6e73acf8ecfcc329b1bff19c778912219e/687474703a2f2f7365676d656e746661756c742e636f6d2f696d672f62566d327159"></p>
+<p>４、在多列布局中使用BFC</p>
+<p> 如果我们创建一个占满整个容器宽度的多列布局，在某些浏览器中最后一列有时候会掉到下一行。这可能是因为浏览器四舍五入了列宽从而所有列的总宽度会超出容器。但如果我们在多列布局中的最后一列里创建一个新的BFC，它将总是占据其他列先占位完毕后剩下的空间。 </p>
+<iframe height="300" style="width: 100%;" scrolling="no" title="Tic Tac Toe" src="https://codepen.io/long-ying/embed/LYyaMQB?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/LYyaMQB">
+  Tic Tac Toe</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p>如果没有在最后一个设置BFC，则最后一个会掉下来落在第一个盒子的下面。</p>
+<h3 id="二、三栏布局中间自适应"><a href="#二、三栏布局中间自适应" class="headerlink" title="二、三栏布局中间自适应"></a>二、三栏布局中间自适应</h3><h4 id="方法一：使用flex布局-1"><a href="#方法一：使用flex布局-1" class="headerlink" title="方法一：使用flex布局"></a>方法一：使用flex布局</h4><p>为父盒子添加display:flex，设置左右两边盒子的宽度，中间盒子设置flex:1或者width：100%即可架构剩下的空间填满。</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/ExmMqRo?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/ExmMqRo">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="方法二：-两边使用float-中间使用margin"><a href="#方法二：-两边使用float-中间使用margin" class="headerlink" title="方法二： 两边使用float,中间使用margin"></a>方法二： 两边使用float,中间使用margin</h4><iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/qBmvegM?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/qBmvegM">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p><strong>注意：中间的盒子要放在最后面，否则右边的盒子会掉下来</strong></p>
+<p>缺陷：右边在主题内容之前，如果是响应式布局，则不能实现简单的换行展示。</p>
+<h4 id="方法三：两边使用绝对定位，中间使用margin"><a href="#方法三：两边使用绝对定位，中间使用margin" class="headerlink" title="方法三：两边使用绝对定位，中间使用margin"></a>方法三：两边使用绝对定位，中间使用margin</h4><p>和flaot布局相似</p>
+<iframe height="300" style="width: 100%;" scrolling="no" title src="https://codepen.io/long-ying/embed/mdmgbXP?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/mdmgbXP">
+  </a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h4 id="方法四：-使用grid布局"><a href="#方法四：-使用grid布局" class="headerlink" title="方法四： 使用grid布局"></a>方法四： 使用grid布局</h4><iframe height="300" style="width: 100%;" scrolling="no" title="使用grid布局实现三栏布局，中间自适应" src="https://codepen.io/long-ying/embed/jOmRNvZ?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/long-ying/pen/jOmRNvZ">
+  使用grid布局实现三栏布局，中间自适应</a> by loyal (<a target="_blank" rel="noopener" href="https://codepen.io/long-ying">@long-ying</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/08/12/ES6%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%89%A9%E5%B1%95%E4%B8%80%EF%BC%88%E6%95%B0%E7%BB%84%E7%AF%87%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2301,107 +2441,6 @@ upLS();
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/07/08/%E6%96%87%E6%A1%A3%E7%9A%84%E4%BF%AE%E6%94%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/07/08/%E6%96%87%E6%A1%A3%E7%9A%84%E4%BF%AE%E6%94%B9/" class="post-title-link" itemprop="url">文档的修改</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-08 09:20:52" itemprop="dateCreated datePublished" datetime="2021-07-08T09:20:52+08:00">2021-07-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-04 17:30:52" itemprop="dateModified" datetime="2021-08-04T17:30:52+08:00">2021-08-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="文档的修改"><a href="#文档的修改" class="headerlink" title="文档的修改"></a>文档的修改</h2><h3 id="插入方法"><a href="#插入方法" class="headerlink" title="插入方法"></a>插入方法</h3><p>标签和文本的插入：使用before、prepend、append、after方法</p>
-<img src="/long-ying.github.io/long-ying.github.io/2021/07/08/%E6%96%87%E6%A1%A3%E7%9A%84%E4%BF%AE%E6%94%B9/Users\之水\AppData\Roaming\Typora\typora-user-images\1625707429904.png" alt="1625707429904" style="zoom: 80%;">
-
-<h3 id="HTML代码的插入：insertAdjacentHTML-where-html"><a href="#HTML代码的插入：insertAdjacentHTML-where-html" class="headerlink" title="HTML代码的插入：insertAdjacentHTML(where,html)"></a>HTML代码的插入：insertAdjacentHTML(where,html)</h3><p> where的值可以是“beforeend”,”beforebegin”、“afetrend”、“afterbegin”</p>
-<h3 id="节点的移除"><a href="#节点的移除" class="headerlink" title="节点的移除"></a>节点的移除</h3><h4 id="node-remove"><a href="#node-remove" class="headerlink" title="node.remove();"></a>node.remove();</h4><h3 id="克隆节点elem-cloneNode-true"><a href="#克隆节点elem-cloneNode-true" class="headerlink" title="克隆节点elem.cloneNode(true)"></a>克隆节点elem.cloneNode(true)</h3><p>举例：div2  = div.cloneNode(true)，参数true表明会克隆div的所有特性和子元素，false则表明不克隆子元素</p>
-<h3 id="DocumentFragment"><a href="#DocumentFragment" class="headerlink" title="DocumentFragment"></a>DocumentFragment</h3><p><code>DocumentFragment</code> 是一个特殊的 DOM 节点，用作来传递节点列表的包装器（wrapper）。</p>
-<p>我们可以向其附加其他节点，但是当我们将其插入某个位置时，则会插入其内容。</p>
-<p> 例如，下面这段代码中的 <code>getListContent</code> 会生成带有 <code>列表项的片段，然后将其插入到</code> 中： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;ul&quot;&gt;&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">function getListContent() &#123;</span><br><span class="line">  let fragment = new DocumentFragment();</span><br><span class="line"></span><br><span class="line">  for(let i=1; i&lt;=3; i++) &#123;</span><br><span class="line">    let li = document.createElement(&#x27;li&#x27;);</span><br><span class="line">    li.append(i);</span><br><span class="line">    fragment.append(li);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return fragment;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul.append(getListContent()); // (*)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="parentElem-apendChild-node"><a href="#parentElem-apendChild-node" class="headerlink" title="parentElem.apendChild(node)"></a>parentElem.apendChild(node)</h3><p>在父元素parentElment的最后插入一个位置插入node子元素。</p>
-<h3 id="小例子"><a href="#小例子" class="headerlink" title="小例子"></a>小例子</h3><h4 id="动态创建列表"><a href="#动态创建列表" class="headerlink" title="动态创建列表"></a>动态创建列表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let ul = document.createElement(&#x27;ul&#x27;);</span><br><span class="line">document.body.append(ul);</span><br><span class="line">while(true)&#123;</span><br><span class="line"> let value =prompt(&quot;请输入内容&quot;, &#x27;&#x27;);</span><br><span class="line"> if(!value)&#123;</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br><span class="line">ul.insertAdjacentHTML(&#x27;afterbegin&#x27;,`&lt;li&gt;$&#123;value&#125;&lt;/li&gt;`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="从对象创建树"><a href="#从对象创建树" class="headerlink" title="从对象创建树"></a>从对象创建树</h3><h2 id="元素的大小和滚动"><a href="#元素的大小和滚动" class="headerlink" title="元素的大小和滚动"></a>元素的大小和滚动</h2><h3 id="检查一个元素是否被隐藏"><a href="#检查一个元素是否被隐藏" class="headerlink" title="检查一个元素是否被隐藏"></a>检查一个元素是否被隐藏</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function isHidden(elem)&#123;</span><br><span class="line">return !elem.offsetWidth &amp;&amp; elem.offsetHeight</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="getComputeStyle-elem-width和elem-clientWidth之间有什么不同点"><a href="#getComputeStyle-elem-width和elem-clientWidth之间有什么不同点" class="headerlink" title="getComputeStyle(elem).width和elem.clientWidth之间有什么不同点"></a>getComputeStyle(elem).width和elem.clientWidth之间有什么不同点</h3><p>1、elem.clientWidth的值是数值，而getComputedStyle(elem).width是返回一个以px结尾的字符串。</p>
-<p>2、getComputeStyle可能会返回非数值的width,例如内联元素的“auto”;</p>
-<p>3、clientWidth是元素的内部区域加上padding的距离，而getComputeStyle(elem).width是内部区域（具有标准的box-sizing），不包含padding;</p>
-<p>4、getComputeStyle(elem)计算得到的宽度有的浏览器包含进度条，有的浏览器不包含进度条，clientWidth始终不包含滚动条的宽度。</p>
-<p><img src="/long-ying.github.io/long-ying.github.io/2021/07/08/%E6%96%87%E6%A1%A3%E7%9A%84%E4%BF%AE%E6%94%B9/Users\之水\AppData\Roaming\Typora\typora-user-images\1626400220362.png" alt="1626400220362"></p>
-<h3 id="window-innnerWidth和document-documentElement-clientWidth的区别"><a href="#window-innnerWidth和document-documentElement-clientWidth的区别" class="headerlink" title="window.innnerWidth和document.documentElement.clientWidth的区别"></a>window.innnerWidth和document.documentElement.clientWidth的区别</h3><p>前者包含整个页面的宽度，后者不包括进度条。</p>
-<h3 id="ScrollTo、ScrollBy的区别"><a href="#ScrollTo、ScrollBy的区别" class="headerlink" title="ScrollTo、ScrollBy的区别"></a>ScrollTo、ScrollBy的区别</h3><p>ScrollT（pagex, pagey）,j滚动到相对于整个文档的位置</p>
-<p>ScrollBy(x,y),以当前所在的位置为参考点，移动到(x,y）位置</p>
-<h3 id="scrolltoView-true-false"><a href="#scrolltoView-true-false" class="headerlink" title="scrolltoView(true/false)"></a>scrolltoView(true/false)</h3><p>elem.scrolltoView(true),true是默认值，会将当前的元素定位到窗口的顶部，反之为false则定位到底部。</p>
-<h3 id="禁止滚动"><a href="#禁止滚动" class="headerlink" title="禁止滚动"></a>禁止滚动</h3><p>document.body.style.overflow= “hidden”;    禁止滚动</p>
-<p>document.body.style.overflow = ‘’;  解除禁止滚动</p>
-<h3 id="elementFromPoint-x-y"><a href="#elementFromPoint-x-y" class="headerlink" title="elementFromPoint(x,y)"></a>elementFromPoint(x,y)</h3><p>document.elementFromPoint（x,y）会返回在窗口坐标（x,y）出嵌套最多的元素</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let centerX = document.documentElement.clientWdith/2;</span><br><span class="line">let centerY = document.documentElement.clientheight/2;</span><br><span class="line">let elem =document.elementFromPiont(centerX, centerY);</span><br><span class="line">elem.style.background = &quot;red&quot;;</span><br><span class="line">alert(elem.tagName);</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码会高亮显示并输出位于窗口中间的标签。</p>
-<h3 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect()"></a>getBoundingClientRect()</h3><p>该方法没有参数，可返回以下值，通过获取的值可以计算元素的坐标</p>
-<p><img src="https://www.freesion.com/images/340/f0bf75198b52088e668c2793230f254c.png"></p>
-<h4 id="计算div的坐标"><a href="#计算div的坐标" class="headerlink" title="计算div的坐标"></a>计算div的坐标</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let x= div.getBoundingClientRect().left + document.documentElementScrollLeft;</span><br><span class="line">let y = div.getBoundingClientRect().top + document.documentElementScrollHeight;</span><br><span class="line"></span><br><span class="line">注意：documentElementScrollLfet/height是IE8之前的</span><br><span class="line">IE9及之后使用window.pageXOffset和window.pageYOffset</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="计算任意一点的坐标"><a href="#计算任意一点的坐标" class="headerlink" title="计算任意一点的坐标"></a>计算任意一点的坐标</h3><p><img src="https://images2015.cnblogs.com/blog/1009007/201702/1009007-20170223112832882-336762012.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.onclick = function(this)&#123;</span><br><span class="line">coords.innerHTML = this.clientX +&quot;:&quot; + this.clientY;</span><br><span class="line">&#125;</span><br><span class="line">点击屏幕上的某一点，可显示出当前坐标，前提是没有滚动体条。</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2473,14 +2512,14 @@ upLS();
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
