@@ -179,6 +179,168 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/12/14/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/12/14/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">常见的网络请求方式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-14 09:25:13 / 修改时间：11:35:05" itemprop="dateCreated datePublished" datetime="2021-12-14T09:25:13+08:00">2021-12-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="安装json-server"><a href="#安装json-server" class="headerlink" title="安装json-server"></a>安装json-server</h3><p>用npm安装json-server可以创建一个简单的调用后端数据调用接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install json-server -g</span><br></pre></td></tr></table></figure>
+
+<p>建立一个json文件，如react-db.json （<strong>注意：json文件里面不要写注释，注意格式，不要写多余的逗号，否则运行的时候会报错</strong>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;products&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 1,</span><br><span class="line">      &quot;productName&quot;: &quot;iPhone&quot;,</span><br><span class="line">      &quot;price&quot;: 8900,</span><br><span class="line">      &quot;quantity&quot;: 1</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 2,</span><br><span class="line">      &quot;productName&quot;: &quot;iPad Pro&quot;,</span><br><span class="line">      &quot;price&quot;: 124000,</span><br><span class="line">      &quot;quantity&quot;: 3</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 3,</span><br><span class="line">      &quot;productName&quot;: &quot;荣耀p30&quot;,</span><br><span class="line">      &quot;price&quot;: 4000,</span><br><span class="line">      &quot;quantity&quot;: 3</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 4,</span><br><span class="line">      &quot;productName&quot;: &quot;小米&quot;,</span><br><span class="line">      &quot;price&quot;: 3000,</span><br><span class="line">      &quot;quantity&quot;: 8</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 5,</span><br><span class="line">      &quot;productName&quot;: &quot;iPad 11&quot;,</span><br><span class="line">      &quot;price&quot;: 3000,</span><br><span class="line">      &quot;quantity&quot;: 34</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行以下指令，将react-db.json的数据上传到json-server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server react-db.json --watch --port=5000</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以生成对应的API了</p>
+<h3 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h3><p>向服务器获取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount = async () =&gt; &#123;</span><br><span class="line">    const response = await fetch(&#x27;http://localhost:5000/customers&#x27;, &#123;</span><br><span class="line">      method: &#x27;GET&#x27;,</span><br><span class="line">    &#125;)</span><br><span class="line">    if (response.ok) &#123;</span><br><span class="line">      const body = await response.json()</span><br><span class="line">      if (body) &#123;</span><br><span class="line">        this.setState(&#123; customers: body, customersCount: body.length&#125;)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        return &#x27;Error:&#x27; + response.status</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>向服务器发送数据，比如说注册用户信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  //以下可实现点击提交按钮注册新用户并将页面跳转到顾客列表页面</span><br><span class="line">  onSaveClick = async (event) =&gt; &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    //获取用户填写的信息</span><br><span class="line">    var newcustomer = &#123;</span><br><span class="line">      name: this.state.name,</span><br><span class="line">      address: &#123; city: this.state.city &#125;,</span><br><span class="line">      phone: this.state.phone,</span><br><span class="line">      photo: this.state.photo,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var response = await fetch(&#x27;http://localhost:5000/customers &#x27;,</span><br><span class="line">    &#123;method:&quot;POST&quot;,</span><br><span class="line">    body: JSON.stringify(newcustomer),</span><br><span class="line">    headers: &#123;&quot;Content-type&quot;: &quot;application/json&quot;&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  var body =await response.json()//请求发送成功后跳转页面</span><br><span class="line">  if (body)&#123;</span><br><span class="line">    history.replace(&#x27;/customers&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PUT请求"><a href="#PUT请求" class="headerlink" title="PUT请求"></a>PUT请求</h3><p>向服务器发送更改后的信息，比如修改用户信息，链接要带上具体的id,表明更新的是哪一条用户数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">onSaveClick = async (event) =&gt; &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    var newcustomer = &#123;</span><br><span class="line">      name: this.state.name,</span><br><span class="line">      address: &#123; city: this.state.city &#125;,</span><br><span class="line">      phone: this.state.phone,</span><br><span class="line">      photo: this.state.photo,</span><br><span class="line">    &#125;</span><br><span class="line">    var id = this.props.match.params.id</span><br><span class="line">    var response = await fetch(`http://localhost:5000/customers/$&#123;id&#125; `, &#123;</span><br><span class="line">      method: &#x27;PUT&#x27;,</span><br><span class="line">      body: JSON.stringify(newcustomer),</span><br><span class="line">      headers: &#123; &#x27;Content-type&#x27;: &#x27;application/json&#x27; &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    var body = await response.json()</span><br><span class="line">    if (body) &#123;</span><br><span class="line">      history.replace(&#x27;/customers&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DELETE请求"><a href="#DELETE请求" class="headerlink" title="DELETE请求"></a>DELETE请求</h3><p>删除服务器数据。和PUT一样，也要带上具体的id,表明删除的是哪一条数据，注意数据删除是删除数据库中的数据，本地数据还是没有更新的，此时要用setState更新下状态，更新后的状态filter出不包含已删除的数据（用id做判断））</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">onClickDelete =async (id) =&gt;&#123;</span><br><span class="line">   if (window.confirm(&quot;确定要删除吗？&quot;)) &#123;</span><br><span class="line">     var response = await fetch(`http://localhost:5000/customers/$&#123;id&#125;`, &#123;method: &quot;DELETE&quot;&#125;)</span><br><span class="line">     if (response.ok)&#123;</span><br><span class="line">       let  allcustomers = [...this.state.customers];</span><br><span class="line">       console.log(allcustomers);</span><br><span class="line">       allcustomers = allcustomers.filter(cust =&gt; &#123;return cust.id !== id&#125;)</span><br><span class="line">       this.setState(&#123;customers: allcustomers&#125;)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/12/06/%E8%87%AA%E6%9E%84react%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="之随">
+      <meta itemprop="description" content="好好学习，天天向上">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="愿卿一路好风景">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/12/06/%E8%87%AA%E6%9E%84react%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF/" class="post-title-link" itemprop="url">自构react项目模板</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-06 11:12:20 / 修改时间：11:35:08" itemprop="dateCreated datePublished" datetime="2021-12-06T11:12:20+08:00">2021-12-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Eslint-Prettier-stylelint-Husky-Lint-staged"><a href="#Eslint-Prettier-stylelint-Husky-Lint-staged" class="headerlink" title="Eslint + Prettier + stylelint + Husky + Lint-staged"></a>Eslint + Prettier + stylelint + Husky + Lint-staged</h1><h3 id="创建样板文件"><a href="#创建样板文件" class="headerlink" title="创建样板文件"></a>创建样板文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create react-app myapp --typescript</span><br></pre></td></tr></table></figure>
+
+<p>在使用yarn的时候如果发现报错，可以尝试使用npm</p>
+<h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prettier lint-staged husky stylelint stylelint-prettier stylelint-config-prettier stylelint-config-recommended eslint-config-prettier eslint-plugin-prettier -D</span><br></pre></td></tr></table></figure>
+
+<p>注意stylelit默认版本是14.1.0，react不支持，可能会报错，建议安装低版本。</p>
+<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch .eslintrc .eslintignore .gitattributes .prettierrc .stylelintrc</span><br></pre></td></tr></table></figure>
+
+<h4 id="eslintrc-js"><a href="#eslintrc-js" class="headerlink" title=".eslintrc.js"></a>.eslintrc.js</h4><p>后缀加上js,否则无法识别module.exports语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  env: &#123;</span><br><span class="line">    browser: true,</span><br><span class="line">    es2021: true,</span><br><span class="line">  &#125;,</span><br><span class="line">  extends: [</span><br><span class="line">    &#x27;eslint:recommended&#x27;,</span><br><span class="line">    &#x27;plugin:react/recommended&#x27;,</span><br><span class="line">    &#x27;plugin:@typescript-eslint/recommended&#x27;,</span><br><span class="line">  ],</span><br><span class="line">  parser: &#x27;@typescript-eslint/parser&#x27;,</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    ecmaFeatures: &#123;</span><br><span class="line">      jsx: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    ecmaVersion: 13,</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [&#x27;react&#x27;, &#x27;@typescript-eslint&#x27;, &#x27;prettier&#x27;],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    &#x27;prettier/prettier&#x27;: &#x27;error&#x27;,</span><br><span class="line">  &#125;,</span><br><span class="line">  extends: [&#x27;prettier&#x27;],</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="eslintignore"><a href="#eslintignore" class="headerlink" title=".eslintignore"></a>.eslintignore</h4><p>设置不需要eslint语法检查的部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># build</span><br><span class="line">build/</span><br></pre></td></tr></table></figure>
+
+<h4 id="gitattributes"><a href="#gitattributes" class="headerlink" title=".gitattributes"></a>.gitattributes</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* text=auto eol=lf</span><br></pre></td></tr></table></figure>
+
+<h4 id="prettierrc"><a href="#prettierrc" class="headerlink" title=".prettierrc"></a>.prettierrc</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;trailingComma&quot;: &quot;es5&quot;,</span><br><span class="line">  &quot;tabWidth&quot;: 2,</span><br><span class="line">  &quot;semi&quot;: false,</span><br><span class="line">  &quot;singleQuote&quot;: true,</span><br><span class="line">  &quot;endOfLine&quot;: &quot;lf&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="stylelintrc"><a href="#stylelintrc" class="headerlink" title=".stylelintrc"></a>.stylelintrc</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;extends&quot;: [&quot;stylelint-prettier/recommended&quot;, &quot;stylelint-config-standard&quot;],</span><br><span class="line">  &quot;plugins&quot;: [&quot;stylelint-prettier&quot;],</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;prettier/prettier&quot;: true,</span><br><span class="line">    &quot;unit-case&quot;: null,</span><br><span class="line">    &quot;no-descending-specificity&quot;: null,</span><br><span class="line">    &quot;block-no-empty&quot;: null,</span><br><span class="line">    &quot;no-empty-source&quot;: [true, &#123; &quot;severity&quot;: &quot;warning&quot; &#125;],</span><br><span class="line">    &quot;declaration-colon-newline-after&quot;: null,</span><br><span class="line">    &quot;function-name-case&quot;: null,</span><br><span class="line">    &quot;indentation&quot;: null,</span><br><span class="line">    &quot;no-invalid-double-slash-comments&quot;: null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在package-json条件以下字段"><a href="#在package-json条件以下字段" class="headerlink" title="在package.json条件以下字段"></a>在package.json条件以下字段</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;lint&quot;: &quot;eslint \&quot;src/**/*.&#123;js,jsx,ts,tsx&#125;\&quot;&quot;,</span><br><span class="line">    &quot;lint:fix&quot;: &quot;yarn lint --fix&quot;,</span><br><span class="line">    &quot;stylelint&quot;: &quot;stylelint \&quot;src/**/*.&#123;css,scss&#125;\&quot;&quot;,</span><br><span class="line">    &quot;stylelint:fix&quot;: &quot;yarn stylelint --fix&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;lint-staged&quot;: &#123;</span><br><span class="line">    &quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;&quot;: [&quot;prettier --write&quot;, &quot;git add&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line">   &quot;eslintConfig&quot;: &#123;</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;husky&quot;: &#123;</span><br><span class="line">    &quot;hooks&quot;: &#123;</span><br><span class="line">      &quot;pre-commit&quot;: &quot;lint-staged&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这只是一个简略react的模板，仅供日常写代码使用，以下为vue比较详细的模板配置，可以参考下</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7033552881374461960">https://juejin.cn/post/7033552881374461960</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/12/03/Mobx%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -837,135 +999,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/11/01/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/" class="post-title-link" itemprop="url">函数柯里化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-01 09:25:53 / 修改时间：12:58:45" itemprop="dateCreated datePublished" datetime="2021-11-01T09:25:53+08:00">2021-11-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"><a href="#函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数" class="headerlink" title="函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数"></a>函数柯里化就是只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function add(x, y) &#123;</span><br><span class="line">  return x+y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function curryingAdd(x) &#123;</span><br><span class="line">  return function (y) &#123;</span><br><span class="line">    return x + y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1, 2)) //3</span><br><span class="line">console.log(curryingAdd(1)(2)) //3</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数柯里化的好处"><a href="#函数柯里化的好处" class="headerlink" title="函数柯里化的好处"></a>函数柯里化的好处</h3><h4 id="1、参数复用"><a href="#1、参数复用" class="headerlink" title="1、参数复用"></a>1、参数复用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function check(reg, txt) &#123;</span><br><span class="line">  return reg.test(txt)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(check(/\d+/g, &#x27;test&#x27;))</span><br><span class="line">console.log(check(/[a-z]+/g, &#x27;test&#x27;))</span><br><span class="line"></span><br><span class="line">//使用柯里化之后</span><br><span class="line">function curryingCheck(reg) &#123;</span><br><span class="line">    return function (text) &#123;</span><br><span class="line">      return reg.test(text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let hasNumber = curryingCheck(/\d+/g)</span><br><span class="line">let hasString = curryingCheck(/[a-z]+/g)</span><br><span class="line"></span><br><span class="line">console.log(hasNumber(&#x27;783927382&#x27;))</span><br><span class="line">console.log(hasString(&#x27;test1&#x27;))</span><br></pre></td></tr></table></figure>
-
-<p>如上面的例子，使用柯里化函数之后，先将正则表达式作为第一个参数传进去作为模板，后面可以利用这个模板传入要检测的字符，从而实现多次调用。</p>
-<h4 id="2、延迟运行"><a href="#2、延迟运行" class="headerlink" title="2、延迟运行"></a>2、延迟运行</h4><p>bind函数的实现，bind绑定this的时候是不会自动执行的，需要手动执行。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Function.prototype.bind = function (context) &#123;</span><br><span class="line">  var _this = this</span><br><span class="line">  var args = Array.prototype.slice.call(arguments, 1) //将类数组变成数组，并返回arguments中除了第一个参数的剩余参数，因为第一个参数是绑定的上下文</span><br><span class="line">  return function() &#123;</span><br><span class="line">    return _ this.apply(context, args)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhisui.github.io/blog/2021/10/25/js%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/%E5%8F%A4%E9%A3%8E%E5%A4%B4%E5%83%8F.jpg">
-      <meta itemprop="name" content="之随">
-      <meta itemprop="description" content="好好学习，天天向上">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="愿卿一路好风景">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/10/25/js%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">js常见报错类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-10-25 21:37:57 / 修改时间：22:31:14" itemprop="dateCreated datePublished" datetime="2021-10-25T21:37:57+08:00">2021-10-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ReferenceError-引用错误"><a href="#ReferenceError-引用错误" class="headerlink" title="ReferenceError 引用错误"></a><strong>ReferenceError</strong> 引用错误</h3><p>变量或者函数未定义时，会报<strong>ReferenceError</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">unction checkAge(age) &#123;</span><br><span class="line">  if (age &lt; 18) &#123;</span><br><span class="line">    const message = &quot;sorry, you are too young&quot;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    const message = &quot;yay, you are old enough!&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  return message //ReferenceError: message is not defined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(checkAge(21)) </span><br></pre></td></tr></table></figure>
-
-<h3 id="TypeError类型错误"><a href="#TypeError类型错误" class="headerlink" title="TypeError类型错误"></a>TypeError类型错误</h3><p>1、 调用对象不存在的方法 </p>
-<p>2、</p>
-<h3 id="SyntaxError（语法错误）"><a href="#SyntaxError（语法错误）" class="headerlink" title="SyntaxError（语法错误）"></a>SyntaxError（语法错误）</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1037,14 +1070,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
