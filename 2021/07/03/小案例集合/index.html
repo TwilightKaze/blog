@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="愿卿一路好风景">
 <meta property="og:description" content="用js创建表格并在特定位置添加背景颜色123456789101112131415161718192021HTML代码&lt;table width&#x3D;&quot;200px&quot; height&#x3D;&quot;200px&quot; border&#x3D;&quot; 1px&quot; cellspacing&#x3D;&amp;#x27;0&amp;#x27;&gt;&lt;&#x2F;table&gt;JS代码let table &#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhisui.github.io/long-ying.github.io/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users/之水/AppData/Roaming/Typora/typora-user-images/1625292413967.png">
+<meta property="og:image" content="https://zhisui.github.io/blog/blog/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users/之水/AppData/Roaming/Typora/typora-user-images/1625292413967.png">
 <meta property="article:published_time" content="2021-07-03T05:59:32.000Z">
 <meta property="article:modified_time" content="2021-07-03T06:07:10.592Z">
 <meta property="article:author" content="之随">
 <meta property="article:tag" content="页面小案例">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://zhisui.github.io/long-ying.github.io/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users/之水/AppData/Roaming/Typora/typora-user-images/1625292413967.png">
+<meta name="twitter:image" content="https://zhisui.github.io/blog/blog/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users/之水/AppData/Roaming/Typora/typora-user-images/1625292413967.png">
 
 <link rel="canonical" href="https://zhisui.github.io/blog/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/">
 
@@ -230,7 +230,7 @@
         <h3 id="用js创建表格并在特定位置添加背景颜色"><a href="#用js创建表格并在特定位置添加背景颜色" class="headerlink" title="用js创建表格并在特定位置添加背景颜色"></a>用js创建表格并在特定位置添加背景颜色</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">HTML代码</span><br><span class="line">&lt;table width=&quot;200px&quot; height=&quot;200px&quot; border=&quot; 1px&quot; cellspacing=&#x27;0&#x27;&gt;&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">JS代码</span><br><span class="line">let table = document.querySelector(&quot;table&quot;);</span><br><span class="line">      for (let i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">        let tr = table.appendChild(document.createElement(&quot;tr&quot;));</span><br><span class="line">        for (let j= 1; j &lt;= 5; j++) &#123;</span><br><span class="line">        添加背景颜色的第一种写法</span><br><span class="line">        </span><br><span class="line">          // i===j? tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td style=&quot;background-color: red&quot;&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)    : tr.insertAdjacentHTML(&#x27;beforeend&#x27;,`&lt;td&gt;$&#123;j&#125;:$&#123;i&#125;&lt;/td&gt;`)</span><br><span class="line">          </span><br><span class="line">          添加背景颜色的第二种写法</span><br><span class="line">          tr.insertAdjacentHTML(&#x27;beforeend&#x27;, `&lt;td  style=$&#123;i===j ? &#x27;background-color:red&#x27; : &#x27;&#x27;&#125;&gt;&lt;/td&gt;`)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       添加背景颜色的第三种写法</span><br><span class="line">        // for (let i = 0; i&lt;table.rows.length; i++)&#123;</span><br><span class="line">        //   table.rows[i].cells[i].style.backgroundColor=&quot;red&quot;;</span><br><span class="line">        // &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>运行结果</p>
-<p><img src="/long-ying.github.io/long-ying.github.io/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users\之水\AppData\Roaming\Typora\typora-user-images\1625292413967.png" alt="1625292413967"></p>
+<p><img src="/blog/blog/2021/07/03/%E5%B0%8F%E6%A1%88%E4%BE%8B%E9%9B%86%E5%90%88/Users\之水\AppData\Roaming\Typora\typora-user-images\1625292413967.png" alt="1625292413967"></p>
 
     </div>
 
