@@ -27,96 +27,54 @@ type: "resume"
 [webpack]: https://github.com/webpack/webpack
 [vue2]: https://v2.cn.vuejs.org
 [vue3]: https://cn.vuejs.org/
-[react-router]: https://github.com/ReactTraining/react-router
-[react-testing-library]: https://github.com/testing-library/react-testing-library
 [vue]: https://github.com/vuejs/vue-next
 [vue-next]: https://github.com/vuejs/vue-next
 [taro]: https://github.com/NervJS/taro
 [qiankun]: https://github.com/umijs/qiankun
 [vscode]: https://github.com/microsoft/vscode
-[neovim]: https://github.com/neovim/neovim
 [eslint]: https://github.com/eslint/eslint
 [stylelint]: https://github.com/stylelint/stylelint
 [prettier]: https://github.com/prettier/prettier
 [husky]: https://github.com/typicode/husky
 [commitlint]: https://github.com/conventional-changelog/commitlint
 [lint-staged]: https://github.com/okonet/lint-staged
-[react.nodegui]: https://github.com/nodegui/react-nodegui
 [electron]: https://github.com/electron/electron
 [purgecss]: https://github.com/FullHuman/purgecss
 [postcss]: https://github.com/postcss/postcss
-[draft]: https://github.com/facebook/draft-js
-[google docs]: https://docs.google.com
 [topcoder]: https://www.topcoder.com
 [git]: https://github.com/git/git
 
 [st]: https://github.com/backtolife2021/st
 [markdown]: https://github.com/commonmark/commonmark-spec
 [typescript]: https://github.com/microsoft/TypeScript
-[pug]: https://github.com/pugjs/pug
 [sass]: https://github.com/sass/sass
 [scss]: https://github.com/sass/sass
 [npm]: https://github.com/npm/cli
 [yarn]: https://github.com/yarnpkg/yarn
-[pip]: https://github.com/pypa/pip
 [cargo]: https://github.com/rust-lang/cargo
 [pacman]: https://archlinux.org/packages/core/x86_64/pacman
 [yay]: https://github.com/Jguer/yay
 [scoop]: https://github.com/lukesampson/scoop
-[choco]: https://github.com/chocolatey/choco
 [archlinux]: https://github.com/archlinux
 [windows 10]: https://www.microsoft.com/zh-hk/software-download/windows10
-[windows]: https://www.microsoft.com/zh-hk/software-download/windows10
-[css-in-js]: https://github.com/MicheleBertoli/css-in-js
-[css-modules]: https://github.com/css-modules/css-modules
-[awesome-css-in-js]: https://github.com/tuchk4/awesome-css-in-js
-[emotion]: https://github.com/emotion-js/emotion
-[easy-peasy]: https://github.com/ctrlplusb/easy-peasy
-[apollo-client]: https://github.com/apollographql/apollo-client
-[ant design pro]: https://github.com/ant-design/ant-design-pro
-[swr]: https://github.com/vercel/swr
-
-[mocker-api]: https://github.com/jaywcjlove/mocker-api#using-with-webpack
-[videojs]: https://github.com/videojs/video.js
-[react-compound-slider]: https://github.com/sghall/react-compound-slider
-[react-use]: https://github.com/streamich/react-use
-[jsonwebtoken]: https://github.com/auth0/node-jsonwebtoken
-[formik]: https://github.com/jaredpalmer/formik
-[react-i18next]: https://github.com/i18next/react-i18next
-[react-spring]: https://github.com/pmndrs/react-spring
-[react-use-gesture]: https://github.com/pmndrs/react-use-gesture
-[animate.css]: https://github.com/animate-css/animate.css
-[use-animate-css]: https://github.com/backtolife2021/use-animate-css
 [html5]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
 [css3]: https://developer.mozilla.org/en-US/docs/Web/CSS
 [javascript]: https://github.com/tc39/proposals
 [javascript(esnext)]: https://github.com/tc39/proposals
-[tailwindcss]: https://github.com/tailwindlabs/tailwindcss
-[lua]: https://github.com/lua/lua
-[lua-dev.nvim]: https://github.com/folke/lua-dev.nvim
-[vim-lsp]: https://github.com/prabirshrestha/vim-lsp
-[builtin-docs.json]: https://github.com/iamcco/vim-language-server/blob/10a9ae92d5b00da86eaf100e1b062ab7201dfdcc/src/docs/builtin-docs.json
-[python]: https://www.python.org/
-[typescripttolua]: https://github.com/TypeScriptToLua/TypeScriptToLua
-[mobx]: https://github.com/mobxjs/mobx
-[html-react-parser]: https://github.com/remarkablemark/html-react-parser
-[docker]: https://github.com/docker
-[gm-react-app]: https://github.com/gmfe/gm-react-app
-[java]: https://github.com/topics/java
 [android studio]: https://developer.android.com/studio/
-[SerialPortHelper]: https://github.com/freyskill/SerialPortHelper
 [rollup]: https://github.com/rollup/rollup
 [vite]: https://github.com/vitejs/vite
-[linux]: https://github.com/torvalds/linux
+[linux]: https://github.com/torvalds/
 [gitlab]: https://about.gitlab.com/
 [swagger]: https://github.com/OAI/OpenAPI-Specification
-
+[rollup-plugin-visualizer]: https://github.com/btd/rollup-plugin-visualizer
 [pinia]: []
 [pnpm]: https://github.com/pnpm/pnpm
 [vconsole]: https://gitee.com/Tencent/vConsole
+[iconify]: https://github.com/iconify/iconify
 
 
-此简历在线 web 版本: https://i-want-tobelieve.github.io/resume/
+此简历在线 web 版本: https://zhisui.github.io/blog/resume/
 
 # 个人信息
 
@@ -145,16 +103,16 @@ type: "resume"
 - 文档: [markdown][] & [swagger][]
 - 版本管理: [git][]
 - 包管理工具:[npm][] & [yarn][] & [pnpm][] & [scoop][] & [cargo][] & [pacman][]
-- 操作系统: [archlinux][]  & windows 10
+- 操作系统: [archlinux][]  & [windows][]
 - 微前端: [qiankun][]
 - 小程序开发框架: [taro][]
 - 地图开发库: [@suc-monch][]
 
 以下为我了解的技术栈
 
-- 系统级开发: [rust][]
 - 移动端: [cordova][]
-- 地图开发库: [openlayer][]
+- 地图开发库: [openlayer][] & [cesium][]
+- 系统级开发: [rust][]
 
 # 个人优势
 在职自学前端一年，具有持续学习能力、自我驱动力，热爱前端开发。三年编码经验, 两年开发经验，可独立负责项目开发，具备团队协作及沟通能力，可在开发过程中向项目经理提供有效建议。
@@ -179,11 +137,14 @@ type: "resume"
 ## Web端
 
 ### 柯桥数智蓝网大屏可视化项目
+
 技术栈： [vue][] & [vue-router][] & [echarts][] & [vuex][] & [@suc-monch][] & [websocket][] & [cesium][]
 
-独立负责该项目的前端开发维护、代码优化及项目配置，顺利完成一期及二期内容的项目验收。
+该项目共包含数智治气、数智治水、数智无废、数智环保码、行业码、协同管控共六大模块
 
-- 对前人的代码进行了改造优化，重新调整了项目结构，并封装了一系列通用方法如控制地图缩放、文件导出、权限控制等方法及指令。
+- 独立负责该项目的前端开发维护、代码优化及项目配置，顺利完成一期及二期内容的项目验收。
+
+- 对前人的代码进行了改造优化，重新调整了项目结构，并封装了一系列通用方法如控制地图缩放、点位弹窗控制、文件导出、权限控制等方法及指令。
 
 - 利用[websocket][]实现对告警事件的实时语音播放功能，用[cesium][]实现了企业园区3D场景的显示与简单交互。
 
@@ -221,7 +182,7 @@ type: "resume"
 ## 移动端
 
 ### 全国辐射移动端App
-技术栈: [vue3][]+ [vue-router][] + [TypeScript][]+ [pinia][] + [electron][]
+技术栈: [vue3][]+ [cordova][] + [TypeScript][][]
 
 - 解决了apk打包不成功的问题，更换了华为镜像源，使用android studio对apk进行打包
 - 编写REANDME.md文档说明项目启动方式，及需要注意的系列问题，帮助新人快速适应项目。
@@ -229,13 +190,28 @@ type: "resume"
 
 # 开源社区项目
 
+
+## Vite4-Vue3-TypeScript-Pinia
+技术栈: [vue3][]+ [vite][] + [TypeScript][]+ [pinia][]
+
+个人搭建的vue3项目框架，可用于新项目快速开发
+- 配置了[eslint][]、[prettier][]、[stylelint][]检查代码风格和代码质量。
+- 对[axois][]请求进行了进一步封装，可针对不同场景对不同的请求做处理。
+- 引入vite打包可视化插件[rollup-plugin-visualizer][]对打包体积做分析，方便对项目进行优化
+- 选用[iconify][]做图标库，图标资源丰富，支持按需引入
+
+项目地址：https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia
+
+---
 ## VMusicPlayer
 
 技术栈: [vue3][]+ [vue-router][] + [TypeScript][]+ [pinia][] + [electron][]
 
 利用[网易云Api][]构建的桌面应用，用以学习electron,该项目包含网易云音乐手机号码登录及邮箱登录、每日歌曲推荐、私人FM，全局搜索，歌单分类、歌曲热榜等功能。
+
 项目地址：https://github.com/zhisui/VMusicPlayer
 
 # 致谢
 
 感谢您花时间阅读我的简历，期待能有机会和您共事。
+
