@@ -177,7 +177,7 @@
 ## 移动端
 
 ### 全国辐射移动端App
-技术栈: [vue-property-decorator][]+ [cordova][] + [FrameworkVue][][] + vant[][] + [echarts]
+技术栈: [vue-property-decorator][] & [cordova][] & [FrameworkVue][] & [vant][] & [echarts]
 
 负责该项目的日常维护工作。
 
@@ -190,7 +190,7 @@
 
 
 ## Vite4-Vue3-TypeScript-Pinia
-技术栈: [vue3][]+ [vite][] + [TypeScript][]+ [pinia][]
+技术栈: [vue3][] & [vite][] & [TypeScript][]& [pinia][]
 
 个人搭建的vue3项目框架，可用于新项目快速开发
 - 配置了[eslint][]、[prettier][]、[stylelint][]检查代码风格和代码质量。
@@ -198,16 +198,16 @@
 - 引入vite打包可视化插件[rollup-plugin-visualizer][]对打包体积做分析，方便对项目进行优化。
 - 选用[iconify][]做图标库，图标资源丰富，支持按需引入。
 
-项目地址：[https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia][https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia]
+项目地址：https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia
 
 ---
 ## VMusicPlayer
 
-技术栈: [vue3][]+ [vue-router][] + [TypeScript][]+ [pinia][] + [electron][]
+技术栈: [vue3][] & [vue-router][] & [TypeScript][] & [pinia][] & [electron][]
 
 利用[网易云Api][]构建的桌面应用，用以学习electron,该项目包含网易云音乐手机号码登录及邮箱登录、每日歌曲推荐、私人FM，全局搜索，歌单分类、歌曲热榜等功能。
 
-项目地址：[https://github.com/zhisui/VMusicPlayer][https://github.com/zhisui/VMusicPlayer]
+项目地址：https://github.com/zhisui/VMusicPlayer
 
 # 致谢
 
