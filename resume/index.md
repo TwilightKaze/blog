@@ -1,9 +1,3 @@
----
-title: resume
-date: 2023-08-27 17:03:52
-type: "resume"
----
-
 [nodejs]: https://github.com/nodejs/node
 [node]: https://github.com/nodejs/node
 [rust]: https://github.com/rust-lang/rust
@@ -56,7 +50,7 @@ type: "resume"
 [yay]: https://github.com/Jguer/yay
 [scoop]: https://github.com/lukesampson/scoop
 [archlinux]: https://github.com/archlinux
-[windows 10]: https://www.microsoft.com/zh-hk/software-download/windows10
+[windows]: https://www.microsoft.com/zh-hk/software-download/windows10
 [html5]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
 [css3]: https://developer.mozilla.org/en-US/docs/Web/CSS
 [javascript]: https://github.com/tc39/proposals
@@ -72,6 +66,8 @@ type: "resume"
 [pnpm]: https://github.com/pnpm/pnpm
 [vconsole]: https://gitee.com/Tencent/vConsole
 [iconify]: https://github.com/iconify/iconify
+[FrameworkVue]: https://github.com/framework7io/framework7/
+[vue-property-decorator]: https://github.com/kaorun343/vue-property-decorator
 
 
 此简历在线 web 版本: https://zhisui.github.io/blog/resume/
@@ -85,7 +81,7 @@ type: "resume"
 - 工作经验: 两年
 - 期望职位: 中级前端开发工程师
 - 期望城市: 杭州
-- 求职状态: 在职
+- 状态: 在职
 - 手机: 18767173965（微信同号）
 - 邮箱: 1626676263@qq.com
 
@@ -115,7 +111,7 @@ type: "resume"
 - 系统级开发: [rust][]
 
 # 个人优势
-在职自学前端一年，具有持续学习能力、自我驱动力，热爱前端开发。三年编码经验, 两年开发经验，可独立负责项目开发，具备团队协作及沟通能力，可在开发过程中向项目经理提供有效建议。
+在职自学前端一年，具有持续学习能力、自我驱动力，热爱前端开发。三年编码经验, 两年开发经验，可独立负责项目开发，良好的团队协作及沟通能力，可在开发过程中向项目经理提供有效建议。
 
 # 工作经历
 
@@ -128,7 +124,7 @@ type: "resume"
 
 - 公司名称: 中浙信科技咨询有限公司
 - 职位类型: 通信工程师
-- 工作内容: 在职期间自学前端，负责杭州运场馆语音建设方案的设计及协调场馆建设方、电信分局、施工单位及设计院完成通信保障进度目标。
+- 工作内容: 在职期间自学前端，负责杭州运场馆语音建设方案的设计及协调场馆建设方、电信分局、施工单位及设计院完成通信保障目标进度。
 - 在职时间: 2020.07 - 2022.01
 
 
@@ -142,17 +138,17 @@ type: "resume"
 
 该项目共包含数智治气、数智治水、数智无废、数智环保码、行业码、协同管控共六大模块
 
-- 独立负责该项目的前端开发维护、代码优化及项目配置，顺利完成一期及二期内容的项目验收。
+- 该项目前端开发核心负责人，负责该项目的开发及迭代、代码优化及项目配置，顺利完成一期及二期内容的项目验收。
 
 - 对前人的代码进行了改造优化，重新调整了项目结构，并封装了一系列通用方法如控制地图缩放、点位弹窗控制、文件导出、权限控制等方法及指令。
 
 - 利用[websocket][]实现对告警事件的实时语音播放功能，用[cesium][]实现了企业园区3D场景的显示与简单交互。
 
-- 优化地图加载速度、露天禁烧实时视频内容闪烁及视频摄像头方向控制无效问题、实时视频录屏效果优化。
+- 优化地图加载速度，从秒优化至毫秒级，解决了露天禁烧实时视频内容闪烁及视频摄像头方向控制无效问题，并对实时视频录屏效果进行了优化。
 
 - 根据开发环境和生产环境修改了[vue-cli][]配置，解决了项目开发运行卡顿的问题；为减少基础代码的编写时间，将更多的时间用在代码的组织逻辑上，自定义了一些常用的代码片段，可通过编辑器快速生成代码模板。
 
-- 在性能优化方面，在网络请求、打包体积、缓存、代码层面进行了优化。
+- 在性能优化方面，对网络请求、打包体积、缓存及代码层面进行了优化。
 
 ---
 
@@ -176,16 +172,18 @@ type: "resume"
 - 解决小程序和h5环境下一些api不兼容的问题
 - 浙政钉接入和适老化样式适配
 - 控制人员操作权限
-
 - 在移动端调试方面，除了使用[vconsole][]外， 另输出[基于Chrome的移动端H5开发远程调试](https://github.com/zhisui/record/blob/master/mobile-web-debug.md)一文，供同事参考。
 
 ## 移动端
 
 ### 全国辐射移动端App
-技术栈: [vue3][]+ [cordova][] + [TypeScript][][]
+技术栈: [vue-property-decorator][]+ [cordova][] + [FrameworkVue][][] + vant[][] + [echarts]
 
-- 解决了apk打包不成功的问题，更换了华为镜像源，使用android studio对apk进行打包
-- 编写REANDME.md文档说明项目启动方式，及需要注意的系列问题，帮助新人快速适应项目。
+负责该项目的日常维护工作。
+
+- 针对无法正常下载android依赖包从而导致打包停滞问题，maven使用国内镜像，替换了镜像地址，项目成功打包。
+- 针对了apk签名不成功的问题，使用android studio对apk进行签名。
+- 编写了REANDME.md文档说明项目启动方式，及需要注意的系列问题，帮助同事快速适应项目。
 
 
 # 开源社区项目
@@ -196,11 +194,11 @@ type: "resume"
 
 个人搭建的vue3项目框架，可用于新项目快速开发
 - 配置了[eslint][]、[prettier][]、[stylelint][]检查代码风格和代码质量。
-- 对[axois][]请求进行了进一步封装，可针对不同场景对不同的请求做处理。
-- 引入vite打包可视化插件[rollup-plugin-visualizer][]对打包体积做分析，方便对项目进行优化
-- 选用[iconify][]做图标库，图标资源丰富，支持按需引入
+- 对[axois][]请求进行了进一步封装，可针对不同请求场景做处理。
+- 引入vite打包可视化插件[rollup-plugin-visualizer][]对打包体积做分析，方便对项目进行优化。
+- 选用[iconify][]做图标库，图标资源丰富，支持按需引入。
 
-项目地址：https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia
+项目地址：[https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia][https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia]
 
 ---
 ## VMusicPlayer
@@ -209,9 +207,8 @@ type: "resume"
 
 利用[网易云Api][]构建的桌面应用，用以学习electron,该项目包含网易云音乐手机号码登录及邮箱登录、每日歌曲推荐、私人FM，全局搜索，歌单分类、歌曲热榜等功能。
 
-项目地址：https://github.com/zhisui/VMusicPlayer
+项目地址：[https://github.com/zhisui/VMusicPlayer][https://github.com/zhisui/VMusicPlayer]
 
 # 致谢
 
 感谢您花时间阅读我的简历，期待能有机会和您共事。
-
