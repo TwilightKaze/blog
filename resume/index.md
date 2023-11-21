@@ -64,7 +64,7 @@
 [gitlab]: https://about.gitlab.com/
 [swagger]: https://github.com/OAI/OpenAPI-Specification
 [rollup-plugin-visualizer]: https://github.com/btd/rollup-plugin-visualizer
-[pinia]: [https://pinia.vuejs.org/zh/]
+[pinia]: https://pinia.vuejs.org/zh/
 [pnpm]: https://github.com/pnpm/pnpm
 [vconsole]: https://gitee.com/Tencent/vConsole
 [iconify]: https://github.com/iconify/iconify
@@ -182,7 +182,7 @@
 ## 移动端
 
 ### 全国辐射移动端App
-技术栈: [vue3][]+ [cordova][] + [@suc-monch][] + [vant][] + [echarts]
+技术栈: [vue3][]+ [cordova][] + [@suc-monch][] + [vant][] + [echarts][]
 
 负责该项目的日常维护工作。
 
