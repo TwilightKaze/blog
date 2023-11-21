@@ -5,6 +5,7 @@
 [vue-cli]: https://github.com/vuejs/vue-cli
 [view-design]: https://github.com/view-design/ViewUIPlus
 [element-ui]: https://github.com/element-plus/element-plus
+[dom-to-code]: https://github.com/better-tcy/dom-to-code
 [vant]: https://github.com/youzan/vant
 [vue-router]: https://github.com/vuejs/router
 [cordova]: https://cordova.apache.org
@@ -63,7 +64,7 @@
 [gitlab]: https://about.gitlab.com/
 [swagger]: https://github.com/OAI/OpenAPI-Specification
 [rollup-plugin-visualizer]: https://github.com/btd/rollup-plugin-visualizer
-[pinia]: 
+[pinia]: []
 [pnpm]: https://github.com/pnpm/pnpm
 [vconsole]: https://gitee.com/Tencent/vConsole
 [iconify]: https://github.com/iconify/iconify
@@ -118,7 +119,7 @@
 - 公司名称: 成功数字技术（杭州）有限责任公司
 - 职位类型: 前端开发工程师
 - 工作内容: 负责web端大屏可视化、微信小程序、移动端app及浙政钉的日常开发与维护
-- 在职时间: 2022.03 - 2023.09
+- 在职时间: 2022.03 - 至今
 
 ---
 
@@ -145,13 +146,13 @@
 - 利用[websocket][]实现对告警事件的实时语音播放功能，用[cesium][]实现了企业园区3D场景的显示与简单交互。
 
 - 优化地图加载速度，从秒级别优化至毫秒级，解决了露天禁烧实时视频内容闪烁及视频摄像头方向控制无效问题，并对实时视频录屏效果进行了优化。
-  
+
 - 实现了空气质量指数等差值面地图实时展示及历史轨迹回放，解决了轨迹回放页面卡顿问题。
-  
+
 - 根据开发环境和生产环境修改了[vue-cli][]配置，解决了项目开发运行卡顿的问题；为减少基础代码的编写时间，将更多的时间用在代码的组织逻辑上，自定义了一些常用的代码片段，可配合vscode快速生成代码模板。
-  
+
 - 在安全方面,登录集成[JSEncrypt][]实现账号密码加密,接口调用和路由增加了权限控制措施，地图及其他平台跳转链接增加了token认证。
-  
+
 - 在性能优化方面，对网络请求、打包时间、打包体积、缓存及代码层面进行了优化，打包文件体积减少约45%, 打包时间减少了约40%。
 ---
 
@@ -161,7 +162,7 @@
 独立完成项目的搭建和开发。
 - 完成页面内容适配不同的屏幕尺寸。
 - 实现单点登录嵌入其他系统。
-- 尝试引入dom-to-code, 可以直接通过页面跳转到vscode对应的代码，提升开发效率。
+- 尝试引入[dom-to-code][], 可以直接通过页面跳转到vscode对应的代码，提升开发效率。
 - 配置 [eslint][] & [stylelint][] & [prettier][] 以保障代码，配置了 [vscode][] 编辑器 `"source.fixAll": true` 配合 [prettier][] 和 [eslint][] 实现保存代码自动格式化, 在提高代码质量的同时提高编码体验.
 
 
