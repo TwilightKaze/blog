@@ -64,7 +64,7 @@
 [gitlab]: https://about.gitlab.com/
 [swagger]: https://github.com/OAI/OpenAPI-Specification
 [rollup-plugin-visualizer]: https://github.com/btd/rollup-plugin-visualizer
-[pinia]: []
+[pinia]: [https://pinia.vuejs.org/zh/]
 [pnpm]: https://github.com/pnpm/pnpm
 [vconsole]: https://gitee.com/Tencent/vConsole
 [iconify]: https://github.com/iconify/iconify
