@@ -76,16 +76,16 @@
 
 # 个人信息
 
-- 龙英/女/1997
-- 学历: 本科 (杭州电子科技大学通信工程)
-- gititHub：https://github.com/zhisui/
-- 博客: https://zhisui.github.io/blog/
+- Aoi/男/2004
+- 学历: 本科
+- gititHub：https://github.com/TwilightKaze/
+- 博客: https://TwilightKaze.github.io/blog/
 - 工作经验: 两年
 - 期望职位: 前端开发工程师
-- 期望城市: 杭州
+- 期望城市: 纽约
 - 状态: 在职
-- 手机: 18767173965（微信同号）
-- 邮箱: 1626676263@qq.com
+- 手机: /
+- 邮箱: zhouxiaoran246@gmail.com
 
 # 技术栈
 
@@ -116,14 +116,14 @@
 
 # 工作经历
 
-- 公司名称: 成功数字技术（杭州）有限责任公司
+- 公司名称: /
 - 职位类型: 前端开发工程师
 - 工作内容: 负责web端大屏可视化、微信小程序、移动端app及浙政钉的日常开发与维护
 - 在职时间: 2022.03 - 至今
 
 ---
 
-- 公司名称: 中浙信科技咨询有限公司
+- 公司名称: /
 - 职位类型: 通信工程师
 - 工作内容: 在职期间自学前端，负责杭州运场馆语音建设方案的设计及协调场馆建设方、电信分局、施工单位及设计院完成通信保障目标进度。
 - 在职时间: 2020.07 - 2022.01
@@ -133,7 +133,7 @@
 
 ## Web端
 
-### 柯桥数智蓝网大屏可视化项目
+### 可视化项目
 
 技术栈： [vue][] & [vue-router][] & [echarts][] & [vuex][] & [@suc-monch][] & [websocket][] & [cesium][]
 
@@ -157,7 +157,7 @@
 
 ---
 
-### 绍兴蓝天烟尘治理大屏可视化项目
+### 可视化项目
 技术栈： [vue][] & [vue-router][] & [echarts][] & [vuex][] & [@suc-monch][]
 
 独立完成项目的搭建和开发。
@@ -169,7 +169,7 @@
 
 ## 小程序
 
-### 柯桥露天禁烧小程序
+### 露天禁烧小程序
 技术栈： [vue3][] & [taro][]
 
 负责该微信小程序的日常开发和发布工作的，后期编译成h5嵌入浙政钉
@@ -193,16 +193,6 @@
 
 # 开源社区项目
 
-## Vite4-Vue3-TypeScript-Pinia
-技术栈: [vue3][]+ [vite][] + [TypeScript][]+ [pinia][]
-
-个人搭建的vue3项目框架，可用于新项目快速开发
-- 配置了[eslint][]、[prettier][]、[stylelint][]检查代码风格和代码质量。
-- 对[axois][]请求进行了进一步封装，可针对不同请求场景做处理。
-- 引入vite打包可视化插件[rollup-plugin-visualizer][]对打包体积做分析，方便对项目进行优化。
-- 选用[iconify][]做图标库，图标资源丰富，支持按需引入。
-
-项目地址：[https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia](https://github.com/zhisui/Vite4-Vue3-TypeScript-Pinia)
 
 
 # 致谢
