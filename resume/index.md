@@ -72,7 +72,7 @@
 [vue-property-decorator]: https://github.com/kaorun343/vue-property-decorator
 
 
-此简历在线 web 版本: https://zhisui.github.io/blog/resume/
+此简历在线 web 版本: https://twilightkaze.github.io/blog/resume/
 
 # 个人信息
 
