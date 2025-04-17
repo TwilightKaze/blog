@@ -76,15 +76,13 @@
 
 # 个人信息
 
-- Aoi/男/2004
-- 学历: 本科
+- Aoi/男/2007
 - gititHub：https://github.com/TwilightKaze/
 - 博客: https://TwilightKaze.github.io/blog/
 - 工作经验: 两年
 - 期望职位: 前端开发工程师
 - 期望城市: 纽约
 - 状态: 在职
-- 手机: /
 - 邮箱: zhouxiaoran246@gmail.com
 
 # 技术栈
@@ -165,19 +163,6 @@
 - 实现单点登录嵌入其他系统。
 - 尝试引入[dom-to-code][], 可以直接通过页面跳转到vscode对应的代码，提升开发效率。
 - 配置 [eslint][] & [stylelint][] & [prettier][] 以保障代码，配置了 [vscode][] 编辑器 `"source.fixAll": true` 配合 [prettier][] 和 [eslint][] 实现保存代码自动格式化, 在提高代码质量的同时提高编码体验.
-
-
-## 小程序
-
-### 露天禁烧小程序
-技术栈： [vue3][] & [taro][]
-
-负责该微信小程序的日常开发和发布工作的，后期编译成h5嵌入浙政钉
-
-- 解决小程序和h5环境下一些api不兼容的问题
-- 浙政钉接入和适老化样式适配
-- 控制人员操作权限
-- 在移动端调试方面，除了使用[vconsole][]外， 另输出[基于Chrome的移动端H5开发远程调试](https://github.com/zhisui/record/blob/master/mobile-web-debug.md)一文，供同事参考。
 
 ## 移动端
 
