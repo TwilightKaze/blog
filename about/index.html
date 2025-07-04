@@ -192,42 +192,62 @@
                   
                 <p>我喜欢技术，也喜欢记录生活和学习的点点滴滴。这个博客就是我慢慢积累和分享的地方。生活简单而平静，偶尔停下来想想自己，只想做一个不惊不扰的普通人。</p>
 
-                <style>
-                  .lyrics-dropdown {
-                    background-color: #f0fff0; /* Honeydew，一种非常浅的绿色 */
-                    border: 1px solid #c8e6c9; /* 边框使用稍深的绿色 */
-                    border-radius: 8px; /* 圆角 */
-                    margin-top: 25px; /* 和上面的段落拉开距离 */
-                    padding: 12px 18px; /* 内边距 */
-                    transition: all 0.3s ease; /* 添加一点动画效果 */
-                  }
-                  .lyrics-dropdown summary {
-                    cursor: pointer; /* 鼠标悬停时显示为手型 */
-                    font-weight: bold;
-                    outline: none; /* 移除点击时的默认轮廓 */
-                  }
-                  /* 自定义下拉菜单的三角箭头样式 */
-                  .lyrics-dropdown summary::marker {
-                    color: #4CAF50; 
-                  }
-                  .lyrics-dropdown-content {
-                    padding-top: 10px; /* 歌词内容与标题的距离 */
-                    color: #555; /* 歌词颜色 */
-                    line-height: 1.7; /* 行高，方便阅读 */
-                    white-space: pre-wrap; /* 保留换行和空格 */
-                  }
-                </style>
+<style>
+  .lyrics-dropdown {
+    background-color: #f3f9f3; /* 一个更淡雅的浅绿色 */
+    border-radius: 8px;
+    margin-top: 25px;
+    padding: 10px 15px; /* 减小内边距，让它“变瘦” */
+  }
 
-                <details class="lyrics-dropdown">
-                  <summary>一些喜欢的歌词</summary>
-                  <div class="lyrics-dropdown-content">
-                    当我和世界不一样，那就让我不一样
-                    <br>
-                    坚持对我来说，就是以刚克刚
-                    <br>
-                    —— 五月天《倔强》
-                  </div>
-                </details>
+  .lyrics-dropdown summary {
+    position: relative; /* 用于定位自定义图标 */
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    list-style: none; /* 隐藏原始的丑三角 */
+    padding-right: 20px; /* 给右侧的 +/- 图标留出空间 */
+  }
+  
+  /* 隐藏原始三角 (兼容不同浏览器) */
+  .lyrics-dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* 用 CSS 创建一个“+”号作为新按钮 */
+  .lyrics-dropdown summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2em; /* 调整图标大小 */
+    color: #555; /* 图标颜色 */
+    transition: transform 0.2s ease-in-out; /* 添加动画 */
+  }
+
+  /* 当菜单展开时，将“+”号旋转成“-”号 */
+  .lyrics-dropdown[open] > summary::after {
+    content: '-';
+  }
+  
+  .lyrics-dropdown-content {
+    padding-top: 10px;
+    color: #555;
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+</style>
+
+<details class="lyrics-dropdown">
+  <summary>一些喜欢的歌词</summary>
+  <div class="lyrics-dropdown-content">
+    当我和世界不一样，那就让我不一样
+    <br>
+    坚持对我来说，就是以刚克刚
+    <br>
+    —— 五月天《倔强》
+  </div>
+</details>
 
                 </div>
               
