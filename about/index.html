@@ -193,59 +193,66 @@
                 <p>我喜欢技术，也喜欢记录生活和学习的点点滴滴。这个博客就是我慢慢积累和分享的地方。生活简单而平静，偶尔停下来想想自己，只想做一个不惊不扰的普通人。</p>
 
 <style>
-  .lyrics-dropdown {
-    background-color: #f3f9f3; /* 一个更淡雅的浅绿色 */
-    border-radius: 8px;
+  /* 整体容器样式 */
+  .details-green-final {
     margin-top: 25px;
-    padding: 10px 15px; /* 减小内边距，让它“变瘦” */
+    border: 1px solid #c8e6c9; /* 边框改为稍深的绿色，与背景搭配 */
+    border-radius: 6px;
+    background-color: #e8f5e9; /* 背景色已改为你指定的浅绿色 */
   }
 
-  .lyrics-dropdown summary {
-    position: relative; /* 用于定位自定义图标 */
+  /* 标题栏样式 */
+  .details-green-final summary {
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    padding: 8px 16px;
     font-weight: bold;
-    outline: none;
-    list-style: none; /* 隐藏原始的丑三角 */
-    padding-right: 20px; /* 给右侧的 +/- 图标留出空间 */
+    list-style: none; /* 隐藏默认的三角 */
   }
-  
-  /* 隐藏原始三角 (兼容不同浏览器) */
-  .lyrics-dropdown summary::-webkit-details-marker {
-    display: none;
+  .details-green-final summary::-webkit-details-marker {
+    display: none; /* 再次确认隐藏 */
   }
 
-  /* 用 CSS 创建一个“+”号作为新按钮 */
-  .lyrics-dropdown summary::after {
-    content: '+';
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 1.2em; /* 调整图标大小 */
-    color: #555; /* 图标颜色 */
-    transition: transform 0.2s ease-in-out; /* 添加动画 */
+  /* 自定义的 SVG 箭头图标 */
+  .details-green-final .chevron-icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 8px; /* 图标和文字的间距 */
+    color: #388e3c; /* 图标颜色改为深一点的绿色 */
+    transition: transform 0.2s ease-in-out; /* 旋转动画 */
   }
 
-  /* 当菜单展开时，将“+”号旋转成“-”号 */
-  .lyrics-dropdown[open] > summary::after {
-    content: '-';
+  /* 当菜单展开时，旋转箭头 */
+  .details-green-final[open] > summary .chevron-icon {
+    transform: rotate(90deg);
+  }
+
+  /* 内容区域的容器 */
+  .details-green-final .content-wrapper {
+    border-top: 1px solid #c8e6c9; /* 分割线也改为绿色系 */
+    padding: 12px 16px;
   }
   
-  .lyrics-dropdown-content {
-    padding-top: 10px;
-    color: #555;
-    line-height: 1.7;
-    white-space: pre-wrap;
+  /* 内部的歌词文本样式 */
+  .details-green-final .lyrics-text {
+    color: #333; /* 歌词文字颜色 */
+    line-height: 1.7; /* 行高 */
+    white-space: pre-wrap; /* 保留换行 */
   }
 </style>
 
-<details class="lyrics-dropdown">
-  <summary>一些喜欢的歌词</summary>
-  <div class="lyrics-dropdown-content">
-    当我和世界不一样，那就让我不一样
-    <br>
-    坚持对我来说，就是以刚克刚
-    <br>
-    —— 五月天《倔强》
+<details class="details-green-final">
+  <summary>
+    <svg viewBox="0 0 16 16" version="1.1" class="chevron-icon" aria-hidden="true"><path fill-rule="evenodd" d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"></path></svg>
+    一些喜欢的歌词
+  </summary>
+  <div class="content-wrapper">
+    <p class="lyrics-text">
+      当我和世界不一样，那就让我不一样
+      坚持对我来说，就是以刚克刚
+      —— 五月天《倔强》
+    </p>
   </div>
 </details>
 
