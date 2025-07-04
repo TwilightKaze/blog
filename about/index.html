@@ -198,7 +198,7 @@
     margin-top: 25px;
     border: 1px solid #c8e6c9; /* 边框改为稍深的绿色，与背景搭配 */
     border-radius: 6px;
-    background-color: #e8f5e9; /* 背景色已改为你指定的浅绿色 */
+    background-color: #e8f5e9; /* 背景色为你指定的浅绿色 */
   }
 
   /* 标题栏样式 */
@@ -208,7 +208,7 @@
     cursor: pointer;
     padding: 8px 16px;
     font-weight: bold;
-    list-style: none; /* 隐藏默认的三角 */
+    list-style: none; /* 彻底隐藏默认的三角 */
   }
   .details-green-final summary::-webkit-details-marker {
     display: none; /* 再次确认隐藏 */
@@ -228,17 +228,37 @@
     transform: rotate(90deg);
   }
 
+  /* --- 动画核心部分 --- */
+
   /* 内容区域的容器 */
   .details-green-final .content-wrapper {
-    border-top: 1px solid #c8e6c9; /* 分割线也改为绿色系 */
-    padding: 12px 16px;
+    border-top: 1px solid #c8e6c9; /* 分割线 */
+    padding: 0 16px; /* 左右内边距保留，上下内边距通过动画实现 */
+    
+    /* 1. 将内容区域设置为 Grid 布局 */
+    display: grid;
+    /* 2. 默认状态下，内容行高为0，即隐藏 */
+    grid-template-rows: 0fr;
+    /* 3. 为行高的变化添加过渡动画，持续0.3秒 */
+    transition: grid-template-rows 0.3s ease-out;
+  }
+  
+  /* 当菜单展开时，内容行高从 0fr 变为 1fr，撑开容器 */
+  .details-green-final[open] > .content-wrapper {
+    grid-template-rows: 1fr;
+    /* 为上下内边距添加动画，让展开效果更自然 */
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
   
   /* 内部的歌词文本样式 */
   .details-green-final .lyrics-text {
-    color: #333; /* 歌词文字颜色 */
-    line-height: 1.7; /* 行高 */
-    white-space: pre-wrap; /* 保留换行 */
+    color: #333;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    
+    /* 4. 关键！隐藏溢出的内容，否则动画会失效 */
+    overflow: hidden;
   }
 </style>
 
